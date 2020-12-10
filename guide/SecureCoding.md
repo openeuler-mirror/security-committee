@@ -34,12 +34,7 @@
 ```
 int num_a = ... // 来自外部数据
 int num_b = ... // 来自外部数据
-int sum = 0;
-if (((num_a > 0) && (num_b > (INT_MAX -- num_a))) ||
-	((num_a < 0) && (num_b < (INT_MIN -- num_b)))) {
-	... // 错误处理
-}
-sum = num_a + num_b;
+int sum = num_a + num_b;
 ...
 ```
 
