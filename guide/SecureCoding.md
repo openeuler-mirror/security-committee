@@ -195,7 +195,7 @@ int num_b =  ... // 来自外部数据
 int result = 0;
 
 // 检查除数为0及除法溢出错误
-if ((num_b == 0)  | | ((num_a == INT_MIN) && (num_b == -1))) {
+if ((num_b == 0)  || ((num_a == INT_MIN) && (num_b == -1))) {
 	... // 错误处理
 }
 
@@ -226,7 +226,7 @@ int result = -num_a; // 可能出现整数溢出
 int num_a =  ... // 来自外部数据
 int result = 0;
 
-if (num_a == LNT _MIN) {
+if (num_a == LNT_MIN) {
 	... // 错误处理
 }
 
@@ -338,8 +338,8 @@ if (len > SCTP_SIZE_MAX - sizeof(SctpAuthBytes)) { // 确保编译期间减法�
 如下代码示例中，使用外部数据计算申请内存长度时未校验，可能出现整数回绕。
 
 ```
-size _t width =  ... // 来自外部数据
-size _t hight =  ... // 来自外部数据
+size_t width =  ... // 来自外部数据
+size_t hight =  ... // 来自外部数据
 unsigned char  *buf = (unsigned char  *)malloc(width  * hight);
 ```
 
@@ -350,13 +350,13 @@ unsigned char  *buf = (unsigned char  *)malloc(width  * hight);
 如下代码是一种解决方案，校验参与乘法运算的整数数值范围，确保不会出现整数回绕。
 
 ```
-size _t width =  ... // 来自外部数据
-size _t hight =  ... // 来自外部数据
+size_t width =  ... // 来自外部数据
+size_t hight =  ... // 来自外部数据
 if (width == 0 || hight == 0) {
 	... // 错误处理
 }
 
-if (width  > SIZE _MAX / hight) {
+if (width  > SIZE_MAX / hight) {
 	... // 错误处理
 }
 
@@ -387,7 +387,7 @@ int num_a =  ... // 来自外部数据
 int num_b =  ... // 来自外部数据
 int result = 0;
 
-if ((num_a == INT _MIN) && (num_b == -1)) {
+if ((num_a == INT_MIN) && (num_b == -1)) {
 	... // 错误处理
 }
 
@@ -404,7 +404,7 @@ int num_a =  ... // 来自外部数据
 int num_b =  ... // 来自外部数据
 int result = 0;
 
-if ((num_b == 0)  | | ((num_a == INT _MIN) && (num_b == -1))) {
+if ((num_b == 0)  | | ((num_a == INT_MIN) && (num_b == -1))) {
 	... // 错误处理
 }
 
@@ -440,7 +440,7 @@ int num_a =  ... // 来自外部数据
 int num_b =  ... // 来自外部数据
 int result = 0;
 
-if ((num_b == 0)  | | ((num_a == INT _MIN) && (num_b == -1))) {
+if ((num_b == 0)  | | ((num_a == INT_MIN) && (num_b == -1))) {
 	... // 错误处理
 }
 
@@ -517,18 +517,18 @@ EXIT:
 int foo(void)
 {
 	SomeStruct  *msg = NULL;
-	... // 初始化msg- >type，分配 msg- >body 的内存空间
+	... // 初始化msg->type，分配 msg->body 的内存空间
 
-	if (msg- >type == MESSAGE _A) {
+	if (msg->type == MESSAGE_A) {
 		...
-		free(msg- >body);
-		msg- >body = NULL;
+		free(msg->body);
+		msg->body = NULL;
 	}
 
 	...
 EXIT:
 	...
-	free(msg- >body);
+	free(msg->body);
 	return ret;
 }
 ```
@@ -703,10 +703,10 @@ itoa(num, str, 10); // 10进制整数的最大存储长度是12个字节
 
 ```
 #define MAX_PATH_LEN 100
-char resolved _path[MAX_PATH_LEN];
+char resolved_path[MAX_PATH_LEN];
 / *
-- realpath函数的存储缓冲区长度是由PATH _MAX常量定义，
-- 或是由 _PC_PATH_MAX系统值配置的，通常都大于100字节
+- realpath函数的存储缓冲区长度是由PATH_MAX常量定义，
+- 或是由_PC_PATH_MAX系统值配置的，通常都大于100字节
 */
 
 char  *res = realpath(path, resolved_path);
@@ -758,7 +758,7 @@ if (strlen(name)  > FILE_NAME_LEN - 1) {
 	... // 处理错误
 }
 
-(void)strcpy(file _name, name);
+(void)strcpy(file_name, name);
 ...
 ```
 
@@ -819,12 +819,12 @@ if (fp == NULL) {
 	... // 错误处理
 }
 
-char  *str = (char *)malloc(MAX _LINE);
+char  *str = (char *)malloc(MAX_LINE);
 if (str == NULL) {
 	... // 错误处理
 }
 
-read _line(fp, str);
+read_line(fp, str);
 char  *p = strstr(str,  "age=");
 if (p == NULL) {
 	... // 错误处理
@@ -885,7 +885,7 @@ void foo(void)
 int parse_msg(unsigned char *msg, size_t msg_len)
 {
 	ASSERT(msg != NULL);
-	ASSERT(msg _len != 0);
+	ASSERT(msg_len != 0);
 	...
 }
 
@@ -997,7 +997,7 @@ void incorrect_password(const char *user)
 下面是第二种推荐做法，代码中将不受信任的用户输入user作为fprintf()的可选参数之一，用"%s"将user以字符串的形式固定下来，然后输出到stderr中，而不作为格式字符串的一部分，这样就消除了格式字符串漏洞出现的可能性。
 
 ```
-void incorrect _password(const char  *user)
+void incorrect_password(const char  *user)
 {
 	static const char msg_format[] = "%s cannot be authenticated.\n";
 	fprintf(stderr, msg_format, user);
@@ -1126,7 +1126,7 @@ void *realloc(void *ptr, size_t size);
 
 ```
 // 当realloc()分配内存失败时会返回NULL，导致内存泄漏
-char *ptr = (char  *)realloc(ptr, NEW _SIZE);
+char *ptr = (char  *)realloc(ptr, NEW_SIZE);
 if (ptr == NULL) {
 	...// 错误处理
 }
@@ -1176,7 +1176,7 @@ system(cmd);
 如下代码示例中，使用 system() 函数执行 cmd 命令串的一部分来自外部，攻击者可能输入  'some dir;useradd xxx '字符串，创建一个xxx的用户：
 
 ```
-char cmd[MAX _LEN ];
+char cmd[MAX_LEN ];
 int ret;
 
 char  *name = get_dir_name_from_remote();
@@ -1532,7 +1532,7 @@ if (new_secret == NULL) {
 ```
 int foo(void)
 {
-	char password [MAX _PWD _LEN ] = {0};
+	char password [MAX_PWD_LEN ] = {0};
 	if (!get_password(password, sizeof(password))) {
 		...  // 处理错误 
 	}
@@ -1826,8 +1826,8 @@ static char g_msg_buf[MAX_MSG_SIZE] = {0};
 static char *g_msg = g_msg_buf;
 void signal_handler(int signum)
 {
-	// 下面代码操作g _msg不合规，因为不是异步安全的
-	(void)memset(g _msg, 0, MAX_MSG_SIZE);
+	// 下面代码操作g_msg不合规，因为不是异步安全的
+	(void)memset(g_msg, 0, MAX_MSG_SIZE);
 	strcpy(g_msg,  "signal SIGINT received.");
 	... //
 }
@@ -2041,8 +2041,8 @@ static long gser_ioctl(struct file  *fp, unsigned cmd, unsigned long arg)
 	char smd_write_buf[GSERIAL_BUF_LEN];
 	switch (cmd)
 	{
-		case GSERIAL _SMD _WRITE:
-			if (copy _from _user(&smd_write_arg, argp, sizeof(smd _write _arg))) {...}
+		case GSERIAL_SMD_WRITE:
+			if (copy_from_user(&smd_write_arg, argp, sizeof(smd_write_arg))) {...}
 			// 错误：拷贝长度参数smd_write_arg.size由用户输入，未校验
 			copy_from_user(smd_write_buf, smd_write_arg.buf, smd_write_arg.size); 
 			...
@@ -2057,13 +2057,13 @@ static long gser_ioctl(struct file  *fp, unsigned cmd, unsigned long arg)
 ```
 static long gser_ioctl(struct file *fp, unsigned cmd, unsigned long arg)
 {
-	char smd _write_buf[GSERIAL_BUF_LEN];
+	char smd_write_buf[GSERIAL_BUF_LEN];
 	switch (cmd)
 	{
 		case GSERIAL_SMD_WRITE:
 			if (copy_from_user(&smd_write_arg, argp, sizeof(smd_write_arg))){...}
 			// 修改：添加校验
-			if (smd _write_arg.size  >= GSERIAL_BUF_LEN) {......} 
+			if (smd_write_arg.size  >= GSERIAL_BUF_LEN) {......} 
 			copy_from_user(smd_write_buf, smd_write_arg.buf, smd_write_arg.size);
  			...
 	}
@@ -2152,8 +2152,8 @@ static unsigned int is_modem_set_timer_busy(special_timer *smem_ptr)
 static unsigned int is_modem_set_timer_busy(special_timer *smem_ptr)
 {
 	int i = 0;
-	if (smem _ptr == NULL) {
-		printk(KERN_EMERG"%s:smem _ptr NULL!\n",  __FUNCTION__);
+	if (smem_ptr == NULL) {
+		printk(KERN_EMERG"%s:smem_ptr NULL!\n",  __FUNCTION__);
 		// 修改：去掉BUG_ON调用，或使用WARN_ON
 		return 1;
 	}
@@ -2262,8 +2262,8 @@ if (IS_ERR(file)) {
 
 sprintf(buf, "%s", "The Message.");
 old_fs = get_fs(); // get_fs()的作用是获取用户空间地址上限值  
-                   // #define get_fs() (current->addr _limit
-set _fs(KERNEL _DS); // set_fs的作用是将地址空间上限扩大到KERNEL_DS，这样内核代码可以调用系统函数
+                   // #define get_fs() (current->addr_limit
+set_fs(KERNEL_DS); // set_fs的作用是将地址空间上限扩大到KERNEL_DS，这样内核代码可以调用系统函数
 file->f_op->write(file, (char *)buf, sizeof(buf), &file->f_pos); // 内核代码可以调用write()函数
 set_fs(old_fs); // 使用完后及时恢复原来用户空间地址限制值
 ...
