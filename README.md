@@ -29,7 +29,7 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 - <yanxiaobing@huawei.com> [[@yanxiaobing2020](https://gitee.com/yanxiaobing2020)]
 - <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
 - <11015100@qq.com> [[@gwei3](https://gitee.com/gwei3)]
-- <guoxiaoqi2@huawei.com> [[@guoxiaoqi](https://gitee.com/guoxiaoqi)]
+- <guoxiaoqi2@huawei.com> [[@angela7](https://gitee.com/angela7)]
 - <yanglijin@huawei.com> [[@jinjin](https://gitee.com/jinjin)]
 - <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
 
