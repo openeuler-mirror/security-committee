@@ -34,7 +34,7 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 - <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
 
 ### 2021年 SC成员变更历史
-- 杨丽 [[@yangli69393](https://gitee.com/yangli69393)]于2021年7月卸任，崔雷接替SC委员工作。
+- [@yangli69393](https://gitee.com/yangli69393)于2021年7月卸任，[@kylincuilei](https://gitee.com/kylincuilei)接替SC委员工作。
 
 
 ## 会议时间
