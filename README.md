@@ -23,16 +23,18 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 
 产品安全委员会（SC）负责对openEuler安全问题进行分类和处理，以下是产品安全委员会现任成员：
 
-+ 刘金刚[@liujingang09](https://gitee.com/liujingang09)，`liujingang09@huawei.com`
-+ 杨丽[@yangli69393](https://gitee.com/yangli69393)，`y69393@huawei.com`   
-+ 颜小兵[@yanxiaobing2020](https://gitee.com/yanxiaobin2020)，`yanxiaobing@huawei.com`
-+ 朱健伟[@zhujianwei001](https://gitee.com/zhujianwei001)，`zhujianwei7@huawei.com`
-+ 魏刚[@gwei3](https://gitee.com/gwei3)，`11015100@qq.com`
+### SC成员列表
 
-准成员：
+- <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
+- <yanxiaobing@huawei.com> [[@yanxiaobing2020](https://gitee.com/yanxiaobing2020)]
+- <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
+- <11015100@qq.com> [[@gwei3](https://gitee.com/gwei3)]
+- <guoxiaoqi2@huawei.com> [[@guoxiaoqi](https://gitee.com/guoxiaoqi)]
+- <yanglijin@huawei.com> [[@jinjin](https://gitee.com/jinjin)]
+- <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
 
-- 
-
+### 2021年 SC成员变更历史
+- 杨丽 [[@yangli69393](https://gitee.com/yangli69393)]于2021年7月卸任，崔雷接替SC委员工作。
 
 
 ## 会议时间
