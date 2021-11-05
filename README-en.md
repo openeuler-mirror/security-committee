@@ -32,6 +32,7 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - <guoxiaoqi2@huawei.com> [[@angela7](https://gitee.com/angela7)]
 - <yanglijin@huawei.com> [[@jinjin](https://gitee.com/jinjin)]
 - <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
+- <weidong@uniontech.com> [[@weidongkl](https://gitee.com/weidongkl)] （Alternate member）
 
 ### Member Changes in 2021
 - [@yangli69393](https://gitee.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitee.com/kylincuilei) took over the work.
