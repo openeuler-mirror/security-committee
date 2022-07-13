@@ -38,4 +38,4 @@ openEuler通过用户组来管理发行商身份，请参考：
 
 ## 如何申请加入
 
-可以[在此处]()提交申请。
+可以[在此处](mailto:openeuler-security@openeuler.org)提交申请。
