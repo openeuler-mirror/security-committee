@@ -29,13 +29,15 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - <yanxiaobing@huawei.com> [[@yanxiaobing2020](https://gitee.com/yanxiaobing2020)]
 - <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
 - <11015100@qq.com> [[@gwei3](https://gitee.com/gwei3)]
-- <guoxiaoqi2@huawei.com> [[@angela7](https://gitee.com/angela7)]
-- <yanglijin@huawei.com> [[@jinjin](https://gitee.com/jinjin)]
 - <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
-- <weidong@uniontech.com> [[@weidongkl](https://gitee.com/weidongkl)] （Alternate member）
+- <weidong@uniontech.com> [[@weidongkl](https://gitee.com/weidongkl)]
+- <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)]（Alternate member）
+- <chenxi.mao@suse.com> [[@chenxi-mao](https://gitee.com/chenxi-mao)]（Alternate member）
 
-### Member Changes in 2021
+### Member Changes
 - [@yangli69393](https://gitee.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitee.com/kylincuilei) took over the work.
+- [@angela7](https://gitee.com/angela7) resigned in January 2022, and [@weidongkl](https://gitee.com/weidongkl) took over the work.
+- [@jinjin](https://gitee.com/jinjin) resigned in March 2022, and [@tanjingguo](https://gitee.com/tanjingguo) took over the work.
 
 
 ## Meeting Time
