@@ -11,7 +11,7 @@
 + [打开-s选项或者使用strip工具](#打开-s选项或者使用strip工具)
 + [禁止使用rpath选项](#禁止使用rpath选项)
 + [打开FS选项](#打开FS选项)
-+ [打开Visibility选项](#打开Visibility选项)
++ [打开fvisibility选项](#打开fvisibility选项)
 + [打开ftrapv选项](#打开ftrapv选项)
 + [打开栈检查选项](#打开栈检查选项)
 + [打开栈冲突保护选项](#打开栈冲突保护选项)
@@ -271,7 +271,7 @@ CONFIG_CC_STACKPROTECTOR_STRONG 对应 -fstack-protector-strong
 
 
 
-### 打开Visibility选项
+### 打开fvisibility选项
 
 【级别】
 
