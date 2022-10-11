@@ -25,7 +25,6 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 
 ### Member List
 
-- <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
 - <yanxiaobing@huawei.com> [[@yanxiaobing2020](https://gitee.com/yanxiaobing2020)]
 - <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
 - <11015100@qq.com> [[@gwei3](https://gitee.com/gwei3)]
@@ -38,6 +37,7 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - [@yangli69393](https://gitee.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitee.com/kylincuilei) took over the work.
 - [@angela7](https://gitee.com/angela7) resigned in January 2022, and [@weidongkl](https://gitee.com/weidongkl) took over the work.
 - [@jinjin](https://gitee.com/jinjin) resigned in March 2022, and [@tanjingguo](https://gitee.com/tanjingguo) took over the work.
+- [@liujingang09](https://gitee.com/liujingang09) resigned in September 2022.
 
 
 ## Meeting Time
