@@ -31,7 +31,7 @@ Contents
 
 ## Security Committee (SC)
 
-The SC is responsible for security issue response in the entire community, including internal communication and public disclosure. The entire process needs to be completed with the assistance of related developers and release managers. The SC consists of volunteers who have subscribed to the [openEuler security mailing list (private)](openeuler-security@openeuler.org).
+The SC is responsible for security issue response in the entire community, including internal communication and public disclosure. The entire process needs to be completed with the assistance of related developers and release managers. The SC consists of volunteers who have subscribed to the openEuler security mailing list (private):openeuler-security@openeuler.org.
 
 
 
@@ -146,7 +146,7 @@ The security patch release team is a part of the [release management SIG](https:
 ####  Routine CVE Scanning
 
 - The openEuler community uses vulnerability scanning tools to routinely scan and synchronize disclosed vulnerabilities in the upstream community software packages imported to openEuler.
-- Issues will be pushed to the corresponding SIGs with CVE labels attached based on the [openEuler Security Process Email Templates](template-security-bug.md).
+- Issues will be pushed to the corresponding SIGs with CVE labels attached based on the [openEuler Security Process Email Templates](template-security-bug-en.md).
 
 
 
@@ -160,7 +160,7 @@ If a bug in a SIG is confirmed as a security vulnerability by the security team,
 
 If you know a security vulnerability that is not in the list of public security vulnerabilities resolved by the openEuler security team, please send an email to <openeuler-security@openeuler.org> immediately to notify the SC so that they can start the patch, release, and advisory processes.
 
-Use the [openEuler Security Process Email Template](template-security-bug.md) when sending the email. You can also use a PGP public key requested from a member of the [openEuler Security Committee](README-en.md) to encrypt the email. After receiving the report email, the security issue assigner will create a security issue in the repository.
+Use the [openEuler Security Process Email Template](template-security-bug-en.md) when sending the email. You can also use a PGP public key requested from a member of the [openEuler Security Committee](README-en.md) to encrypt the email. After receiving the report email, the security issue assigner will create a security issue in the repository.
 
 If necessary, the SC will ask for your consent to disclose the issue confidentially through the person in charge. If you do not agree, we will disclose the issue publicly.
 
@@ -233,7 +233,7 @@ As the remediation progresses, the remediation owner needs to submit an overall 
 **Distributor Disclosure (optional)** (1 to 14 days after issue confirmation)
 
 + The remediation owner determines whether to inform the distributors of a serious issue as soon as possible, for example, a vulnerability that is remotely exploitable or involves privilege escalation. The decision will be made under the assistance of the remediation team. This step can be skipped for relatively minor issues.
-+ The remediation owner sends the patch to <distributors-announce@openEuler.org> by email so that the distributors can prepare the patch in advance and deliver it to users on the release date. Distributors should subscribe to the [Distributor Disclosure Mailing List](distributors-announce@openEuler.org) and read the [Distributor Disclosure Notes](private-distributors-list.md) to learn about the requirements for joining the mailing list.
++ The remediation owner sends the patch to <distributors-announce@openEuler.org> by email so that the distributors can prepare the patch in advance and deliver it to users on the release date. Distributors should subscribe to the Distributor Disclosure Mailing List(distributors-announce@openEuler.org) and read the [Distributor Disclosure Notes](private-distributors-list.md) to learn about the requirements for joining the mailing list.
 
 
 
