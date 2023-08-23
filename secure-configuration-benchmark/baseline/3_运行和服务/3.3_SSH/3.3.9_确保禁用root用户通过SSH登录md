@@ -26,10 +26,10 @@ SSH 配置文件：/etc/ssh/sshd_config中的PermitRootLogin参数指定root用�
 
 **修复方法：**
 
-修改/etc/ssh/sshd_config文件，将permitrootlogin字段后面的数字修改为no，重启sshd服务：
+修改/etc/ssh/sshd_config文件，将PermitRootLogin字段后面的数字修改为no，重启sshd服务：
 
 ```
 # vim /etc/ssh/sshd_config
-permitrootlogin no
+PermitRootLogin no
 # systemctl restart sshd
 ```
