@@ -16,7 +16,8 @@ SSH 配置文件：/etc/ssh/sshd_config中的PermitRootLogin参数指定root用�
 
 **检查方法：**
 
-执行以下命令，验证 SSH 的 PermitRootLogin 配置是否正确：
+执行以下命令，验证SSH的PermitRootLogin配置是否正确（同时满足如下两个命令行的检查）：
+
  ```
  # sshd -T -C user=root -C host="$(hostname)" -C addr="$(grep $(hostname) /etc/hosts | awk '{print $1}')" | grep permitrootlogin
  permitrootlogin no
