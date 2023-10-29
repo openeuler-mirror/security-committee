@@ -26,7 +26,6 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 ### SC成员列表
 
 - <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
-- <11015100@qq.com> [[@gwei3](https://gitee.com/gwei3)]
 - <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
 - <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)]
 - <chenxi.mao@suse.com> [[@chenxi-mao](https://gitee.com/chenxi-mao)]
@@ -40,6 +39,7 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 - [@liujingang09](https://gitee.com/liujingang09)于2022年9月卸任。
 - [@weidongkl](https://gitee.com/weidongkl)于2023年3月卸任，马威接替SC委员工作。
 - [@yanxiaobing2020](https://gitee.com/yanxiaobing2020)于2023年6月卸任，罗钰凯接替SC委员工作。
+- [@gwei3](https://gitee.com/gwei3)于2023年9月卸任
 
 
 ## 会议时间
