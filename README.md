@@ -32,6 +32,8 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 - <mawei@uniontech.com> [[@movie0125](https://gitee.com/movie0125)]
 - <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)]
 
+ 
+
 ### SC成员变更历史
 - [@yangli69393](https://gitee.com/yangli69393)于2021年7月卸任，[@kylincuilei](https://gitee.com/kylincuilei)接替SC委员工作。
 - [@angela7](https://gitee.com/angela7)于2022年1月卸任，[@weidongkl](https://gitee.com/weidongkl)接替SC委员工作。
