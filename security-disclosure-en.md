@@ -4,7 +4,7 @@
 
 # Advisories
 
-Visit [Security Advisories](https://www.openeuler.org/en/security/safety-bulletin/) for openEuler security advisories.
+Visit [Security Advisories](https://www.openeuler.org/en/security/security-bulletins/) for openEuler security advisories.
 
 
 

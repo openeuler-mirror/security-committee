@@ -4,7 +4,7 @@
 
 # 安全公告
 
-您可以从openEuler的[安全公告和披露页面](https://www.openeuler.org/en/security/safety-bulletin/)获取openEuler产品安全公告和安全披露的电子邮件。
+您可以从openEuler的[安全公告和披露页面](https://www.openeuler.org/zh/security/security-bulletins/)获取openEuler产品安全公告和安全披露的电子邮件。
 
 
 
