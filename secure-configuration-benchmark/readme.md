@@ -28,6 +28,7 @@ openEuler基于开源能力，构建相应的安全配置核查能力，主要�
     # oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_standard --results scan_results.xml --report scan_report.html /usr/share/xml/scap/ssg/content/ssg-openeuler2203-ds.xml
     ```
 **说明：**
+
 1、当前工具有个别条目受限于技术及规范特点（如依赖于主观判断的条目），无法通过工具进行自动化核查，工具检查结果将显示notchecked。
 
 2、上述命令中“ssg-openeuler2203-ds.xml”是openEuler 22.03LTS版本对应的配置文件，可以替换为其他对应版本的配置文件，此处只是举例，不再赘述。
