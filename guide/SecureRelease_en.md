@@ -5,8 +5,7 @@ To ensure the network security quality of the releases, we recommend that you co
 **Catalog**
 
 + [Pass the Virus Scan](#pass-the-virus-scan)
-+ [Pass Vulnerability Scan](#pass-vulnerability-scan)
-+ [Pass Secure Coding Scan](#pass-secure-coding-scan)
++ [Pass Vulnerability Assessment](#pass-vulnerability-scan)
 + [Pass Secure Compilation Options Scan](#pass-secure-compilation-options-scan)
 + [Pass Security Test Baseline Casees Validation](#pass-security-test-baseline-casees-validation)
 + [Pass Open Source Code Snippets Citation Scan](#pass-open-source-code-snippets-citation-scan)
@@ -38,11 +37,11 @@ Security Committee
 
 
 
-### **Pass Vulnerability Scan**
+### **Pass Vulnerability Assessment**
 
 **Objective**
 
-Make sure that all vulnerabilities in the released version are fixed.
+Make sure that all vulnerabilities in the released version are fixed or assessed.
 
 **Adopted Criteria**
 
@@ -58,29 +57,6 @@ Vulnerability list, all vulnerabilities are in the fixed or filed state
 Tester Group
 
 (If there are vulnerabilities that have not been fixed in the scan results, the development team needs to fix them or explain the reason why they cannot be repaired to the Security Committee for review and filing.)
-
-**Inspector**
-
-Security Committee
-
-
-
-### **Pass Secure Coding Scan**
-
-**Objective**
-
-Ensure that the published source code meets the requirements for secure encoding
-
-**Adopted Criteria**
-
-There are no security coding issues left over from the scan results
-
-**Object**
-Secure Code scan results
-
-**Provider**
-
-Development Group
 
 **Inspector**
 
