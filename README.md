@@ -31,6 +31,7 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 - <chenxi.mao@suse.com> [[@chenxi-mao](https://gitee.com/chenxi-mao)]
 - <mawei@uniontech.com> [[@movie0125](https://gitee.com/movie0125)]
 - <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)]
+- <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
 - <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] （候补）
 - <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf) （候补）
 
