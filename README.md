@@ -25,17 +25,20 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 
 ### SC成员列表
 
-- <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
-- <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
-- <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)]
-- <chenxi.mao@suse.com> [[@chenxi-mao](https://gitee.com/chenxi-mao)]
-- <mawei@uniontech.com> [[@movie0125](https://gitee.com/movie0125)]
-- <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)]
-- <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
-- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] （候补）
-- <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf) （候补）
+| 成员信息                            | 角色    | 
+| -------------------------------------- | ------------------------------------------------------------ |
+| <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]       | 包引入专员 |
+| <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)] | 漏洞管理专员 |
+| <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)] | 漏洞管理专员 | 
+| <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)] | 漏洞管理专员 | 
+| <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)] | 安全规范和流程专员 & 安全构建发布专 | 
+|  <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] | 安全构建发布专员 | 
+|  <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf)] | 包引入专员 | 
 
- 
+
+
+ - <chenxi.mao@suse.com> [[@chenxi-mao](https://gitee.com/chenxi-mao)]
+- <mawei@uniontech.com> [[@movie0125](https://gitee.com/movie0125)]
 
 ### SC成员变更历史
 - [@yangli69393](https://gitee.com/yangli69393)于2021年7月卸任，[@kylincuilei](https://gitee.com/kylincuilei)接替SC委员工作。
@@ -45,6 +48,8 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 - [@weidongkl](https://gitee.com/weidongkl)于2023年3月卸任，马威接替SC委员工作。
 - [@yanxiaobing2020](https://gitee.com/yanxiaobing2020)于2023年6月卸任，罗钰凯接替SC委员工作。
 - [@gwei3](https://gitee.com/gwei3)于2023年9月卸任
+- [@chenxi-mao](https://gitee.com/chenxi-mao)于2024年5月卸任
+- [@movie0125](https://gitee.com/movie0125)于2024年5月卸任
 
 
 ## 会议时间
