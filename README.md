@@ -31,7 +31,7 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 | <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)] | 漏洞管理专员 |
 | <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)] | 漏洞管理专员 | 
 | <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)] | 漏洞管理专员 | 
-| <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)] | 安全规范和流程专员 & 安全构建发布专 | 
+| <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)] | 安全规范和流程专员 & 安全构建发布专员 | 
 |  <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] | 安全构建发布专员 | 
 |  <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf)] | 包引入专员 | 
 
