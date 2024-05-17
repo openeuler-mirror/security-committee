@@ -6,7 +6,7 @@
 
 ## 安全委员会（SC）使命
 
-openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问题报告、提供社区安全指导，开展社区安全治理，具体职责和要求参见[openEuler社区安全保障策略总纲]（security-strategy-overview.md）。安全委员会（SC）的使命：为openEuler用户提供最安全的产品和开发环境。
+openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问题报告、提供社区安全指导，开展社区安全治理，具体职责和要求参见[openEuler社区安全保障策略总纲](security-strategy-overview.md)。安全委员会（SC）的使命：为openEuler用户提供最安全的产品和开发环境。
 
 
 
