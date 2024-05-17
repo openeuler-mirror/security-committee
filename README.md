@@ -6,7 +6,7 @@
 
 ## 安全委员会（SC）使命
 
-openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问题报告、提供社区安全指导，开展安全治理的组织。它的使命是：为openEuler用户提供最安全的产品和开发环境。
+openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问题报告、提供社区安全指导，开展社区安全治理，具体职责和要求参见[openEuler社区安全保障策略总纲](security-strategy-overview.md)。安全委员会（SC）的使命：为openEuler用户提供最安全的产品和开发环境。
 
 
 
@@ -21,21 +21,25 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 
 ## 成员
 
-产品安全委员会（SC）负责对openEuler安全问题进行分类和处理，以下是产品安全委员会现任成员：
+安全委员会成员负责openEuler社区安全规范和流程、软件包引入安全、构建与发布安全和漏洞管理等相关能力建设，成员需通过[openEuler社区安全意识考试](https://www.openeuler.org/zh/blog/openeuler/20240428-security.html)。现任成员和角色如下：
 
 ### SC成员列表
 
-- <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
-- <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
-- <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)]
-- <chenxi.mao@suse.com> [[@chenxi-mao](https://gitee.com/chenxi-mao)]
-- <mawei@uniontech.com> [[@movie0125](https://gitee.com/movie0125)]
-- <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)]
-- <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
-- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] （候补）
-- <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf) （候补）
-
+| 成员信息                            | 角色    | 
+| -------------------------------------- | ------------------------------------------------------------ |
+| <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]       | 包引入专员 |
+| <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)] | 漏洞管理专员 |
+| <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)] | 漏洞管理专员 | 
+| <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)] | 漏洞管理专员 | 
+| <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)] | 安全规范和流程专员 & 安全构建发布专员 | 
+|  <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] | 安全构建发布专员 | 
+|  <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf)] | 包引入专员 | 
+|  <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitee.com/zeng-wei2000)] (候补)| 漏洞管理专员 |
+|  <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitee.com/Sam-Luo)] (候补)| 漏洞管理专员 |
  
+
+
+
 
 ### SC成员变更历史
 - [@yangli69393](https://gitee.com/yangli69393)于2021年7月卸任，[@kylincuilei](https://gitee.com/kylincuilei)接替SC委员工作。
@@ -44,7 +48,9 @@ openEuler安全委员会（SC）是负责接收和响应openEuler产品安全问
 - [@liujingang09](https://gitee.com/liujingang09)于2022年9月卸任。
 - [@weidongkl](https://gitee.com/weidongkl)于2023年3月卸任，马威接替SC委员工作。
 - [@yanxiaobing2020](https://gitee.com/yanxiaobing2020)于2023年6月卸任，罗钰凯接替SC委员工作。
-- [@gwei3](https://gitee.com/gwei3)于2023年9月卸任
+- [@gwei3](https://gitee.com/gwei3)于2023年9月卸任。
+- [@chenxi-mao](https://gitee.com/chenxi-mao)于2024年5月卸任。
+- [@movie0125](https://gitee.com/movie0125)于2024年5月卸任，[@zeng-wei2000](https://gitee.com/zeng-wei2000)接替SC委员工作。
 
 
 ## 会议时间
@@ -73,12 +79,7 @@ SC和产品发布相关，所以和发布经理有很多工作关联，SC会负�
 
 
 
-## 社区讨论和支持
-
-在[社区页面](https://openEuler.org)上了解如何和openEuler社区做安全互动
-
-
-
 ## 行为规范
 
-接受[openEuler行为规范](https://gitee.com/openeuler/community/blob/master/code-of-conduct.md)的约束。
++ 接受[openEuler行为规范](https://gitee.com/openeuler/community/blob/master/code-of-conduct.md)的约束。
++ 接受[openEuler安全委员会成员行为准则](https://gitee.com/openeuler/security-committee/blob/master/security-committee-rules.md)的约束。
