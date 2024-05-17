@@ -21,7 +21,7 @@ openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问
 
 ## 成员
 
-安全委员会（SC）负责openEuler社区安全规范和流程、软件包引入安全、构建与发布安全和漏洞管理等相关能力建设，安全委员会现任成员和角色如下：
+安全委员会成员负责openEuler社区安全规范和流程、软件包引入安全、构建与发布安全和漏洞管理等相关能力建设，成员需通过[openEuler社区安全意识考试](https://www.openeuler.org/zh/blog/openeuler/20240428-security.html)。现任成员和角色如下：
 
 ### SC成员列表
 
