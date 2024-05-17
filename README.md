@@ -79,12 +79,6 @@ SC和产品发布相关，所以和发布经理有很多工作关联，SC会负�
 
 
 
-## 社区讨论和支持
-
-在[社区页面](https://openEuler.org)上了解如何和openEuler社区做安全互动
-
-
-
 ## 行为规范
 
 接受[openEuler行为规范](https://gitee.com/openeuler/community/blob/master/code-of-conduct.md)的约束。
