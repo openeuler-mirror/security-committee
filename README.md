@@ -48,8 +48,8 @@ openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问
 - [@liujingang09](https://gitee.com/liujingang09)于2022年9月卸任。
 - [@weidongkl](https://gitee.com/weidongkl)于2023年3月卸任，马威接替SC委员工作。
 - [@yanxiaobing2020](https://gitee.com/yanxiaobing2020)于2023年6月卸任，罗钰凯接替SC委员工作。
-- [@gwei3](https://gitee.com/gwei3)于2023年9月卸任
-- [@chenxi-mao](https://gitee.com/chenxi-mao)于2024年5月卸任
+- [@gwei3](https://gitee.com/gwei3)于2023年9月卸任。
+- [@chenxi-mao](https://gitee.com/chenxi-mao)于2024年5月卸任。
 - [@movie0125](https://gitee.com/movie0125)于2024年5月卸任，[@zeng-wei2000](https://gitee.com/zeng-wei2000)接替SC委员工作。
 
 
