@@ -20,7 +20,7 @@
 
 &ensp;&ensp;社区安全保障要求参照业界开源软件供应链安全成熟度评估体系，覆盖整个软件开发生命周期software development lifecycle (SDLC),从来源安全->环境安全->编码安->构建安全->发布安全 5个阶段来保证软件供应链安全。
 
-![](media/1.png)
+![](picture/security-framework.png)
 
 ## 5 来源安全保障要求
 
@@ -174,7 +174,7 @@
 
 &ensp;&ensp;openEuler社区安全委员会制定了一套社区漏洞处理策略和流程，包括漏洞感知、漏洞确认和评估、漏洞修复以及漏洞披露等阶段。同时在社区创建了一个名为cve-manager的项目，用于自动化或半自动化的实现社区漏洞管理各项工作，例如：自动感知上游软件的漏洞、检查漏洞处理过程是否满足社区要求、自动生成CVRF格式的SA等。下图是社区遵循的漏洞处理流程。
 
-![](media/4cc702dcd93745fd0b4fef1287ebc83e.png)
+![](picture/vulnerbility-handling-process-cn.png)
 
 ### 10.1 漏洞处理范围
 
