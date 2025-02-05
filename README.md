@@ -38,6 +38,7 @@ openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问
 |  <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitee.com/Sam-Luo)] (候补)| 漏洞管理专员 |
 |  <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)] (候补) | 安全规范和流程专员 |
 | <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)] (候补) | 基础设施安全专员 |
+| <wuksh@chinatelecom.cn> [[@wuzimo](https://gitee.com/wuzimo)] (候补) | 漏洞管理专员 |
  
 
 
