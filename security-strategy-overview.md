@@ -1,5 +1,7 @@
 # openEuler社区安全保障策略总纲
 
+[English](docs\en\vulnerability-management-process\security-strategy-overview-en) | 简体中文
+
 ## 1 社区安全保障策略总纲定位
 
 &ensp;&ensp;为了更好地提升openEuler社区的安全合规性，牵引其安全能力不断提升，需系统性建立社区供应链安全体系，为openEuler版本提供安全保障。社区安全保障策略总纲作为社区安全治理的纲领性文件，用于明确社区安全保障要求的整体编制目的、范围、编制程序与准则、发布策略等，并对社区安全保障要求的建设思路、总体架构及主要组成部分的内容结构进行约定。
