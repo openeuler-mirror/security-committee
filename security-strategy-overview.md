@@ -1,6 +1,6 @@
 # openEuler社区安全保障策略总纲
 
-[English](docs\en\vulnerability-management-process\security-strategy-overview-en) | 简体中文
+[English](docs/en/vulnerability-management-process/security-strategy-overview-en.md) | 简体中文
 
 ## 1 社区安全保障策略总纲定位
 
@@ -22,7 +22,7 @@
 
 &ensp;&ensp;社区安全保障要求参照业界开源软件供应链安全成熟度评估体系，覆盖整个软件开发生命周期software development lifecycle (SDLC),从来源安全->环境安全->编码安->构建安全->发布安全 5个阶段来保证软件供应链安全。
 
-![](picture/security-framework.png)
+![](assets/imgs/security-framework.png)
 
 ## 5 来源安全保障要求
 
@@ -155,7 +155,7 @@
 &ensp;&ensp;基于社区的安全要求需要对发布件的安全与合规进行验收。
 
 -   版本资料中提供发布件清单，例如： 22.03 LTS SP3[发布件清单](https://docs.openeuler.org/zh/docs/22.03_LTS_SP3/docs/Releasenotes/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85.html)
--   版本发布满足：[版本发布网络安全质量要求](https://gitee.com/openeuler/security-committee/blob/master/guide/SecureRelease.md)
+-   版本发布满足：[版本发布网络安全质量要求](docs/zh/developer-guide/SecureRelease.md)
 
 | **安全要求**                | **LTS版本**                 | **非LTS版本**  |          |            |                |          |
 |-----------------------------|-----------------------------|----------------|----------|------------|----------------|----------|
@@ -176,7 +176,7 @@
 
 &ensp;&ensp;openEuler社区安全委员会制定了一套社区漏洞处理策略和流程，包括漏洞感知、漏洞确认和评估、漏洞修复以及漏洞披露等阶段。同时在社区创建了一个名为cve-manager的项目，用于自动化或半自动化的实现社区漏洞管理各项工作，例如：自动感知上游软件的漏洞、检查漏洞处理过程是否满足社区要求、自动生成CVRF格式的SA等。下图是社区遵循的漏洞处理流程。
 
-![](picture/vulnerability-handling-process-cn.png)
+![](assets/imgs/vulnerability-handling-process-cn.png)
 
 ### 10.1 漏洞处理范围
 
@@ -203,7 +203,7 @@
 
 ### 10.3 漏洞评估
 
-&ensp;&ensp;针对社区跟踪的漏洞都需要进行漏洞评估，评估方法采用业界普遍使用的CVSSv3基本指标，具体参考[漏洞严重性评估](https://gitee.com/openeuler/security-committee/blob/master/security-rating.md)。
+&ensp;&ensp;针对社区跟踪的漏洞都需要进行漏洞评估，评估方法采用业界普遍使用的CVSSv3基本指标，具体参考[漏洞严重性评估](docs/zh/vulnerability-management-process/security-rating.md)。
 
 ### 10.4 漏洞修复
 

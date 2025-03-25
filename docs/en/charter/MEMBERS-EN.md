@@ -1,6 +1,6 @@
 ## Members
 
-English | [简体中文](..\..\..\MEMBERS)
+English | [简体中文](../../../MEMBERS.md)
 
 The SC is responsible for classifying and handling openEuler security issues. The current members of the SC are as follows:
 

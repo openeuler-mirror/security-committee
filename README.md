@@ -1,6 +1,6 @@
 # 安全委员会
 
-[English](docs\en\charter\README-EN) | 简体中文
+[English](docs/en/charter/README-EN.md) | 简体中文
 
 本文档主要介绍安全委员会的职责、组织构成和运作方式，以及负责的相关流程。
 
@@ -23,7 +23,7 @@ openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问
 
 ## 成员
 
-安全委员会成员列表与职责在[MEMBERS](MEMBERS)里持续维护
+安全委员会成员列表与职责在[MEMBERS](MEMBERS.md)里持续维护
 
 ## 会议时间
 
@@ -37,7 +37,7 @@ SC和产品发布相关，所以和发布经理有很多工作关联，SC会负�
 
 | 清单或群组                             | 类型    | 用途                                                         |
 | -------------------------------------- | ------- | ------------------------------------------------------------ |
-| openeuler-security@openeuler.org       | Private | openEuler安全披露邮箱。此列表由PSC密切监控和分类。详细信息请参考[安全披露指南](docs\zh\vulnerability-management-process\security-disclosure) |
+| openeuler-security@openeuler.org       | Private | openEuler安全披露邮箱。此列表由PSC密切监控和分类。详细信息请参考[安全披露指南](docs/zh/vulnerability-management-process/security-disclosure.md) |
 | release-managers-private@openeuler.org | Private | 发布经理的私人交流邮件，所有成员都应订阅openeuler-security@openeuler.org。发布经理在发布过程中讨论安全问题的处理应使用该邮箱 |
 | security-discuss-private@openeuler.org | Private | SC的私有内部讨论邮件，所有成员都需订阅openeuler-security@openeuler.org |
 
@@ -45,16 +45,16 @@ SC和产品发布相关，所以和发布经理有很多工作关联，SC会负�
 
 ### 安全发布流程
 
-关于如何上报安全问题，如何获取安全补丁等安全相关事宜，请参考[安全披露指南](docs\zh\vulnerability-management-process\security-disclosure)
+关于如何上报安全问题，如何获取安全补丁等安全相关事宜，请参考[安全披露指南](docs/zh/vulnerability-management-process/security-disclosure.md)
 
-了解openEuler社区的安全处理流程和安全策略，请参考[安全处理流程](docs\zh\vulnerability-management-process\security-process)
+了解openEuler社区的安全处理流程和安全策略，请参考[安全处理流程](docs/zh/vulnerability-management-process/security-process.md)
 
 
 
 ## 行为规范
 
 + 接受[openEuler行为规范](https://gitee.com/openeuler/community/blob/master/code-of-conduct.md)的约束。
-+ 接受[openEuler安全委员会成员行为准则](docs\zh\charter\security-committee-rules.md)的约束。
++ 接受[openEuler安全委员会成员行为准则](docs/zh/charter/security-committee-rules.md)的约束。
 
 
 ## 仓库结构说明
@@ -79,3 +79,10 @@ security-committee
  ### index索引文件
 
  仓库在```assets```, ```docs```等次级文件夹root维护索引文件```index.md```，描述当前文件夹里的存放的文件信息
+
+ ## 安全委员会运作项目
+
+ 在```sub-projects```里存放通过安全委员会维护运作的项目，目前我们维护
+
+ + SecChain：供应链安全成熟度评估模型
+ + security-configuration-benchmark：openEuler安全配置基线
