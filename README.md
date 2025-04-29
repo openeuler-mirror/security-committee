@@ -1,5 +1,7 @@
 # 安全委员会
 
+[English](docs/en/charter/README-EN.md) | 简体中文
+
 本文档主要介绍安全委员会的职责、组织构成和运作方式，以及负责的相关流程。
 
 
@@ -21,40 +23,7 @@ openEuler安全委员会（SC）负责接收和响应openEuler相关的安全问
 
 ## 成员
 
-安全委员会成员负责openEuler社区安全规范和流程、软件包引入安全、构建与发布安全和漏洞管理等相关能力建设，成员需通过[openEuler社区安全意识考试](https://www.openeuler.org/zh/blog/openeuler/20240428-security.html)。现任成员和角色如下：
-
-### SC成员列表
-
-| 成员信息                            | 角色    | 
-| -------------------------------------- | ------------------------------------------------------------ |
-| <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]       | 包引入专员 |
-| <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)] | 漏洞管理专员 |
-| <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)] | 漏洞管理专员 | 
-| <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)] | 漏洞管理专员 | 
-| <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)] | 安全规范和流程专员 & 安全构建发布专员 | 
-|  <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] | 安全构建发布专员 | 
-|  <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf)] | 包引入专员 | 
-|  <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitee.com/zeng-wei2000)] (候补)| 漏洞管理专员 |
-|  <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitee.com/Sam-Luo)] (候补)| 漏洞管理专员 |
-|  <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)] (候补) | 安全规范和流程专员 |
-| <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)] (候补) | 基础设施安全专员 |
-| <wuksh@chinatelecom.cn> [[@wuzimo](https://gitee.com/wuzimo)] (候补) | 漏洞管理专员 |
- 
-
-
-
-
-### SC成员变更历史
-- [@yangli69393](https://gitee.com/yangli69393)于2021年7月卸任，[@kylincuilei](https://gitee.com/kylincuilei)接替SC委员工作。
-- [@angela7](https://gitee.com/angela7)于2022年1月卸任，[@weidongkl](https://gitee.com/weidongkl)接替SC委员工作。
-- [@jinjin](https://gitee.com/jinjin)于2022年3月卸任，[@tanjingguo](https://gitee.com/tanjingguo)接替SC委员工作。
-- [@liujingang09](https://gitee.com/liujingang09)于2022年9月卸任。
-- [@weidongkl](https://gitee.com/weidongkl)于2023年3月卸任，马威接替SC委员工作。
-- [@yanxiaobing2020](https://gitee.com/yanxiaobing2020)于2023年6月卸任，罗钰凯接替SC委员工作。
-- [@gwei3](https://gitee.com/gwei3)于2023年9月卸任。
-- [@chenxi-mao](https://gitee.com/chenxi-mao)于2024年5月卸任。
-- [@movie0125](https://gitee.com/movie0125)于2024年5月卸任，[@zeng-wei2000](https://gitee.com/zeng-wei2000)接替SC委员工作。
-
+安全委员会成员列表与职责在[MEMBERS](MEMBERS.md)里持续维护
 
 ## 会议时间
 
@@ -68,7 +37,7 @@ SC和产品发布相关，所以和发布经理有很多工作关联，SC会负�
 
 | 清单或群组                             | 类型    | 用途                                                         |
 | -------------------------------------- | ------- | ------------------------------------------------------------ |
-| openeuler-security@openeuler.org       | Private | openEuler安全披露邮箱。此列表由PSC密切监控和分类。详细信息请参考[安全披露指南](security-disclosure.md) |
+| openeuler-security@openeuler.org       | Private | openEuler安全披露邮箱。此列表由PSC密切监控和分类。详细信息请参考[安全披露指南](docs/zh/vulnerability-management-process/security-disclosure.md) |
 | release-managers-private@openeuler.org | Private | 发布经理的私人交流邮件，所有成员都应订阅openeuler-security@openeuler.org。发布经理在发布过程中讨论安全问题的处理应使用该邮箱 |
 | security-discuss-private@openeuler.org | Private | SC的私有内部讨论邮件，所有成员都需订阅openeuler-security@openeuler.org |
 
@@ -76,13 +45,44 @@ SC和产品发布相关，所以和发布经理有很多工作关联，SC会负�
 
 ### 安全发布流程
 
-关于如何上报安全问题，如何获取安全补丁等安全相关事宜，请参考[安全披露指南](security-disclosure.md)
+关于如何上报安全问题，如何获取安全补丁等安全相关事宜，请参考[安全披露指南](docs/zh/vulnerability-management-process/security-disclosure.md)
 
-了解openEuler社区的安全处理流程和安全策略，请参考[安全处理流程](security-process.md)
+了解openEuler社区的安全处理流程和安全策略，请参考[安全处理流程](docs/zh/vulnerability-management-process/security-process.md)
 
 
 
 ## 行为规范
 
 + 接受[openEuler行为规范](https://gitee.com/openeuler/community/blob/master/code-of-conduct.md)的约束。
-+ 接受[openEuler安全委员会成员行为准则](https://gitee.com/openeuler/security-committee/blob/master/security-committee-rules.md)的约束。
++ 接受[openEuler安全委员会成员行为准则](docs/zh/charter/security-committee-rules.md)的约束。
+
+
+## 仓库结构说明
+
+openEuler安全委员会仓库通过以下结构分类维护仓库文件，提交代码时请参考以下约定将文件置于合适的地方，若涉及新增文件夹，需在```index.md```索引文件里添加基本描述。
+
+```
+security-committee
+ ┣ assets
+ ┣ docs
+ ┣ sub-projects
+ ┣ MEMBERS.md
+ ┣ README.md
+ ┗ security-strategy-overview.md
+ ```
+
+ + ```assets```：存放非工程文件的资源文件，包括文档使用的图片及安全委员会成员公钥文件等。
+ + ```docs```：存放介绍社区安全流程的文档，包括社区章程，漏洞管理，漏洞上报流程等，通过中英文分类管理。
+ + ```sub-projects```：存放通过安全委员会运作/孵化的子项目。若项目涉及存放工程文件或SIG化运作，推荐存放在```sub-projects```。若项目为纯文档构成，推荐存放在```docs```。
+ + ```root```：安全委员会根目录，存放Readme，社区安全政策，安全委员会成员清单等基础信息，便于开发者掌握全景。
+
+ ### index索引文件
+
+ 仓库在```assets```, ```docs```等次级文件夹root维护索引文件```index.md```，描述当前文件夹里的存放的文件信息
+
+ ## 安全委员会运作项目
+
+ 在```sub-projects```里存放通过安全委员会维护运作的项目，目前我们维护
+
+ + SecChain：供应链安全成熟度评估模型
+ + security-configuration-benchmark：openEuler安全配置基线
