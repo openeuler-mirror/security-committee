@@ -13,10 +13,12 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - <mawei@uniontech.com> [[@movie0125](https://gitee.com/movie0125)]
 - <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)]
 - <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
-- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] （Alternate member）
-- <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)]（Alternate member）
-- <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)](Alternate member)
-- <wuksh@chinatelecom.cn>[[@iwuzimo](https://gitee.com/wuzimo)](Alternate member)
+- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)]
+- <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)]
+- <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)]
+- <wuksh@chinatelecom.cn>[[@iwuzimo](https://gitee.com/wuzimo)]
+- <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitee.com/SPYFAMILY)]
+- <aron.xu@huawei.com> [[@happyaron](https://gitee.com/happyaron)]
 
 ### Member Changes
 - [@yangli69393](https://gitee.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitee.com/kylincuilei) took over the work.
