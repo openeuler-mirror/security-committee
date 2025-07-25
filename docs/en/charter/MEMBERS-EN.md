@@ -9,14 +9,17 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
 - <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
 - <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)]
-- <chenxi.mao@suse.com> [[@chenxi-mao](https://gitee.com/chenxi-mao)]
-- <mawei@uniontech.com> [[@movie0125](https://gitee.com/movie0125)]
-- <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)]
+- <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)] 
 - <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
-- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] （Alternate member）
-- <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)]（Alternate member）
-- <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)](Alternate member)
-- <wuksh@chinatelecom.cn>[[@iwuzimo](https://gitee.com/wuzimo)](Alternate member)
+- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)]
+- <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf)]
+- <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitee.com/zeng-wei2000)]
+- <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitee.com/Sam-Luo)]
+- <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)]
+- <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)]
+- <wuksh@chinatelecom.cn> [[@wuzimo](https://gitee.com/wuzimo)]
+- <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitee.com/SPYFAMILY)]
+- <aron.xu@huawei.com> [[@happyaron](https://gitee.com/happyaron)]
 
 ### Member Changes
 - [@yangli69393](https://gitee.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitee.com/kylincuilei) took over the work.

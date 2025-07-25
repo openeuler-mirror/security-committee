@@ -15,11 +15,13 @@
 | <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)] | 安全规范和流程专员 & 安全构建发布专员 | 
 |  <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)] | 安全构建发布专员 | 
 |  <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf)] | 包引入专员 | 
-|  <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitee.com/zeng-wei2000)] (候补)| 漏洞管理专员 |
-|  <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitee.com/Sam-Luo)] (候补)| 漏洞管理专员 |
-|  <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)] (候补) | 安全规范和流程专员 |
-| <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)] (候补) | 基础设施安全专员 |
-| <wuksh@chinatelecom.cn> [[@wuzimo](https://gitee.com/wuzimo)] (候补) | 漏洞管理专员 |
+|  <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitee.com/zeng-wei2000)] | 漏洞管理专员 |
+|  <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitee.com/Sam-Luo)] | 漏洞管理专员 |
+|  <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)] | 安全规范和流程专员 |
+| <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)] | 基础设施安全专员 |
+| <wuksh@chinatelecom.cn> [[@wuzimo](https://gitee.com/wuzimo)] | 漏洞管理专员 |
+| <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitee.com/SPYFAMILY)] | 基础设施安全专员 |
+| <aron.xu@huawei.com> [[@happyaron](https://gitee.com/happyaron)] | 漏洞管理专员 |
  
 
 
