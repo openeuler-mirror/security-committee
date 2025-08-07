@@ -49,6 +49,8 @@ Make sure that all vulnerabilities in the released version are fixed or assessed
 
 2. Vulnerabilities that cannot be repaired need to be reviewed and filed by the Security Committee (including CVE vulnerabilities that have no solution in the industry)
 
+3. High-risk vulnerabilities that are widely recognized in the industry must not be left unaddressed
+
 **Object**
 Vulnerability list, all vulnerabilities are in the fixed or filed state
 
