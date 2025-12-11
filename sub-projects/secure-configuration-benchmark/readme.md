@@ -6,7 +6,7 @@
 
 openEuler社区当前已完成安全配置基线建设，并实现了业界知名开源工具openSCAP的适配。社区将继续联合上下游各大厂商，结合行业场景，共同推动更加直观、易用的配置扫描、加固脚本、安全巡检等工具的不断建设和完善，推动全产业链快速达成整体安全合规。
 
-openEuler最新发布的安全配置基线点此获取：[openEuler安全配置基线](https://gitee.com/openeuler/security-committee/blob/master/secure-configuration-benchmark/release/openEuler%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE%E5%9F%BA%E7%BA%BF.md)
+openEuler最新发布的安全配置基线点此获取：[openEuler安全配置基线](./release/openEuler安全配置基线.md)
 
 # 范围
 
