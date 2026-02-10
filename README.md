@@ -53,7 +53,7 @@ SC和产品发布相关，所以和发布经理有很多工作关联，SC会负�
 
 ## 行为规范
 
-+ 接受[openEuler行为规范](https://gitee.com/openeuler/community/blob/master/code-of-conduct.md)的约束。
++ 接受[openEuler行为规范](https://gitcode.com/openeuler/community/blob/master/code-of-conduct.md)的约束。
 + 接受[openEuler安全委员会成员行为准则](docs/zh/charter/security-committee-rules.md)的约束。
 
 

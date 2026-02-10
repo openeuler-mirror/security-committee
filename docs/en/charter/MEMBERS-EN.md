@@ -6,27 +6,27 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 
 ### Member List
 
-- <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitee.com/zhujianwei001)]
-- <cuilei@kylinos.cn> [[@kylincuilei](https://gitee.com/kylincuilei)]
-- <tanjingguo@huawei.com> [[@tanjingguo](https://gitee.com/tanjingguo)]
-- <luoyukai@huawei.com> [[@luoyukai](https://gitee.com/luoyukai)] 
-- <liujingang09@huawei.com> [[@liujingang09](https://gitee.com/liujingang09)]
-- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitee.com/kylntj)]
-- <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitee.com/mailofzxf)]
-- <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitee.com/zeng-wei2000)]
-- <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitee.com/Sam-Luo)]
-- <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)]
-- <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)]
-- <wuksh@chinatelecom.cn> [[@wuzimo](https://gitee.com/wuzimo)]
-- <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitee.com/SPYFAMILY)]
-- <aron.xu@huawei.com> [[@happyaron](https://gitee.com/happyaron)]
+- <zhujianwei7@huawei.com> [[@zhujianwei001](https://gitcode.com/zhujianwei001)]
+- <cuilei@kylinos.cn> [[@kylincuilei](https://gitcode.com/kylincuilei)]
+- <tanjingguo@huawei.com> [[@tanjingguo](https://gitcode.com/tanjingguo)]
+- <luoyukai@huawei.com> [[@luoyukai](https://gitcode.com/luoyukai)] 
+- <liujingang09@huawei.com> [[@liujingang09](https://gitcode.com/liujingang09)]
+- <tangjie@kylinsec.com.cn> [[@tangjie](https://gitcode.com/kylntj)]
+- <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitcode.com/mailofzxf)]
+- <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitcode.com/zeng-wei2000)]
+- <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitcode.com/Sam-Luo)]
+- <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitcode.com/tony-hanbo)]
+- <uromise@gmail.com> [[@iromise](https://gitcode.com/iromise)]
+- <wuksh@chinatelecom.cn> [[@wuzimo](https://gitcode.com/wuzimo)]
+- <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitcode.com/SPYFAMILY)]
+- <aron.xu@huawei.com> [[@happyaron](https://gitcode.com/happyaron)]
 
 ### Member Changes
-- [@yangli69393](https://gitee.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitee.com/kylincuilei) took over the work.
-- [@angela7](https://gitee.com/angela7) resigned in January 2022, and [@weidongkl](https://gitee.com/weidongkl) took over the work.
-- [@jinjin](https://gitee.com/jinjin) resigned in March 2022, and [@tanjingguo](https://gitee.com/tanjingguo) took over the work.
-- [@liujingang09](https://gitee.com/liujingang09) resigned in September 2022.
-- [@weidongkl](https://gitee.com/weidongkl) resigned in March 2023, and [@movie0125](https://gitee.com/movie0125) took over the work.
-- [@yanxiaobing2020](https://gitee.com/yanxiaobing2020) resigned in June 2023, and [@luoyukai](https://gitee.com/luoyukai) took over the work.
-- [@gwei3](https://gitee.com/gwei3) resigned in September 2023.
+- [@yangli69393](https://gitcode.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitcode.com/kylincuilei) took over the work.
+- [@angela7](https://gitcode.com/angela7) resigned in January 2022, and [@weidongkl](https://gitcode.com/weidongkl) took over the work.
+- [@jinjin](https://gitcode.com/jinjin) resigned in March 2022, and [@tanjingguo](https://gitcode.com/tanjingguo) took over the work.
+- [@liujingang09](https://gitcode.com/liujingang09) resigned in September 2022.
+- [@weidongkl](https://gitcode.com/weidongkl) resigned in March 2023, and [@movie0125](https://gitcode.com/movie0125) took over the work.
+- [@yanxiaobing2020](https://gitcode.com/yanxiaobing2020) resigned in June 2023, and [@luoyukai](https://gitcode.com/luoyukai) took over the work.
+- [@gwei3](https://gitcode.com/gwei3) resigned in September 2023.
 
