@@ -20,7 +20,7 @@
 |  <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitee.com/tony-hanbo)] | 安全规范和流程专员 |
 | <uromise@gmail.com> [[@iromise](https://gitee.com/iromise)] | 基础设施安全专员 |
 | <wuksh@chinatelecom.cn> [[@wuzimo](https://gitee.com/wuzimo)] | 漏洞管理专员 |
-| <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitee.com/SPYFAMILY)] | 基础设施安全专员 |
+| <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitee.com/SPYFAMILY)] | 漏洞管理专员 |
 | <aron.xu@huawei.com> [[@happyaron](https://gitee.com/happyaron)] | 漏洞管理专员 |
  
 
