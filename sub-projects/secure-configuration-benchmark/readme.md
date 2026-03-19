@@ -14,8 +14,8 @@ openEuler最新发布的安全配置基线点此获取：[openEuler安全配置�
 
 # 工具
 openEuler基于开源能力，构建相应的安全配置核查能力，主要涉及如下两个开源软件：
-1. openSCAP：[https://gitee.com/src-openeuler/openscap](https://gitee.com/src-openeuler/openscap)
-2. scap-security-guide：[https://gitee.com/src-openeuler/scap-security-guide](https://gitee.com/src-openeuler/scap-security-guide)
+1. openSCAP：[https://gitcode.com/src-openeuler/openscap](https://gitcode.com/src-openeuler/openscap)
+2. scap-security-guide：[https://gitcode.com/src-openeuler/scap-security-guide](https://gitcode.com/src-openeuler/scap-security-guide)
 
 如果需要使用其对openEuler的配置安全进行核查，可按如下步骤进行操作：
 1. 安装工具（假设使用openEuler系统，并已配置正确的yum源）。

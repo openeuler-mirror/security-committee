@@ -1,8 +1,8 @@
 #  新建委员会申请
 
-[English](https://gitee.com/openeuler/community/blob/master/sig/sig-template/sig-template.md) | 简体中文
+[English](https://gitcode.com/openeuler/community/blob/master/sig/sig-template/sig-template.md) | 简体中文
 
-说明：本SIG的Charter内容遵循openEuler章程 [README](https://gitee.com/openeuler/community/blob/master/zh/governance/README.md)中描述的约定，使用[SIG-governance](https://gitee.com/openeuler/community/blob/master/zh/technical-committee/governance/SIG-governance.md)中概述的角色和组织管理。
+说明：本SIG的Charter内容遵循openEuler章程 [README](https://gitcode.com/openeuler/community/blob/master/zh/governance/README.md)中描述的约定，使用[SIG-governance](https://gitcode.com/openeuler/community/blob/master/zh/technical-committee/governance/SIG-governance.md)中概述的角色和组织管理。
 
 ## SIG组工作目标和范围
 

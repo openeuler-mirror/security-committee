@@ -74,7 +74,7 @@
 # 编译
 
 - 安全配置规范文本内容本身不需要编译，社区开发者在对配置规范进行修订以后，可以通过工具（待开发）将分散的md文件合并为一个md文件，并提交社区（位置待定）；
-- 社区开发者在对配置规范进行修订以后，需要在社区项目**[scap-security-guide](https://gitee.com/src-openeuler/scap-security-guide)**中添加或修改对应的yaml、xml等配置文件，确保新增修订可以在工具上对应体现；
+- 社区开发者在对配置规范进行修订以后，需要在社区项目**[scap-security-guide](https://gitcode.com/src-openeuler/scap-security-guide)**中添加或修改对应的yaml、xml等配置文件，确保新增修订可以在工具上对应体现；
 - scap-security-guide开发指导如下（待完善）：
 
 # 版本控制
