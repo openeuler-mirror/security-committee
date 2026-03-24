@@ -169,13 +169,13 @@
 
 -   通过安全片段引用扫描*: 仅针对openEuler社区孵化软件 ;
 -   对于发布件要求具备签名和完整性校验机制，如RPM需要具备GPG校验与签名（签名算法也将随时间审视对算法的要求）；
--   SBOM信息具备自动生成的能力，随软件发布件一起生成与发布。
+-   SBOM信息具备自动生成的能力，随软件发布件一起生成与发布，当前已上线至 <https://repo.openeuler.org/security/data/sbom/>，可参考：[openEuler SBOM 简介](docs/zh/vulnerability-management-process/openeuler-sbom-introduction.md)。
 
 ## 10社区漏洞管理策略
 
 &ensp;&ensp;openEuler社区非常重视社区版本的安全性，专门设置了漏洞管理专员负责漏洞相关的事务。
 
-&ensp;&ensp;openEuler社区安全委员会制定了一套社区漏洞处理策略和流程，包括漏洞感知、漏洞确认和评估、漏洞修复以及漏洞披露等阶段。同时在社区创建了一个名为cve-manager的项目，用于自动化或半自动化的实现社区漏洞管理各项工作，例如：自动感知上游软件的漏洞、检查漏洞处理过程是否满足社区要求、自动生成CVRF格式的SA等。下图是社区遵循的漏洞处理流程。
+&ensp;&ensp;openEuler社区安全委员会制定了一套社区漏洞处理策略和流程，包括漏洞感知、漏洞确认和评估、漏洞修复以及漏洞披露等阶段。同时在社区创建了一个名为cve-manager的项目，用于自动化或半自动化地实现社区漏洞管理各项工作，例如：自动感知上游软件的漏洞、检查漏洞处理过程是否满足社区要求、自动生成CVRF、CSAF、OSV等格式的SA。相关安全公告数据现已上线至 <https://repo.openeuler.org/security/data/>，可参考：[openEuler CSAF/OSV/CVRF 漏洞披露能力简介](docs/zh/vulnerability-management-process/openeuler-security-advisory-formats.md)。下图是社区遵循的漏洞处理流程。
 
 ![](assets/imgs/vulnerability-handling-process-cn.png)
 
@@ -223,7 +223,7 @@
 
 &ensp;&ensp;①公开披露
 
-&ensp;&ensp;已公开的安全漏洞修复后，openEuler社区安全委员会的漏洞管理专员将联合Release SIG发布安全公告，安全公告的内容包括该漏洞的技术细节、CVE编号、CVSS安全评分、严重性等级以及受到该漏洞影响的版本和修复版本等信息。安全公告提供邮件订阅功能，您可以通过“sa-announce"链接订阅openEuler社区的安全公告。
+&ensp;&ensp;已公开的安全漏洞修复后，openEuler社区安全委员会的漏洞管理专员将联合Release SIG发布安全公告，安全公告的内容包括该漏洞的技术细节、CVE编号、CVSS安全评分、严重性等级以及受到该漏洞影响的版本和修复版本等信息。安全公告提供邮件订阅功能，您可以通过“sa-announce"链接订阅openEuler社区的安全公告。除面向用户阅读的公告外，社区也同步提供CVRF、CSAF、OSV等机器可读格式数据，统一发布在 <https://repo.openeuler.org/security/data/>；详细可参考：[openEuler CSAF/OSV/CVRF 漏洞披露能力简介](docs/zh/vulnerability-management-process/openeuler-security-advisory-formats.md)。
 
 &ensp;&ensp;②受限披露（可选）
 
