@@ -6,55 +6,7 @@
 
 ## 1 三方安全软件
 
-### 1.1 KubeOS 必须确保安装终端安全工具
-
-**级别：** 要求（MEDIUM）
-
-**适用版本：** ALL
-
-**规则说明：**
-
-添加终端安全工具可以提供自动响应恶意行为的能力，从而在网络威胁应对方面提供额外的灵活性。这些工具通常还包含报告功能，能够为系统提供网络感知能力，而这种能力在组织的系统管理机制中可能原本并不存在。
-
-**规则影响：**
-
-无
-
-**检查方法：**
-
-
-确认是否安装终端安全工具
-
-**修复方法：**
-
-
-安装终端安全工具
-
-### 1.2 KubeOS必须安装安全补丁并保持软件包更新为最新版本。
-
-**级别：** 要求（MEDIUM）
-
-**适用版本：** ALL
-
-**规则说明：**
-
-及时打补丁对于维持信息技术系统的运行可用性、保密性和完整性至关重要。然而，未能及时更新KubeOS及应用程序软件的补丁是IT专业人员常犯的错误。新补丁发布频繁，即使经验丰富的系统管理员也难以跟上所有新补丁的节奏。当KubeOS出现新的安全漏洞时，上游通常会提供修复问题的补丁。若未安装最新的安全补丁和更新程序，未经授权的用户可能利用未修补软件中的漏洞。未能及时关注补丁更新可能导致系统遭受入侵。
-
-**规则影响：**
-
-无
-
-**检查方法：**
-
-
-检测补丁是否已打？检测某软件包是否是bugfix/update版本？
-
-**修复方法：**
-
-
-无该场景，不涉及
-
-### 1.3 KubeOS 必须使用 vlock 来实现会话锁定。
+### 1.1 KubeOS 必须使用 vlock 来实现会话锁定。
 
 **级别：** 要求（MEDIUM）
 
@@ -84,7 +36,7 @@
 
 在镜像制作过程中安装kbd组件
 
-### 1.4 KubeOS 必须安装支持多因素认证（MFA）所需的软件包。
+### 1.2 KubeOS 必须安装支持多因素认证（MFA）所需的软件包。
 
 **级别：** 要求（MEDIUM）
 
@@ -128,38 +80,8 @@
 
 ## 2 openEuler-release
 
-### 2.1 KubeOS 必须在授予任何本地或远程连接之前，显示标准的强制通知与同意横幅。
 
-**级别：** 要求（MEDIUM）
-
-**适用版本：** ALL
-
-**规则说明：**
-
-在授予对 KubeOS 的访问权限之前显示标准化的已批准使用通知，可确保所使用的隐私与安全通知用语，符合适用的法律、行政命令、指令、政策、法规、标准及指南。
-
-系统使用通知仅适用于通过具有人类用户的登录接口进行的访问；若不存在此类接口，则无需显示通知。
-
-横幅的格式必须符合适用的政策。
-
-**规则影响：**
-
-无
-
-**检查方法：**
-
-
-```bash
-grep -i "<如下文本>" /etc/issue
-：确认/etc/issue中的内容是否包含标准化的已批准使用通知，存在则pass，否则fail
-```
-
-**修复方法：**
-
-/etc/issue中加入符合规定的声明内容：
-# vim /etc/issue
-
-### 2.2 KubeOS 必须是厂商支持的有效发行版.
+### 2.1 KubeOS 必须是厂商支持的有效发行版.
 
 **级别：** 要求（HIGH）
 
@@ -794,37 +716,9 @@ systemctl status kdump.service
 # sudo systemctl disable kdump.service
 ```
 
-## 5 yum
+## 5 分区&文件系统
 
-### 5.1 KubeOS 在安装更新版本后，必须移除所有过时的软件组件。
-
-**级别：** 要求（MEDIUM）
-
-**适用版本：** ALL
-
-**规则说明：**
-
-在信息系统上安装软件更新后，若未彻底移除旧版本软件组件，攻击者可能利用旧版本中已知但未修复的安全漏洞（CVE）发起攻击。某些 IT 产品可能具备自动清理旧版本软件的功能，但 KubeOS 必须确保在升级过程中，显式地清理不再需要的旧包，以消除潜在的攻击面。
-
-**规则影响：**
-
-无
-
-**检查方法：**
-
-
-```bash
-执行grep -w 'clean_requirements_on_remove=True' /etc/yum.conf，若返回值为clean_requirements_on_remove=True，则pass，否则fail
-```
-
-**修复方法：**
-
-
-无该场景，不涉及
-
-## 6 分区&文件系统
-
-### 6.1 KubeOS 的用户主目录（如 /home 或其等效路径）必须使用独立文件系统。
+### 5.1 KubeOS 的用户主目录（如 /home 或其等效路径）必须使用独立文件系统。
 
 **级别：** 要求（MEDIUM）
 
@@ -850,7 +744,7 @@ systemctl status kdump.service
 
 在镜像制作时配置
 
-### 6.2 KubeOS 必须为 /var 目录使用独立文件系统。
+### 5.2 KubeOS 必须为 /var 目录使用独立文件系统。
 
 **级别：** 要求（MEDIUM）
 
@@ -876,7 +770,7 @@ systemctl status kdump.service
 
 在镜像制作时配置
 
-### 6.3 KubeOS 必须为系统审计数据路径使用独立文件系统。
+### 5.3 KubeOS 必须为系统审计数据路径使用独立文件系统。
 
 **级别：** 要求（MEDIUM）
 
@@ -902,7 +796,7 @@ systemctl status kdump.service
 
 在镜像制作时配置
 
-### 6.4 通过网络文件系统（NFS）导入的 KubeOS 文件系统，必须通过挂载选项防止执行设置了 setuid 和 setgid 位的文件。
+### 5.4 通过网络文件系统（NFS）导入的 KubeOS 文件系统，必须通过挂载选项防止执行设置了 setuid 和 setgid 位的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -928,7 +822,7 @@ nosuid 挂载选项可阻止系统以文件所有者（Owner）的权限执行�
 
 在镜像制作时配置
 
-### 6.5 通过网络文件系统（NFS）导入的 KubeOS 文件系统，必须挂载以防止执行二进制文件。
+### 5.5 通过网络文件系统（NFS）导入的 KubeOS 文件系统，必须挂载以防止执行二进制文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -954,7 +848,7 @@ noexec 挂载选项可阻止系统执行二进制文件。对于不包含经批�
 
 在镜像制作时配置
 
-### 6.6 使用可移动介质的 KubeOS 文件系统，必须通过挂载选项防止执行设置了 setuid 和 setgid 位的文件。
+### 5.6 使用可移动介质的 KubeOS 文件系统，必须通过挂载选项防止执行设置了 setuid 和 setgid 位的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -977,7 +871,7 @@ nosuid 挂载选项可阻止系统以文件所有者（Owner）的权限执行�
 
 无
 
-### 6.7 包含用户家目录的 KubeOS 文件系统，必须挂载以防止执行设置了 setuid 和 setgid 位的文件。
+### 5.7 包含用户家目录的 KubeOS 文件系统，必须挂载以防止执行设置了 setuid 和 setgid 位的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -1003,7 +897,7 @@ nosuid 挂载选项可阻止系统以文件所有者（Owner）的权限执行�
 
 在镜像制作时配置
 
-### 6.8 除非业务必需，否则 KubeOS 必须禁用文件系统自动挂载服务（Automounter）。
+### 5.8 除非业务必需，否则 KubeOS 必须禁用文件系统自动挂载服务（Automounter）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1034,7 +928,7 @@ systemctl status autofs
 # sudo systemctl disable autofs
 ```
 
-### 6.9 KubeOS 所有持久化磁盘分区必须实施加密机制，以防止需要静态数据保护（Data-at-Rest Protection）的所有信息发生未授权披露或篡改。
+### 5.9 KubeOS 所有持久化磁盘分区必须实施加密机制，以防止需要静态数据保护（Data-at-Rest Protection）的所有信息发生未授权披露或篡改。
 
 **级别：** 要求（HIGH）
 
@@ -1069,9 +963,9 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 
 在镜像制作时添加
 
-## 7 文件权限
+## 6 文件权限
 
-### 7.1 KubeOS 包含系统命令的目录权限必须设置为 755 或更低权限（即权限值不大于 755）。
+### 6.1 KubeOS 包含系统命令的目录权限必须设置为 755 或更低权限（即权限值不大于 755）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1107,7 +1001,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.2 KubeOS 系统命令的权限必须设置为 755 或更低（即权限值不大于 755）
+### 6.2 KubeOS 系统命令的权限必须设置为 755 或更低（即权限值不大于 755）
 
 **级别：** 要求（MEDIUM）
 
@@ -1143,7 +1037,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.3 KubeOS 库目录的权限必须设置为 755 或更低（即权限值不大于 755）。
+### 6.3 KubeOS 库目录的权限必须设置为 755 或更低（即权限值不大于 755）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1178,7 +1072,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.4 KubeOS 库文件（Library Files）的权限必须设置为 755 或更低（即权限值不大于 755）。
+### 6.4 KubeOS 库文件（Library Files）的权限必须设置为 755 或更低（即权限值不大于 755）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1213,7 +1107,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.5 所有 KubeOS 本地交互式用户的家目录（Home Directories）权限必须设置为 750 或更低（即权限值不大于 750）。
+### 6.5 所有 KubeOS 本地交互式用户的家目录（Home Directories）权限必须设置为 750 或更低（即权限值不大于 750）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1243,7 +1137,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo chmod 750 {目标目录}
 ```
 
-### 7.6 所有 KubeOS 本地初始化文件（Local Initialization Files）的权限必须设置为 740 或更低（即权限值不大于 740）。
+### 6.6 所有 KubeOS 本地初始化文件（Local Initialization Files）的权限必须设置为 740 或更低（即权限值不大于 740）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1273,7 +1167,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo chmod 750 {目标文件}
 ```
 
-### 7.7 KubeOS SSH 守护进程（SSH Daemon）的公钥主机密钥文件（Public Host Key Files）权限必须设置为 644 或更低（即权限值不大于 644）。
+### 6.7 KubeOS SSH 守护进程（SSH Daemon）的公钥主机密钥文件（Public Host Key Files）权限必须设置为 644 或更低（即权限值不大于 644）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1303,7 +1197,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo chmod 644 /etc/ssh/ssh_host*key.pub
 ```
 
-### 7.8 KubeOS SSH 守护进程的私钥主机密钥文件权限必须设置为 640 或更低（即权限值不大于 640）。
+### 6.8 KubeOS SSH 守护进程的私钥主机密钥文件权限必须设置为 640 或更低（即权限值不大于 640）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1334,7 +1228,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo chmod 640 /etc/ssh/ssh_host*key
 ```
 
-### 7.9 KubeOS 库文件（Library Files）必须由 root 用户所有。
+### 6.9 KubeOS 库文件（Library Files）必须由 root 用户所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1369,7 +1263,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.10 KubeOS 库文件（Library Files）必须归属 root 用户组。
+### 6.10 KubeOS 库文件（Library Files）必须归属 root 用户组。
 
 **级别：** 要求（MEDIUM）
 
@@ -1405,7 +1299,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 ```
 
 
-### 7.11 KubeOS 库目录必须由 root 用户所有.
+### 6.11 KubeOS 库目录必须由 root 用户所有.
 
 **级别：** 要求（MEDIUM）
 
@@ -1440,7 +1334,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.12 KubeOS 库目录必须由 root 组所有。
+### 6.12 KubeOS 库目录必须由 root 组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1476,7 +1370,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.13 KubeOS 必须由 root 用户所有系统命令。
+### 6.13 KubeOS 必须由 root 用户所有系统命令。
 
 **级别：** 要求（MEDIUM）
 
@@ -1511,7 +1405,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.14 KubeOS 系统命令必须由 root 或系统账户组所有。
+### 6.14 KubeOS 系统命令必须由 root 或系统账户组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1546,7 +1440,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.15 KubeOS 包含系统命令的目录必须由 root 用户所有。
+### 6.15 KubeOS 包含系统命令的目录必须由 root 用户所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1581,7 +1475,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.16 KubeOS 包含系统命令的目录必须由 root 组所有。
+### 6.16 KubeOS 包含系统命令的目录必须由 root 组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1616,7 +1510,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo reboot
 ```
 
-### 7.17 所有 KubeOS 文件和目录必须具有有效的所有者。
+### 6.17 所有 KubeOS 文件和目录必须具有有效的所有者。
 
 **级别：** 要求（MEDIUM）
 
@@ -1648,7 +1542,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo chown <用户> <文件>
 ```
 
-### 7.18 所有 KubeOS 文件和目录必须具有有效的组所有者。
+### 6.18 所有 KubeOS 文件和目录必须具有有效的组所有者。
 
 **级别：** 要求（MEDIUM）
 
@@ -1680,7 +1574,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo chgrp <组名> <文件名>
 ```
 
-### 7.19 所有 KubeOS 本地交互式用户主目录必须由主目录所有者的主组所有。
+### 6.19 所有 KubeOS 本地交互式用户主目录必须由主目录所有者的主组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1710,7 +1604,7 @@ KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，�
 # sudo chgrp users {目标目录}
 ```
 
-### 7.20 所有 KubeOS 世界可写目录必须由 root、sys、bin 或应用程序组所有。
+### 6.20 所有 KubeOS 世界可写目录必须由 root、sys、bin 或应用程序组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1742,7 +1636,7 @@ The only authorized public directories are those temporary directories supplied 
 # sudo chgrp root <目录>
 ```
 
-### 7.21 所有 KubeOS 世界可写目录必须设置粘滞位。
+### 6.21 所有 KubeOS 世界可写目录必须设置粘滞位。
 
 **级别：** 要求（MEDIUM）
 
@@ -1777,7 +1671,7 @@ The only authorized public directories are those temporary directories supplied 
 注：对于每个全局可写目录，将上述命令中的“/tmp”替换为尚未设置粘滞位的全局可写目录。
 ```
 
-### 7.22 KubeOS 必须防止未经授权的用户访问系统错误消息。
+### 6.22 KubeOS 必须防止未经授权的用户访问系统错误消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -1809,7 +1703,7 @@ The only authorized public directories are those temporary directories supplied 
 # sudo chmod 640 /var/log/messages
 ```
 
-### 7.23 KubeOS 必须生成提供纠正行动所需信息的错误消息，同时不泄露可能被对手利用的信息。
+### 6.23 KubeOS 必须生成提供纠正行动所需信息的错误消息，同时不泄露可能被对手利用的信息。
 
 **级别：** 要求（MEDIUM）
 
@@ -1843,7 +1737,7 @@ The only authorized public directories are those temporary directories supplied 
 # sudo find /var/log -perm /137 ! -name '*[bw]tmp' ! -name '*lastlog' -type f -exec chmod 640 '{}' \；
 ```
 
-### 7.24 /etc/passwd 文件中定义的所有 KubeOS 本地交互式用户主目录必须存在。
+### 6.24 /etc/passwd 文件中定义的所有 KubeOS 本地交互式用户主目录必须存在。
 
 **级别：** 要求（MEDIUM）
 
@@ -1876,7 +1770,7 @@ The only authorized public directories are those temporary directories supplied 
 # sudo chmod 0750 /home/{用户名}
 ```
 
-### 7.25 所有 KubeOS 本地初始化文件不得执行世界可写程序。
+### 6.25 所有 KubeOS 本地初始化文件不得执行世界可写程序。
 
 **级别：** 要求（MEDIUM）
 
@@ -1908,9 +1802,9 @@ find / -xdev -perm -002 -type f -exec ls -ld {} \;
 # chmod 755 <file>
 ```
 
-## 8 网络
+## 7 网络
 
-### 8.1 KubeOS 必须根据端口、协议和服务管理 (PPSM) 类别分配列表 (CAL) 和漏洞评估，禁止或限制使用功能、端口、协议和/或服务。
+### 7.1 KubeOS 必须根据端口、协议和服务管理 (PPSM) 类别分配列表 (CAL) 和漏洞评估，禁止或限制使用功能、端口、协议和/或服务。
 
 **级别：** 要求（MEDIUM）
 
@@ -1943,9 +1837,9 @@ systemctl status firewalld.service
 # sudo systemctl enable firewalld.service --now
 ```
 
-## 9 chrony
+## 8 chrony
 
-### 9.1 KubeOS 时钟必须对于联网系统，至少每 24 小时同步一次权威国防部时间源。
+### 8.1 KubeOS 时钟必须对于联网系统，至少每 24 小时同步一次权威国防部时间源。
 
 **级别：** 要求（MEDIUM）
 
@@ -1980,9 +1874,9 @@ grep maxpoll /etc/chrony.conf
 server <time_source> maxpoll 16
 ```
 
-## 10 网卡配置
+## 9 网卡配置
 
-### 10.1 除非获得批准和记录，否则 KubeOS 不得将网络接口配置为混杂模式。
+### 9.1 除非获得批准和记录，否则 KubeOS 不得将网络接口配置为混杂模式。
 
 **级别：** 要求（MEDIUM）
 
@@ -2014,9 +1908,9 @@ ip link | grep -i promisc
 # sudo ip link set dev <设备名称> promisc off
 ```
 
-## 11 openssh
+## 10 openssh
 
-### 11.1 KubeOS 必须配置为：所有与 SSH 流量关联的网络连接在变得无响应后终止。
+### 10.1 KubeOS 必须配置为：所有与 SSH 流量关联的网络连接在变得无响应后终止。
 
 **级别：** 要求（MEDIUM）
 
@@ -2050,7 +1944,7 @@ ClientAliveCountMax 1
 # sudo systemctl restart sshd.service
 ```
 
-### 11.2 KubeOS 必须配置为：所有与 SSH 流量关联的网络连接在变得无响应 10 分钟后终止。
+### 10.2 KubeOS 必须配置为：所有与 SSH 流量关联的网络连接在变得无响应 10 分钟后终止。
 
 **级别：** 要求（MEDIUM）
 
@@ -2084,7 +1978,7 @@ ClientAliveInterval 600
 # sudo systemctl restart sshd.service
 ```
 
-### 11.3 除非为满足文档化和验证过的任务需求，否则 KubeOS SSH 守护进程必须为交互式用户禁用转发远程 X 连接。
+### 10.3 除非为满足文档化和验证过的任务需求，否则 KubeOS SSH 守护进程必须为交互式用户禁用转发远程 X 连接。
 
 **级别：** 要求（MEDIUM）
 
@@ -2120,7 +2014,7 @@ ClientAliveInterval 600
 # sudo systemctl restart sshd.service
 ```
 
-### 11.4 KubeOS 必须禁止通过 SSH 远程访问直接登录 root 账户。
+### 10.4 KubeOS 必须禁止通过 SSH 远程访问直接登录 root 账户。
 
 **级别：** 要求（MEDIUM）
 
@@ -2159,7 +2053,7 @@ grep -w '^PermitRootLogin no' /etc/ssh/sshd_config
 PermitRootLogin no
 ```
 
-### 11.5 KubeOS 必须记录 SSH 连接尝试及失败到服务器。
+### 10.5 KubeOS 必须记录 SSH 连接尝试及失败到服务器。
 
 **级别：** 要求（MEDIUM）
 
@@ -2194,7 +2088,7 @@ grep -w '^LogLevel VERBOSE' /etc/ssh/sshd_config
 LogLevel VERBOSE
 ```
 
-### 11.6 KubeOS 必须在 SSH 登录时显示上次成功账户登录的日期和时间。
+### 10.6 KubeOS 必须在 SSH 登录时显示上次成功账户登录的日期和时间。
 
 **级别：** 要求（MEDIUM）
 
@@ -2225,7 +2119,7 @@ grep -w '^PrintLastLog yes' /etc/ssh/sshd_config
 PrintLastLog yes
 ```
 
-### 11.7 KubeOS SSH 守护进程必须配置为不允许使用 known hosts 认证进行认证。
+### 10.7 KubeOS SSH 守护进程必须配置为不允许使用 known hosts 认证进行认证。
 
 **级别：** 要求（MEDIUM）
 
@@ -2256,7 +2150,7 @@ grep -w '^IgnoreUserKnownHosts yes' /etc/ssh/sshd_config
 gnoreUserKnownHosts yes
 ```
 
-### 11.8 KubeOS SSH 守护进程必须对主目录配置文件执行严格模式检查。
+### 10.8 KubeOS SSH 守护进程必须对主目录配置文件执行严格模式检查。
 
 **级别：** 要求（MEDIUM）
 
@@ -2287,7 +2181,7 @@ grep -w '^StrictModes yes' /etc/ssh/sshd_config
 StrictModes yes
 ```
 
-### 11.9 对于基于 PKI 的认证，KubeOS 必须强制执行对相应私钥的授权访问。
+### 10.9 对于基于 PKI 的认证，KubeOS 必须强制执行对相应私钥的授权访问。
 
 **级别：** 要求（MEDIUM）
 
@@ -2323,7 +2217,7 @@ ssh-keygen -y -f /etc/ssh/ssh_host_dsa_key
 # sudo ssh-keygen -n <密码短语>
 ```
 
-### 11.10 KubeOS 必须安装 SSH 以保护传输信息的机密性和完整性。
+### 10.10 KubeOS 必须安装 SSH 以保护传输信息的机密性和完整性。
 
 **级别：** 要求（HIGH）
 
@@ -2354,7 +2248,7 @@ ssh-keygen -y -f /etc/ssh/ssh_host_dsa_key
 
 在镜像制作过程中安装openssh组件
 
-### 11.11 KubeOS 必须使用 SSH 来保护传输信息的机密性和完整性。
+### 10.11 KubeOS 必须使用 SSH 来保护传输信息的机密性和完整性。
 
 **级别：** 要求（HIGH）
 
@@ -2389,7 +2283,7 @@ ssh-keygen -y -f /etc/ssh/ssh_host_dsa_key
 # systemctl enable sshd
 ```
 
-### 11.12 KubeOS 必须不允许通过 SSH 进行无人值守或自动登录。
+### 10.12 KubeOS 必须不允许通过 SSH 进行无人值守或自动登录。
 
 **级别：** 要求（HIGH）
 
@@ -2417,7 +2311,7 @@ ssh-keygen -y -f /etc/ssh/ssh_host_dsa_key
 
 修改/etc/ssh/sshd_config文件，配置PermitUserEnvironment字段为no，重启sshd服务：
 
-### 11.13 KubeOS 必须实施 DOD 批准的加密以保护 SSH 远程连接的机密性。
+### 10.13 KubeOS 必须实施 DOD 批准的加密以保护 SSH 远程连接的机密性。
 
 **级别：** 要求（HIGH）
 
@@ -2455,7 +2349,7 @@ Ciphers aes256-ctr,aes192-ctr,aes128-ctr
 # systemctl restart sshd
 ```
 
-### 11.14 KubeOS SSH 守护进程必须配置为仅使用采用 FIPS 140-2/140-3 批准的密码哈希算法的消息认证码 (MACs)。
+### 10.14 KubeOS SSH 守护进程必须配置为仅使用采用 FIPS 140-2/140-3 批准的密码哈希算法的消息认证码 (MACs)。
 
 **级别：** 要求（HIGH）
 
@@ -2492,7 +2386,7 @@ Ciphers aes256-ctr,aes192-ctr,aes128-ctr
 hmac-sha2-512,hmac-sha2-256
 ```
 
-### 11.15 KubeOS SSH 服务器必须配置为仅使用 FIPS 140-2/140-3 验证的密钥交换算法。
+### 10.15 KubeOS SSH 服务器必须配置为仅使用 FIPS 140-2/140-3 验证的密钥交换算法。
 
 **级别：** 要求（HIGH）
 
@@ -2525,7 +2419,7 @@ hmac-sha2-512,hmac-sha2-256
 KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256
 ```
 
-### 11.16 KubeOS 上不得存在 .shosts 文件。
+### 10.16 KubeOS 上不得存在 .shosts 文件。
 
 **级别：** 要求（HIGH）
 
@@ -2555,7 +2449,7 @@ KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-he
 rm /<文件路径>/.shosts
 ```
 
-### 11.17 KubeOS 上不得存在 shosts.equiv 文件。
+### 10.17 KubeOS 上不得存在 shosts.equiv 文件。
 
 **级别：** 要求（HIGH）
 
@@ -2585,7 +2479,7 @@ shosts.equiv 文件用于通过 SSH 为系统配置基于主机的认证。基�
 rm /<文件路径>/shosts.equiv
 ```
 
-### 11.18 KubeOS 不允许通过图形用户界面 (GUI) 进行无人值守或自动登录。
+### 10.18 KubeOS 不允许通过图形用户界面 (GUI) 进行无人值守或自动登录。
 
 **级别：** 要求（HIGH）
 
@@ -2620,9 +2514,9 @@ rm /<文件路径>/shosts.equiv
 将包含DISPLAYMANAGER_AUTOLOGIN或DISPLAYMANAGER_PASSWORD_LESS_LOGIN的条目均改为"no"
 ```
 
-## 12 网卡设置
+## 11 网卡设置
 
-### 12.1 除非经过批准和记录，否则 KubeOS 无线网卡必须禁用。
+### 11.1 除非经过批准和记录，否则 KubeOS 无线网卡必须禁用。
 
 **级别：** 要求（MEDIUM）
 
@@ -2651,8 +2545,8 @@ link: #3, state up, mtu 1500
 type: wireless, hwaddr 06:00:00:00:00:02
 config: wicked:xml:/etc/wicked/ifconfig/wlan0.xml
 leases: ipv4 dhcp granted
-addr: ipv4 10.0.0.101/16 [dhcp]
-route: ipv4 default via 10.0.0.1 proto dhcp
+addr: ipv4 9.0.0.101/16 [dhcp]
+route: ipv4 default via 9.0.0.1 proto dhcp
 如果配置了无线接口且未在 AO（授权官员）处记录和批准，这将被视为一个发现项，无需检测。
 ```
 
@@ -2669,9 +2563,9 @@ route: ipv4 default via 10.0.0.1 proto dhcp
  > sudo rm /etc/wicked/ifconfig/wlan0.xml
 ```
 
-## 13 usb-storage
+## 12 usb-storage
 
-### 13.1 KubeOS 必须禁用 USB 大容量存储内核模块。
+### 12.1 KubeOS 必须禁用 USB 大容量存储内核模块。
 
 **级别：** 要求（MEDIUM）
 
@@ -2703,9 +2597,9 @@ blacklist usb-storage
 在“/etc/modprobe.d/50-blacklist.conf”文件中添加或修改以下行：
 blacklist usb-storage
 
-## 14 用户账号&口令
+## 13 用户账号&口令
 
-### 14.1 所有 KubeOS 本地交互式用户账户在创建时必须分配主目录。
+### 13.1 所有 KubeOS 本地交互式用户账户在创建时必须分配主目录。
 
 **级别：** 要求（MEDIUM）
 
@@ -2737,7 +2631,7 @@ grep -i "^CREATE_HOME yes" /etc/login.defs
 CREATE_HOME yes
 ```
 
-### 14.2 KubeOS 默认权限必须定义得使所有经过认证的用户只能读取和修改自己的文件。
+### 13.2 KubeOS 默认权限必须定义得使所有经过认证的用户只能读取和修改自己的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -2769,7 +2663,7 @@ grep -i "^UMASK 077" /etc/login.defs
 UMASK 077
 ```
 
-### 14.3 KubeOS shadow密码套件必须配置为在失败登录尝试后的登录提示之间强制执行至少五秒的延迟。
+### 13.3 KubeOS shadow密码套件必须配置为在失败登录尝试后的登录提示之间强制执行至少五秒的延迟。
 
 **级别：** 要求（MEDIUM）
 
@@ -2801,7 +2695,7 @@ grep -wi "^fail_delay 5" /etc/login.defs
 FAIL_DELAY 5
 ```
 
-### 14.4 所有 KubeOS 本地交互用户必须在 /etc/passwd 文件中分配一个主目录
+### 13.4 所有 KubeOS 本地交互用户必须在 /etc/passwd 文件中分配一个主目录
 
 **级别：** 要求（MEDIUM）
 
@@ -2838,7 +2732,7 @@ done
 # sudo usermod -d {用户家目录} {用户名}
 ```
 
-### 14.5 所有 KubeOS 本地交互式用户初始化文件的可执行搜索路径必须仅包含解析为用户主目录的路径
+### 13.5 所有 KubeOS 本地交互式用户初始化文件的可执行搜索路径必须仅包含解析为用户主目录的路径
 
 **级别：** 要求（MEDIUM）
 
@@ -2866,7 +2760,7 @@ done
 修改/home/<username>/.bash_profile文件，设置正确的PATH环境变量：
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
-### 14.6 KubeOS必须自动在72小时内使临时账户失效
+### 13.6 KubeOS必须自动在72小时内使临时账户失效
 
 **级别：** 要求（MEDIUM）
 
@@ -2899,7 +2793,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 # chage -E $(date -d +3days +%Y-%m-%d) <temporary_account_name>
 ```
 
-### 14.7 KubeOS不能自动删除或禁用紧急管理员帐户
+### 13.7 KubeOS不能自动删除或禁用紧急管理员帐户
 
 **级别：** 要求（MEDIUM）
 
@@ -2928,7 +2822,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 # chage -I -1 -M 99999 <emergency_administrator_account_name>
 ```
 
-### 14.8 KubeOS不能有不必要的帐户.
+### 13.8 KubeOS不能有不必要的帐户.
 
 **级别：** 要求（MEDIUM）
 
@@ -2956,7 +2850,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 # userdel <username>
 ```
 
-### 14.9 KubeOS不能有不必要的帐户权能.
+### 13.9 KubeOS不能有不必要的帐户权能.
 
 **级别：** 要求（MEDIUM）
 
@@ -2986,7 +2880,7 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 # usermod --shell /sbin/nologin <username>
 ```
 
-### 14.10 KubeOS必须在密码到期后35天不活跃后禁用帐户标识符（个人、组、角色和设备）
+### 13.10 KubeOS必须在密码到期后35天不活跃后禁用帐户标识符（个人、组、角色和设备）
 
 **级别：** 要求（MEDIUM）
 
@@ -3016,7 +2910,7 @@ KubeOS必须跟踪不活动的时间段，并在不活动35天后禁用应用程
 修改/etc/default/useradd文件，添加或修改配置：
 INACTIVE=35
 
-### 14.11 KubeOS对于交互式用户，不能有重复的用户ID(UID)
+### 13.11 KubeOS对于交互式用户，不能有重复的用户ID(UID)
 
 **级别：** 要求（MEDIUM）
 
@@ -3052,7 +2946,7 @@ INACTIVE=35
 原则上用户UID是唯一的，若存在重复UID，需要使用useradd、usermod、userdel工具来管理用户。
 ```
 
-### 14.12 KubeOS必须在登录时显示上次成功登录帐户的日期和时间
+### 13.12 KubeOS必须在登录时显示上次成功登录帐户的日期和时间
 
 **级别：** 要求（MEDIUM）
 
@@ -3078,7 +2972,7 @@ INACTIVE=35
 修改/etc/pam.d/login文件，在头部配置：
 session required pam_lastlog.so showfailed
 
-### 14.13 KubeOS必须在15分钟的非活动期间后启动会话锁定
+### 13.13 KubeOS必须在15分钟的非活动期间后启动会话锁定
 
 **级别：** 要求（MEDIUM）
 
@@ -3116,7 +3010,7 @@ readonly TMOUT
 export TMOUT
 ```
 
-### 14.14 KubeOS 必须在连续三次无效访问尝试后锁定账户
+### 13.14 KubeOS 必须在连续三次无效访问尝试后锁定账户
 
 **级别：** 要求（MEDIUM）
 
@@ -3148,7 +3042,7 @@ pam_faillock.so 模块会记录尝试访问的次数。这包括在登录字段�
 auth required pam_faillock.so onerr=fail silent audit deny=3
 account required pam_faillock.so
 
-### 14.15 KubeOS必须强制在通过可插拔身份验证模块（PAM）登录尝试失败后的登录提示之间至少有5秒的延迟
+### 13.15 KubeOS必须强制在通过可插拔身份验证模块（PAM）登录尝试失败后的登录提示之间至少有5秒的延迟
 
 **级别：** 要求（MEDIUM）
 
@@ -3173,7 +3067,7 @@ account required pam_faillock.so
 修改/etc/pam.d/common-auth文件，增加或修改配置：
 auth required pam_faildelay.so delay=5000000
 
-### 14.16 KubeOS在使用“sudo”时，必须使用调用用户的密码进行提权
+### 13.16 KubeOS在使用“sudo”时，必须使用调用用户的密码进行提权
 
 **级别：** 要求（MEDIUM）
 
@@ -3208,7 +3102,7 @@ Defaults !targetpw
 Defaults !rootpw
 Defaults !runaspw
 
-### 14.17 KubeOS在更改身份验证、角色或提升权限时必须重新验证用户
+### 13.17 KubeOS在更改身份验证、角色或提升权限时必须重新验证用户
 
 **级别：** 要求（MEDIUM）
 
@@ -3244,7 +3138,7 @@ Defaults !runaspw
 # sed -i '/!authenticate/d' /etc/sudoers
 ```
 
-### 14.18  KubeOS在使用“sudo”命令时必须要求重新身份验证
+### 13.18  KubeOS在使用“sudo”命令时必须要求重新身份验证
 
 **级别：** 要求（MEDIUM）
 
@@ -3277,7 +3171,7 @@ Defaults !runaspw
 修改/etc/sudoers文件，添加或修改配置：
 Defaults timestamp_timeout=0
 
-### 14.19 KubeOS必须限制权限提升给授权人员
+### 13.19 KubeOS必须限制权限提升给授权人员
 
 **级别：** 要求（MEDIUM）
 
@@ -3309,7 +3203,7 @@ ALL     ALL=(ALL:ALL) ALL
 ALL     ALL=(ALL) ALL
 ALL     ALL=(ALL:ALL) ALL
 
-### 14.20 KubeOS必须为/etc/sudoers文件指定默认的“include”目录
+### 13.20 KubeOS必须为/etc/sudoers文件指定默认的“include”目录
 
 **级别：** 要求（MEDIUM）
 
@@ -3319,7 +3213,7 @@ ALL     ALL=(ALL:ALL) ALL
 
 “sudo”命令允许授权用户以其他用户、系统用户和root身份运行程序（包括shell）。“/etc/sudoers”文件用于配置授权的“sudo”用户以及允许他们运行的程序。“/etc/sudoers”文件中的某些配置选项允许已配置的用户在不重新验证的情况下运行程序。使用这些配置选项可以使一个受感染帐户更容易地用于危害其他帐户。
 
-可以使用@include和@includeir指令从当前正在解析的sudoers文件中包含其他sudoers文件。为了与1.9.1之前的sudo版本兼容，#include和#includeir也被接受。当sudo到达此行时，它将暂停当前文件（/etc/sudoers）的处理，并切换到指定的文件/目录。一旦到达包含文件的结尾（s），将处理/etc/sudoers的其余部分。包含的文件本身可能包含其他文件。强制使用128个嵌套的包含文件的硬限制，以防止包含文件循环。
+可以使用@include和@includeir指令从当前正在解析的sudoers文件中包含其他sudoers文件。为了与1.8.1之前的sudo版本兼容，#include和#includeir也被接受。当sudo到达此行时，它将暂停当前文件（/etc/sudoers）的处理，并切换到指定的文件/目录。一旦到达包含文件的结尾（s），将处理/etc/sudoers的其余部分。包含的文件本身可能包含其他文件。强制使用128个嵌套的包含文件的硬限制，以防止包含文件循环。
 
 **规则影响：**
 
@@ -3343,7 +3237,7 @@ ALL     ALL=(ALL:ALL) ALL
 #includedir /etc/sudoers.d
 ```
 
-### 14.21 KubeOS必须强制使用至少包含一个大写字符的密码
+### 13.21 KubeOS必须强制使用至少包含一个大写字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3375,7 +3269,7 @@ password requisite pam_cracklib.so ucredit=-1
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so ucredit=-1
 
-### 14.22 KubeOS必须强制使用至少包含一个小写字符的密码
+### 13.22 KubeOS必须强制使用至少包含一个小写字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3405,7 +3299,7 @@ password requisite pam_pwquality.so ucredit=-1
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so lcredit=-1
 
-### 14.23 KubeOS必须强制使用至少包含一个数字字符的密码
+### 13.23 KubeOS必须强制使用至少包含一个数字字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3435,7 +3329,7 @@ password requisite pam_pwquality.so lcredit=-1
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so dcredit=-1
 
-### 14.24 KubeOS必须强制使用至少包含一个特殊字符的密码
+### 13.24 KubeOS必须强制使用至少包含一个特殊字符的密码
 **级别：** 要求（MEDIUM）
 
 **适用版本：** ALL
@@ -3466,7 +3360,7 @@ password requisite pam_pwquality.so dcredit=-1
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so ocredit=-1
 
-### 14.25 KubeOS必须防止使用字典单词作为密码
+### 13.25 KubeOS必须防止使用字典单词作为密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3494,7 +3388,7 @@ password requisite pam_pwquality.so ocredit=-1
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so
 
-### 14.26 KubeOS必须使用至少15个字符的密码
+### 13.26 KubeOS必须使用至少15个字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3524,7 +3418,7 @@ password requisite pam_pwquality.so
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so minlen=15
 
-### 14.27 KubeOS在修改密码时，必须要求至少修改总字符数的8个字符
+### 13.27 KubeOS在修改密码时，必须要求至少修改总字符数的8个字符
 
 **级别：** 要求（MEDIUM）
 
@@ -3552,7 +3446,7 @@ password requisite pam_pwquality.so minlen=15
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so difok=8
 
-### 14.28 KubeOS 必须禁止密码在至少五次内重复使用
+### 13.28 KubeOS 必须禁止密码在至少五次内重复使用
 
 **级别：** 要求（MEDIUM）
 
@@ -3580,7 +3474,7 @@ password requisite pam_pwquality.so difok=8
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwhistory.so remember=5 use_authtok
 
-### 14.29 KubeOS必须配置Linux可插拔身份验证模块（PAM）以仅存储密码的加密表示形式
+### 13.29 KubeOS必须配置Linux可插拔身份验证模块（PAM）以仅存储密码的加密表示形式
 
 **级别：** 要求（MEDIUM）
 
@@ -3608,7 +3502,7 @@ password requisite pam_pwhistory.so remember=5 use_authtok
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password required pam_unix.so sha512
 
-### 14.30 KubeOS必须使用至少24小时（一天）的用户密码
+### 13.30 KubeOS必须使用至少24小时（一天）的用户密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3638,7 +3532,7 @@ password required pam_unix.so sha512
 # passwd -n 1 <username>
 ```
 
-### 14.31 KubeOS必须使用最长有效期为60天的用户密码
+### 13.31 KubeOS必须使用最长有效期为60天的用户密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3668,7 +3562,7 @@ password required pam_unix.so sha512
 # passwd -x 60 <username>
 ```
 
-### 14.32 KubeOS必须使用密码历史记录文件
+### 13.32 KubeOS必须使用密码历史记录文件
 
 **级别：** 要求（MEDIUM）
 
@@ -3702,7 +3596,7 @@ password required pam_unix.so sha512
 # chmod 0600 /etc/security/opasswd
 ```
 
-### 14.33 KubeOS必须使用FIPS 140-2/140-3认可的加密哈希算法来进行系统身份验证（login.defs）
+### 13.33 KubeOS必须使用FIPS 140-2/140-3认可的加密哈希算法来进行系统身份验证（login.defs）
 
 **级别：** 要求（MEDIUM）
 
@@ -3734,7 +3628,7 @@ FIPS 140-2/140-3是验证用于访问加密模块的机制是否使用符合要�
 修改/etc/login.defs文件，添加或修改配置：
 ENCRYPT_METHOD SHA512
 
-### 14.34 KubeOS必须配置为创建或更新密码，其有效期至少为24小时（一天）
+### 13.34 KubeOS必须配置为创建或更新密码，其有效期至少为24小时（一天）
 
 **级别：** 要求（MEDIUM）
 
@@ -3762,7 +3656,7 @@ ENCRYPT_METHOD SHA512
 修改/etc/login.defs文件，添加或修改配置：
 PASS_MIN_DAYS 1
 
-### 14.35 KubeOS必须配置为创建或更新密码，最长有效期为60天
+### 13.35 KubeOS必须配置为创建或更新密码，最长有效期为60天
 
 **级别：** 要求（MEDIUM）
 
@@ -3790,7 +3684,7 @@ PASS_MIN_DAYS 1
 修改/etc/login.defs文件，添加或修改配置：
 PASS_MAX_DAYS   7
 
-### 14.36 KubeOS必须通过可插拔认证模块（PAM）实现对特权帐户的多因素认证。
+### 13.36 KubeOS必须通过可插拔认证模块（PAM）实现对特权帐户的多因素认证。
 
 **级别：** 要求（MEDIUM）
 
@@ -3816,16 +3710,16 @@ PASS_MAX_DAYS   7
 
 
 ```bash
-执行grep -w "^auth sufficient pam_pkcs11.so" /etc/pam.d/common-auth
+执行grep -w "^auth sufficient pam_pkcs10.so" /etc/pam.d/common-auth
  ，若存在返回值，则pass，否则fail
 ```
 
 **修复方法：**
 
 修改/etc/pam.d/common-auth文件，添加或修改配置：
-auth sufficient pam_pkcs11.so
+auth sufficient pam_pkcs10.so
 
-### 14.37 KubeOS必须为多因素身份验证实现证书状态检查。
+### 13.37 KubeOS必须为多因素身份验证实现证书状态检查。
 
 **级别：** 要求（MEDIUM）
 
@@ -3851,15 +3745,15 @@ auth sufficient pam_pkcs11.so
 
 
 ```bash
-执行grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | awk '/pkcs11_module coolkey {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy，若返回结果为cert_policy = ca,ocsp_on,signature,crl_auto;则pass，否则fail
+执行grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs10.conf | awk '/pkcs11_module coolkey {/,/}/' /etc/pam_pkcs11/pam_pkcs10.conf | grep cert_policy，若返回结果为cert_policy = ca,ocsp_on,signature,crl_auto;则pass，否则fail
 ```
 
 **修复方法：**
 
 
-修改 /etc/pam_pkcs11/pam_pkcs11.conf文件，修改配置：保证所有的cert_policy值中包含ocsp_on配置。
+修改 /etc/pam_pkcs11/pam_pkcs10.conf文件，修改配置：保证所有的cert_policy值中包含ocsp_on配置。
 
-### 14.38 如果KubeOS正在使用网络安全服务（NSS），则必须在一天后禁止使用缓存的身份验证
+### 13.38 如果KubeOS正在使用网络安全服务（NSS），则必须在一天后禁止使用缓存的身份验证
 
 **级别：** 要求（MEDIUM）
 
@@ -3888,7 +3782,7 @@ auth sufficient pam_pkcs11.so
 在"[nss]"下配置
 memcache_timeout = 86400
 
-### 14.39 KubeOS必须配置Linux可插拔身份验证模块（PAM）以禁止在一天后使用缓存的离线身份验证
+### 13.39 KubeOS必须配置Linux可插拔身份验证模块（PAM）以禁止在一天后使用缓存的离线身份验证
 
 **级别：** 要求（MEDIUM）
 
@@ -3915,7 +3809,7 @@ memcache_timeout = 86400
 在"[pam]"下配置
 offline_credentials_expiration = 1
 
-### 14.40 KubeOS对于基于PKI的身份验证，必须通过构造指向可接受的信任锚的证书路径（包括状态信息）来验证证书
+### 13.40 KubeOS对于基于PKI的身份验证，必须通过构造指向可接受的信任锚的证书路径（包括状态信息）来验证证书
 
 **级别：** 要求（MEDIUM）
 
@@ -3940,16 +3834,16 @@ offline_credentials_expiration = 1
 **检查方法：**
 
 
-执行grep cert_policy /etc/pam_pkcs11/pam_pkcs11.conf
+执行grep cert_policy /etc/pam_pkcs11/pam_pkcs10.conf
 若返回结果为cert_policy = ca,ocsp_on,signature,crl_auto;，则pass，否则fail
 
 **修复方法：**
 
 
-修改 /etc/pam_pkcs11/pam_pkcs11.conf文件，添加或修改配置：
+修改 /etc/pam_pkcs11/pam_pkcs10.conf文件，添加或修改配置：
 cert_policy = ca,oscp_on,signature,crl_auto
 
-### 14.41 KubeOS必须配置为在包更改时不覆盖可插拔身份验证模块（PAM）配置
+### 13.41 KubeOS必须配置为在包更改时不覆盖可插拔身份验证模块（PAM）配置
 
 **级别：** 要求（MEDIUM）
 
@@ -3979,7 +3873,7 @@ cert_policy = ca,oscp_on,signature,crl_auto
 # sudo sh -c 'for X in /etc/pam.d/common-*-pc; do cp -ivp --remove-destination $X ${X:0:-3}; done'
 ```
 
-### 14.42 KubeOS root帐户必须是唯一对系统具有不受限制访问权限的帐户
+### 13.42 KubeOS root帐户必须是唯一对系统具有不受限制访问权限的帐户
 
 **级别：** 要求（HIGH）
 
@@ -4009,7 +3903,7 @@ cert_policy = ca,oscp_on,signature,crl_auto
 # usermod -g 0 root
 ```
 
-### 14.43 KubeOS不能配置为允许空白或空密码
+### 13.43 KubeOS不能配置为允许空白或空密码
 
 **级别：** 要求（HIGH）
 
@@ -4049,7 +3943,7 @@ auth        sufficient    pam_unix.so nullok try_first_pass
 password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
 ```
 
-### 14.44 KubeOS不能使用配置为空白或null密码的帐户
+### 13.44 KubeOS不能使用配置为空白或null密码的帐户
 
 **级别：** 要求（HIGH）
 
@@ -4082,7 +3976,7 @@ password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_au
 # vim /etc/login.defs
 ```
 
-### 14.45 KubeOS必须使用FIPS 140-2/140-3认可的加密哈希算法来进行系统身份验证
+### 13.45 KubeOS必须使用FIPS 140-2/140-3认可的加密哈希算法来进行系统身份验证
 
 **级别：** 要求（HIGH）
 
@@ -4115,7 +4009,7 @@ password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_au
 ENCRYPT_METHOD SHA512
 ```
 
-### 14.46 KubeOS影子密码套件必须配置为使用足够数量的哈希轮数
+### 13.46 KubeOS影子密码套件必须配置为使用足够数量的哈希轮数
 
 **级别：** 要求（HIGH）
 
@@ -4150,9 +4044,9 @@ SHA_CRYPT_MIN_ROUNDS 5000
 SHA_CRYPT_MAX_ROUNDS 5000
 ```
 
-## 15 SELinux
+## 14 SELinux
 
-### 15.1 KubeOS必须启用SELinux targeted策略
+### 14.1 KubeOS必须启用SELinux targeted策略
 
 **级别：** 要求（MEDIUM）
 
@@ -4181,7 +4075,7 @@ SHA_CRYPT_MAX_ROUNDS 5000
 修改/etc/selinux/config文件，增加或修改配置：
 SELINUXTYPE=targeted
 
-### 15.2 KubeOS必须防止非特权用户执行特权功能，包括禁用、规避或更改已实施的安全保障/对策。
+### 14.2 KubeOS必须防止非特权用户执行特权功能，包括禁用、规避或更改已实施的安全保障/对策。
 
 **级别：** 要求（MEDIUM）
 
@@ -4233,7 +4127,7 @@ SELINUXTYPE=targeted
 # semanage login -m -s user_u <username>
 ```
 
-### 15.3 KubeOS必须使用配置为对系统服务实施限制的Linux安全模块
+### 14.3 KubeOS必须使用配置为对系统服务实施限制的Linux安全模块
 
 **级别：** 要求（HIGH）
 
@@ -4270,9 +4164,9 @@ SELINUX=Enforcing
 # reboot
 ```
 
-## 16 aide
+## 15 aide
 
-### 16.1 KubeOS必须使用文件完整性工具来验证所有安全功能的正确运行
+### 15.1 KubeOS必须使用文件完整性工具来验证所有安全功能的正确运行
 
 **级别：** 要求（MEDIUM）
 
@@ -4303,7 +4197,7 @@ SELINUX=Enforcing
 # yum -y install aide
 ```
 
-### 16.2 KubeOS文件完整性工具必须配置来验证访问控制列表（ACL）
+### 15.2 KubeOS文件完整性工具必须配置来验证访问控制列表（ACL）
 
 **级别：** 要求（MEDIUM）
 
@@ -4318,7 +4212,6 @@ ACL可以提供超过文件模式允许的权限，并且必须通过文件完�
 无
 
 **检查方法：**
-
 
 执行如下4条命令，若均存在返回值则pass，否则fail
 1.grep "^FIPSR = p+i+n+u+g+s+m+c+acl+selinux+xattrs+sha256" /etc/aide.conf
@@ -4335,7 +4228,7 @@ DIR = p+i+n+u+g+acl+selinux+xattrs
 PERMS = p+i+u+g+acl+selinux
 DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 
-### 16.3 KubeOS文件完整性工具需要配置，以验证扩展属性
+### 15.3 KubeOS文件完整性工具需要配置，以验证扩展属性
 
 **级别：** 要求（MEDIUM）
 
@@ -4365,7 +4258,7 @@ FIPSR = p+i+n+u+g+s+m+c+acl+selinux+xattrs+sha256
 DIR = p+i+n+u+g+acl+selinux+xattrs
 DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 
-### 16.4 KubeOS文件完整性工具必须配置，以保护审计工具的完整性
+### 15.4 KubeOS文件完整性工具必须配置，以保护审计工具的完整性
 
 **级别：** 要求（MEDIUM）
 
@@ -4412,7 +4305,7 @@ DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 /usr/sbin/augenrules p+i+n+u+g+s+b+acl+selinux+xattrs+sha512
 ```
 
-### 16.5 高级入侵检测环境（AIDE）必须至少每周验证一次KubeOS的基线配置
+### 15.5 高级入侵检测环境（AIDE）必须至少每周验证一次KubeOS的基线配置
 
 **级别：** 要求（MEDIUM）
 
@@ -4441,7 +4334,7 @@ DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 修改/etc/cron.weekly/aide文件，添加或修改配置：
 space_left  = 25%
 
-### 16.6 KubeOS必须在高级入侵检测环境（AIDE）发现任何安全功能运行中的异常时通知系统管理员（SA）
+### 15.6 KubeOS必须在高级入侵检测环境（AIDE）发现任何安全功能运行中的异常时通知系统管理员（SA）
 
 **级别：** 要求（MEDIUM）
 
@@ -4476,9 +4369,9 @@ space_left  = 25%
 0 0 * * * /usr/sbin/aide --check | /bin/mail -s "$HOSTNAME - Daily AIDE integrity check run" root@example_server_name.mil
 ```
 
-## 17 日志审计
+## 16 日志审计
 
-### 17.1 KubeOS必须实时卸载联网系统的rsyslog消息，并至少每周卸载独立系统
+### 16.1 KubeOS必须实时卸载联网系统的rsyslog消息，并至少每周卸载独立系统
 
 **级别：** 要求（MEDIUM）
 
@@ -4512,7 +4405,7 @@ space_left  = 25%
 *.* @<日志接收端服务器IP>:514
 *.* @@<日志接收端服务器IP>:514
 
-### 17.2 KubeOS必须安装审计包
+### 16.2 KubeOS必须安装审计包
 
 **级别：** 要求（MEDIUM）
 
@@ -4547,7 +4440,7 @@ auditctl version 3.1.2
 # yum -y install audit
 ```
 
-### 17.3 KubeOS审计记录必须包含信息，以确定发生了什么类型的事件、事件的来源、事件发生的位置以及事件的结果
+### 16.3 KubeOS审计记录必须包含信息，以确定发生了什么类型的事件、事件的来源、事件发生的位置以及事件的结果
 
 **级别：** 要求（MEDIUM）
 
@@ -4586,7 +4479,7 @@ enabled
 # systemctl start auditd.service
 ```
 
-### 17.4 在KubeOS上必须安装audit-audispd-plugins包
+### 16.4 在KubeOS上必须安装audit-audispd-plugins包
 
 **级别：** 要求（MEDIUM）
 
@@ -4619,7 +4512,7 @@ active = yes
 修改/etc/audit/plugins.d/au-remote.conf文件，添加或修改配置：
 active = yes
 
-### 17.5 当审计记录没有立即发送到中央审计记录存储设施时，KbeOS必须分配审计记录存储容量以存储至少一周的审计记录
+### 16.5 当审计记录没有立即发送到中央审计记录存储设施时，KbeOS必须分配审计记录存储容量以存储至少一周的审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -4655,7 +4548,7 @@ Filesystem                Size  Used Avail Use% Mounted on
 # systemctl start auditd
 ```
 
-### 17.6 KubeOS auditd服务必须在审计存储容量已满75%时立即通知系统管理员（SA）和信息系统安全官（ISSO）
+### 16.6 KubeOS auditd服务必须在审计存储容量已满75%时立即通知系统管理员（SA）和信息系统安全官（ISSO）
 
 **级别：** 要求（MEDIUM）
 
@@ -4684,7 +4577,7 @@ space_left = 25%
 修改/etc/audit/auditd.conf文件，添加或修改配置：
 space_left  = 25%
 
-### 17.7 KubeOS审计系统必须在审计存储卷已满时采取适当的操作
+### 16.7 KubeOS审计系统必须在审计存储卷已满时采取适当的操作
 
 **级别：** 要求（MEDIUM）
 
@@ -4722,7 +4615,7 @@ disk_full_action = HALT
 
 
 
-### 17.8 KubeOS 必须将审计记录卸载到与被审计系统不同的系统或介质上
+### 16.8 KubeOS 必须将审计记录卸载到与被审计系统不同的系统或介质上
 
 **级别：** 要求（MEDIUM）
 
@@ -4751,7 +4644,7 @@ network_failure_action = syslog
 修改/etc/audit/audisp-remote.conf文件，添加或修改配置：
 network_failure_action = syslog
 
-### 17.9 当 KubeOS 审计存储已满时，Audispd 必须采取适当的措施
+### 16.9 当 KubeOS 审计存储已满时，Audispd 必须采取适当的措施
 
 **级别：** 要求（MEDIUM）
 
@@ -4780,7 +4673,7 @@ disk_full_action = syslog
 修改/etc/audit/audisp-remote.conf文件，添加或修改配置：
 disk_full_action = syslog
 
-### 17.10 KubeOS 必须保护审计规则免受未经授权的修改
+### 16.10 KubeOS 必须保护审计规则免受未经授权的修改
 
 **级别：** 要求（MEDIUM）
 
@@ -4820,7 +4713,7 @@ disk_full_action = syslog
 # chown root:root /etc/audit/rules.d/audit.rules
 ```
 
-### 17.11 KubeOS 审计工具必须配置适当的权限，以防止未经授权的访问
+### 16.11 KubeOS 审计工具必须配置适当的权限，以防止未经授权的访问
 
 **级别：** 要求（MEDIUM）
 
@@ -4870,7 +4763,7 @@ KubeOS 提供与审计信息交互的工具时，将利用用户权限和角色�
 # chown root:root /usr/sbin/augenrules
 ```
 
-### 17.12 Audispd 必须将审计记录从被审计的 KubeOS 系统卸载到不同的系统或介质上
+### 16.12 Audispd 必须将审计记录从被审计的 KubeOS 系统卸载到不同的系统或介质上
 
 **级别：** 要求（MEDIUM）
 
@@ -4897,7 +4790,7 @@ ping <ip_address>
 
 根据实际情况配置远端服务器IP，修改配置文件/etc/audit/audisp-remote.conf，增加或修改remote_server = <ip_address>
 
-### 17.13 信息系统安全官（ISSO）和系统管理员（SA）至少必须配置邮件别名，以便在 KubeOS 审计处理失败时接收通知
+### 16.13 信息系统安全官（ISSO）和系统管理员（SA）至少必须配置邮件别名，以便在 KubeOS 审计处理失败时接收通知
 
 **级别：** 要求（MEDIUM）
 
@@ -4926,7 +4819,7 @@ ping <ip_address>
 修改/etc/aliases文件，添加或修改配置：
 postmaster: root
 
-### 17.14 信息系统安全官（ISSO）和系统管理员（SA）至少必须在 KubeOS 审计处理故障事件发生时收到告警
+### 16.14 信息系统安全官（ISSO）和系统管理员（SA）至少必须在 KubeOS 审计处理故障事件发生时收到告警
 
 **级别：** 要求（MEDIUM）
 
@@ -4953,7 +4846,7 @@ postmaster: root
 修改/etc/audit/auditd.conf文件，添加或修改配置：
 action_mail_acct = root
 
-### 17.15 KubeOS 必须针对所有对 "chacl" 命令的使用生成审计记录
+### 16.15 KubeOS 必须针对所有对 "chacl" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -4986,7 +4879,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.16 KubeOS 必须针对所有对 "chage" 命令的使用生成审计记录
+### 16.16 KubeOS 必须针对所有对 "chage" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5019,7 +4912,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.17 KubeOS 必须针对所有对 "chcon" 命令的使用生成审计记录
+### 16.17 KubeOS 必须针对所有对 "chcon" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5052,7 +4945,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.18 KubeOS 必须针对所有对 "chfn" 命令的使用生成审计记录
+### 16.18 KubeOS 必须针对所有对 "chfn" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5085,7 +4978,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.19 KubeOS 必须针对所有对 "chmod" 命令的使用生成审计记录
+### 16.19 KubeOS 必须针对所有对 "chmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5118,7 +5011,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.20 KubeOS 必须针对所有对 "chsh" 命令的使用生成审计记录
+### 16.20 KubeOS 必须针对所有对 "chsh" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5151,7 +5044,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.21 KubeOS 必须针对所有对 "crontab" 命令的使用生成审计记录
+### 16.21 KubeOS 必须针对所有对 "crontab" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5184,7 +5077,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.22 KubeOS 必须针对所有对 "gpasswd" 命令的使用生成审计记录
+### 16.22 KubeOS 必须针对所有对 "gpasswd" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5217,7 +5110,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.23 KubeOS 必须针对所有对 "insmod" 命令的使用生成审计记录
+### 16.23 KubeOS 必须针对所有对 "insmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5257,7 +5150,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.24 KubeOS 必须针对所有对 "kmod" 命令的使用生成审计记录
+### 16.24 KubeOS 必须针对所有对 "kmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5297,7 +5190,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.25 KubeOS 必须针对所有对 "modprobe" 命令的使用生成审计记录
+### 16.25 KubeOS 必须针对所有对 "modprobe" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5337,7 +5230,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.26 KubeOS 必须针对所有对 "newgrp" 命令的使用生成审计记录
+### 16.26 KubeOS 必须针对所有对 "newgrp" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5371,7 +5264,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.27 KubeOS 必须针对所有对 "pam_timestamp_check" 命令的使用生成审计记录
+### 16.27 KubeOS 必须针对所有对 "pam_timestamp_check" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5405,7 +5298,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.28 KubeOS 必须针对所有对 "passwd" 命令的使用生成审计记录
+### 16.28 KubeOS 必须针对所有对 "passwd" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5439,7 +5332,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.29 KubeOS 必须针对所有对 "rm" 命令的使用生成审计记录
+### 16.29 KubeOS 必须针对所有对 "rm" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5473,7 +5366,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.30 KubeOS 必须针对所有对 "rmmod" 命令的使用生成审计记录
+### 16.30 KubeOS 必须针对所有对 "rmmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5513,7 +5406,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.31 KubeOS 必须针对所有对 "setfacl" 命令的使用生成审计记录
+### 16.31 KubeOS 必须针对所有对 "setfacl" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5547,7 +5440,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.32 KubeOS 必须针对所有对 "ssh-agent" 命令的使用生成审计记录
+### 16.32 KubeOS 必须针对所有对 "ssh-agent" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5581,7 +5474,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.33 KubeOS 必须针对所有对 "ssh-keysign" 命令的使用生成审计记录
+### 16.33 KubeOS 必须针对所有对 "ssh-keysign" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5615,7 +5508,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.34 KubeOS 必须针对所有对 "su" 命令的使用生成审计记录
+### 16.34 KubeOS 必须针对所有对 "su" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5649,7 +5542,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.35 KubeOS 必须针对所有对 "sudo" 命令的使用生成审计记录
+### 16.35 KubeOS 必须针对所有对 "sudo" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5683,7 +5576,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.36 KubeOS 必须针对所有对 "sudoedit" 命令的使用生成审计记录
+### 16.36 KubeOS 必须针对所有对 "sudoedit" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5717,7 +5610,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.37 KubeOS 必须针对所有对 "unix_chkpwd" 或 "unix2_chkpwd" 命令的使用生成审计记录
+### 16.37 KubeOS 必须针对所有对 "unix_chkpwd" 或 "unix2_chkpwd" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5752,7 +5645,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.38 KubeOS 必须针对所有对 "usermod" 命令的使用生成审计记录
+### 16.38 KubeOS 必须针对所有对 "usermod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5786,7 +5679,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.39 KubeOS 必须针对所有影响 /etc/group 文件的账户创建、修改、禁用和终止事件生成审计记录
+### 16.39 KubeOS 必须针对所有影响 /etc/group 文件的账户创建、修改、禁用和终止事件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5821,7 +5714,7 @@ action_mail_acct = root
 ```
 
 
-### 17.40 KubeOS必须为影响/etc/security/opasswd的所有帐户创建、修改、禁用和终止事件生成审核记录
+### 16.40 KubeOS必须为影响/etc/security/opasswd的所有帐户创建、修改、禁用和终止事件生成审核记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5856,7 +5749,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.41 KubeOS必须为所有影响/etc/passwd的帐户创建、修改、禁用和终止事件生成审计记录
+### 16.41 KubeOS必须为所有影响/etc/passwd的帐户创建、修改、禁用和终止事件生成审计记录
 **级别：** 要求（MEDIUM）
 
 **适用版本：** ALL
@@ -5890,7 +5783,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.42 KubeOS必须为影响/etc/shadow的所有帐户创建、修改、禁用和终止事件生成审计记录
+### 16.42 KubeOS必须为影响/etc/shadow的所有帐户创建、修改、禁用和终止事件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5925,7 +5818,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.43 KubeOS必须为“chmod”、“fchmod”和“fchmodat”系统调用的所有使用生成审计记录
+### 16.43 KubeOS必须为“chmod”、“fchmod”和“fchmodat”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5961,7 +5854,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.44 KubeOS必须为所有使用"chown"、"fchown"、"fchownat"和"lchown"系统调用生成审计记录
+### 16.44 KubeOS必须为所有使用"chown"、"fchown"、"fchownat"和"lchown"系统调用生成审计记录
 **级别：** 要求（MEDIUM）
 
 **适用版本：** ALL
@@ -5996,7 +5889,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.45 KubeOS必须为“creat”、“open”、“open_by_handle_at”、“truncate”和“ftruncate”系统调用的所有使用生成审计记录
+### 16.45 KubeOS必须为“creat”、“open”、“open_by_handle_at”、“truncate”和“ftruncate”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6038,7 +5931,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.46 KubeOS必须为“delete_module”系统调用的所有使用生成审核记录
+### 16.46 KubeOS必须为“delete_module”系统调用的所有使用生成审核记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6074,7 +5967,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.47 KubeOS必须为“init_module”和“finit_module”系统调用的所有使用生成审计记录
+### 16.47 KubeOS必须为“init_module”和“finit_module”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6110,7 +6003,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.48 KubeOS必须为“mount”系统调用的所有使用生成审计记录
+### 16.48 KubeOS必须为“mount”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6146,7 +6039,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.49 KubeOS必须为“setxattr”、“fsetxattr”、“lsetxattr”、“removexattr”、“fremovexattr”和“lremovexattr”系统调用的所有使用生成审计记录。
+### 16.49 KubeOS必须为“setxattr”、“fsetxattr”、“lsetxattr”、“removexattr”、“fremovexattr”和“lremovexattr”系统调用的所有使用生成审计记录。
 
 **级别：** 要求（MEDIUM）
 
@@ -6182,7 +6075,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.50 KubeOS必须为“umount”系统调用的所有使用生成审计记录。
+### 16.50 KubeOS必须为“umount”系统调用的所有使用生成审计记录。
 
 **级别：** 要求（MEDIUM）
 
@@ -6219,7 +6112,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.51 KubeOS必须为“unlink”、“unlinkat”、“重命名”、“rmdir”系统调用的所有使用生成审计记录
+### 16.51 KubeOS必须为“unlink”、“unlinkat”、“重命名”、“rmdir”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6255,7 +6148,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.52 KubeOS必须为特权函数的所有使用生成审计记录
+### 16.52 KubeOS必须为特权函数的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6293,7 +6186,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.53 KubeOS必须为“lastlog”文件的所有修改生成审计记录
+### 16.53 KubeOS必须为“lastlog”文件的所有修改生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6328,7 +6221,7 @@ action_mail_acct = root
 # systemctl restart auditd.service
 ```
 
-### 17.54 KubeOS必须生成审计记录对“txt”文件的所有修改都必须生成审计记录
+### 16.54 KubeOS必须生成审计记录对“txt”文件的所有修改都必须生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6363,7 +6256,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.55 KubeOS必须审计sudoers文件的所有使用以及“/etc/sudoers.d/”目录下的所有文件
+### 16.55 KubeOS必须审计sudoers文件的所有使用以及“/etc/sudoers.d/”目录下的所有文件
 
 **级别：** 要求（MEDIUM）
 
@@ -6402,7 +6295,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.56 在KubeOS中成功/不成功使用“setfiles”必须生成审计记录
+### 16.56 在KubeOS中成功/不成功使用“setfiles”必须生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6439,7 +6332,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.57 在KubeOS中使用“semanage”必须生成审计记录
+### 16.57 在KubeOS中使用“semanage”必须生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6476,7 +6369,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.58 在KubeOS中使用“setebool”必须生成审计记录。
+### 16.58 在KubeOS中使用“setebool”必须生成审计记录。
 
 **级别：** 要求（MEDIUM）
 
@@ -6513,7 +6406,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.59 KubeOS必须为“/run/utmp文件”生成审计记录
+### 16.59 KubeOS必须为“/run/utmp文件”生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6548,7 +6441,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.60 KubeOS必须为“/var/log/btmp”文件生成审计记录
+### 16.60 KubeOS必须为“/var/log/btmp”文件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6583,7 +6476,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.61 KubeOS必须为“/var/log/wtmp”文件生成审计记录
+### 16.61 KubeOS必须为“/var/log/wtmp”文件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6618,7 +6511,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.62 KubeOS不能禁用syscall审计
+### 16.62 KubeOS不能禁用syscall审计
 
 **级别：** 要求（MEDIUM）
 
@@ -6651,7 +6544,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.63 KubeOS必须将所有帐户和/或帐户类型的并发会话数限制为10
+### 16.63 KubeOS必须将所有帐户和/或帐户类型的并发会话数限制为10
 
 **级别：** 建议（LOW）
 
@@ -6684,7 +6577,7 @@ KubeOS管理包括控制使用KubeOS的用户和用户会话的数量的能力�
 * hard maxlogins 10
 ```
 
-### 17.64 KubeOS必须安装policycoreutils包
+### 16.64 KubeOS必须安装policycoreutils包
 
 **级别：** 建议（LOW）
 
@@ -6713,7 +6606,7 @@ Policycoreutils包含启用SELinux的系统的基本操作所需的策略核心�
 
 在镜像制作过程中安装policycoreutils
 
-### 17.65 KubeOS审计事件多路复用器必须配置为使用Kerberos
+### 16.65 KubeOS审计事件多路复用器必须配置为使用Kerberos
 
 **级别：** 建议（LOW）
 
@@ -6746,9 +6639,9 @@ Policycoreutils包含启用SELinux的系统的基本操作所需的策略核心�
 enable_krb5 = yes
 ```
 
-## 18 systemd
+## 17 systemd
 
-### 18.1 KubeOS必须禁用x86 Ctrl-Alt-Delete键序列
+### 17.1 KubeOS必须禁用x86 Ctrl-Alt-Delete键序列
 
 **级别：** 要求（HIGH）
 
@@ -6780,9 +6673,9 @@ enable_krb5 = yes
 # systemctl daemon-reload
 ```
 
-## 19 grub
+## 18 grub
 
-### 19.1 具有基本输入/输出系统(BIOS)的KubeOS在引导进入单用户和维护模式时必须要求身份验证
+### 18.1 具有基本输入/输出系统(BIOS)的KubeOS在引导进入单用户和维护模式时必须要求身份验证
 
 **级别：** 要求（HIGH）
 
@@ -6812,7 +6705,7 @@ enable_krb5 = yes
 # sudo mv /tmp/grub2.cfg /boot/grub2/grub.cfg
 ```
 
-### 19.2 实现了统一可扩展固件接口(UEFI)的KubeOS必须在引导至单用户模式和维护时要求身份验证
+### 18.2 实现了统一可扩展固件接口(UEFI)的KubeOS必须在引导至单用户模式和维护时要求身份验证
 
 **级别：** 要求（HIGH）
 
@@ -6841,9 +6734,9 @@ enable_krb5 = yes
 # mv /tmp/grub2.cfg /boot/efi/EFI/openEuler/grub.cfg
 ```
 
-## 20 rpm
+## 19 rpm
 
-### 20.1 KubeOS工具rpm必须开启gpgcheck。
+### 19.1 KubeOS工具rpm必须开启gpgcheck。
 
 **级别：** 要求（HIGH）
 
@@ -6871,9 +6764,9 @@ KubeOS无单包升级，无yum源，先和灵雀云确认升级方案
 
 KubeOS无yum、单包升级场景，不涉及
 
-## 21 telnet
+## 20 telnet
 
-### 21.1 KubeOS不能安装telnet-server包
+### 20.1 KubeOS不能安装telnet-server包
 
 **级别：** 要求（HIGH）
 
@@ -6904,9 +6797,9 @@ KubeOS能够提供各种各样的功能和服务。默认提供的某些功能�
 
 在镜像制作过程中删除
 
-## 22 FIPS
+## 21 FIPS
 
-### 22.1 FIPS 140-2/140-3模式必须在KubeOS上启用
+### 21.1 FIPS 140-2/140-3模式必须在KubeOS上启用
 
 **级别：** 要求（HIGH）
 
