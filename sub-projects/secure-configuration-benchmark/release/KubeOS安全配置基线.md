@@ -1,12 +1,12 @@
 # KubeOS安全配置基线 v1.0
 
-|版本|修订说明|修订时间|访问链接|
-| ------------ | ------------ | ------------ | ------------ |
-|1.0|初始修订|2026年5月|本文档|
+| 版本 | 修订说明 | 修订时间  | 访问链接 |
+| ---- | -------- | --------- | -------- |
+| 1.0  | 初始修订 | 2026年5月 | 本文档   |
 
 ## 1 三方安全软件
 
-### 1.1 SLEM 5 must implement an endpoint security tool.
+### 1.1 KubeOS 必须确保安装终端安全工具
 
 **级别：** 要求（MEDIUM）
 
@@ -14,7 +14,7 @@
 
 **规则说明：**
 
-Adding endpoint security tools can provide the capability to automatically take actions in response to malicious behavior, which can provide additional agility in reacting to network threats. These tools also often include a reporting capability to provide network awareness of the system, which may not otherwise exist in an organization's systems management regime.
+添加终端安全工具可以提供自动响应恶意行为的能力，从而在网络威胁应对方面提供额外的灵活性。这些工具通常还包含报告功能，能够为系统提供网络感知能力，而这种能力在组织的系统管理机制中可能原本并不存在。
 
 **规则影响：**
 
@@ -30,7 +30,7 @@ Adding endpoint security tools can provide the capability to automatically take 
 
 安装终端安全工具
 
-### 1.2 Vendor-packaged SLEM 5 security patches and updates must be installed and up to date.
+### 1.2 KubeOS必须安装安全补丁并保持软件包更新为最新版本。
 
 **级别：** 要求（MEDIUM）
 
@@ -38,7 +38,7 @@ Adding endpoint security tools can provide the capability to automatically take 
 
 **规则说明：**
 
-Timely patching is critical for maintaining the operational availability, confidentiality, and integrity of information technology (IT) systems. However, failure to keep SLEM 5 and application software patched is a common mistake made by IT professionals. New patches are released frequently, and it is often difficult for even experienced system administrators (SAs) to keep up with of all the new patches. When new weaknesses in a SLEM 5 exist, patches are usually made available by the vendor to resolve the problems. If the most recent security patches and updates are not installed, unauthorized users may take advantage of weaknesses in the unpatched software. The lack of prompt attention to patching could result in a system compromise.
+及时打补丁对于维持信息技术系统的运行可用性、保密性和完整性至关重要。然而，未能及时更新KubeOS及应用程序软件的补丁是IT专业人员常犯的错误。新补丁发布频繁，即使经验丰富的系统管理员也难以跟上所有新补丁的节奏。当KubeOS出现新的安全漏洞时，上游通常会提供修复问题的补丁。若未安装最新的安全补丁和更新程序，未经授权的用户可能利用未修补软件中的漏洞。未能及时关注补丁更新可能导致系统遭受入侵。
 
 **规则影响：**
 
@@ -54,7 +54,7 @@ Timely patching is critical for maintaining the operational availability, confid
 
 无该场景，不涉及
 
-### 1.3 SLEM 5 must use vlock to allow for session locking.
+### 1.3 KubeOS 必须使用 vlock 来实现会话锁定。
 
 **级别：** 要求（MEDIUM）
 
@@ -62,11 +62,11 @@ Timely patching is critical for maintaining the operational availability, confid
 
 **规则说明：**
 
-A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.
+会话锁定是指用户在暂停工作且离开系统的直接物理邻近区域、但因离开具有临时性而不愿注销时所采取的临时措施。
 
-The session lock is implemented at the point where session activity can be determined.
+会话锁定的实施点应位于可判定会话活动状态的位置。
 
-Regardless of where the session lock is determined and implemented, once invoked, the session lock must remain in place until the user reauthenticates. No other activity aside from reauthentication must unlock the system.
+无论会话锁定的判定与实施位置如何，一旦触发，该锁定必须持续有效直至用户重新完成身份认证。除重新认证外，任何其他操作均不得解除系统锁定状态。
 
 **规则影响：**
 
@@ -84,7 +84,7 @@ Regardless of where the session lock is determined and implemented, once invoked
 
 在镜像制作过程中安装kbd组件
 
-### 1.4 SLEM 5 must have the packages required for multifactor authentication to be installed.
+### 1.4 KubeOS 必须安装支持多因素认证（MFA）所需的软件包。
 
 **级别：** 要求（MEDIUM）
 
@@ -92,15 +92,15 @@ Regardless of where the session lock is determined and implemented, once invoked
 
 **规则说明：**
 
-Using an authentication device, such as a Common Access Card (CAC) or token separate from the information system, ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.
+使用独立于信息系统的认证设备，可确保即使信息系统遭到入侵，存储在认证设备上的凭证也不会受到影响。
 
-Multifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards such as the U.S. Government Personal Identity Verification (PIV) card and the DOD CAC.
+要求使用独立于信息系统的认证设备才能接入的多因素解决方案包括：提供基于时间或挑战 - 响应机制的硬件令牌，以及智能卡
 
-A privileged account is defined as an information system account with authorizations of a privileged user.
+特权账户是指具有特权用户授权权限的信息系统账户。
 
-Remote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
+远程访问是指授权用户（或信息系统）通过外部、非组织控制的网络，访问国防部非公开信息系统的行为。远程访问方式包括拨号、宽带和无线接入等。
 
-This requirement only applies to components where this is specific to the function of the device or has the concept of an organizational user (e.g., VPN, proxy capability). This does not apply to authentication for the purpose of configuring the device itself (management).
+本要求仅适用于具备特定设备功能概念或存在组织用户概念的组件（例如 VPN、代理功能）。该要求不适用于为配置设备本身（即管理目的）而进行的身份认证。
 
 **规则影响：**
 
@@ -128,7 +128,7 @@ This requirement only applies to components where this is specific to the functi
 
 ## 2 openEuler-release
 
-### 2.1 SLEM 5 must display the Standard Mandatory DOD Notice and Consent Banner before granting any local or remote connection to the system.
+### 2.1 KubeOS 必须在授予任何本地或远程连接之前，显示标准的强制通知与同意横幅。
 
 **级别：** 要求（MEDIUM）
 
@@ -136,25 +136,11 @@ This requirement only applies to components where this is specific to the functi
 
 **规则说明：**
 
-Display of a standardized and approved use notification before granting access to SLEM 5 ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
+在授予对 KubeOS 的访问权限之前显示标准化的已批准使用通知，可确保所使用的隐私与安全通知用语，符合适用的法律、行政命令、指令、政策、法规、标准及指南。
 
-System use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.
+系统使用通知仅适用于通过具有人类用户的登录接口进行的访问；若不存在此类接口，则无需显示通知。
 
-The banner must be formatted in accordance with applicable DOD policy. Use the following verbiage for SLEM 5 that can accommodate banners of 1300 characters:
-
-"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
-
-By using this IS (which includes any device attached to this IS), you consent to the following conditions:
-
--The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.
-
--At any time, the USG may inspect and seize data stored on this IS.
-
--Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.
-
--This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.
-
--Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."
+横幅的格式必须符合适用的政策。
 
 **规则影响：**
 
@@ -165,41 +151,15 @@ By using this IS (which includes any device attached to this IS), you consent to
 
 ```bash
 grep -i "<如下文本>" /etc/issue
-：确认/etc/issue中的内容是否包含如下内容(国防部权利声明)：存在则pass，否则fail
-You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
-
-By using this IS (which includes any device attached to this IS), you consent to the following conditions:
-
--The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.
-
--At any time, the USG may inspect and seize data stored on this IS.
-
--Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.
-
--This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.
-
--Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.
+：确认/etc/issue中的内容是否包含标准化的已批准使用通知，存在则pass，否则fail
 ```
 
 **修复方法：**
 
+/etc/issue中加入符合规定的声明内容：
+# vim /etc/issue
 
-/etc/issue中加入如下内容(国防部权利声明)：
-You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
-
-By using this IS (which includes any device attached to this IS), you consent to the following conditions:
-
--The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.
-
--At any time, the USG may inspect and seize data stored on this IS.
-
--Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.
-
--This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.
-
--Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.
-
-### 2.2 SLEM 5 must be a vendor-supported release.
+### 2.2 KubeOS 必须是厂商支持的有效发行版.
 
 **级别：** 要求（HIGH）
 
@@ -207,7 +167,7 @@ By using this IS (which includes any device attached to this IS), you consent to
 
 **规则说明：**
 
-A SLEM 5 release is considered supported if the vendor continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software.
+当厂商继续为该版本提供安全补丁时，该 KubeOS 发行版即被视为“受支持（Supported）”。若使用“不受支持（Unsupported）”的发行版，则无法修复系统软件中发现的安全漏洞
 
 **规则影响：**
 
@@ -228,7 +188,7 @@ os发行版本默认带上，不应该通过其他方式修改，不涉及
 
 ## 3 kernel
 
-### 3.1 SLEM 5 must restrict access to the kernel message buffer.
+### 3.1 KubeOS 必须限制对内核消息缓冲区（Kernel Message Buffer）的访问权限。
 
 **级别：** 要求（MEDIUM）
 
@@ -236,7 +196,7 @@ os发行版本默认带上，不应该通过其他方式修改，不涉及
 
 **规则说明：**
 
-Restricting access to the kernel message buffer limits access only to root. This prevents attackers from gaining additional system information as a nonprivileged user.
+限制对内核消息缓冲区（Kernel Message Buffer）的访问权限，意味着仅允许 root 用户（即拥有超级用户权限的进程）进行访问。此举可防止攻击者以 非特权用户（Non-privileged User） 身份获取额外的系统信息（System Information）。
 
 **规则影响：**
 
@@ -260,7 +220,7 @@ kernel.dmesg_restrict = 1
 kernel.dmesg_restrict = 1
 ```
 
-### 3.2 Address space layout randomization (ASLR) must be implemented by SLEM 5 to protect memory from unauthorized code execution.
+### 3.2 KubeOS 必须实施地址空间布局随机化（Address Space Layout Randomization, ASLR），以防止内存遭受未授权代码执行攻击。
 
 **级别：** 要求（MEDIUM）
 
@@ -268,9 +228,9 @@ kernel.dmesg_restrict = 1
 
 **规则说明：**
 
-Some adversaries launch attacks with the intent of executing code in nonexecutable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware enforced or software enforced, with hardware providing the greater strength of mechanism.
+部分攻击者以在非可执行内存区域（Non-executable Memory Regions）或被禁止访问的内存地址（Prohibited Memory Locations）中执行恶意代码为目的发起攻击。用于保护内存的安全机制包括数据执行阻止（Data Execution Prevention, DEP）和地址空间布局随机化（Address Space Layout Randomization, ASLR）等。其中，数据执行阻止机制既可由硬件（Hardware）强制实施，也可由软件（Software）强制实施，而硬件强制机制通常提供更强有力的防护。
 
-Examples of attacks are buffer overflow attacks.
+此类攻击的典型示例包括缓冲区溢出攻击（Buffer Overflow Attacks）。
 
 **规则影响：**
 
@@ -295,7 +255,7 @@ kernel.randomize_va_space = 2
 kernel.randomize_va_space = 2
 ```
 
-### 3.3 SLEM 5 must implement kptr-restrict to prevent the leaking of internal kernel addresses.
+### 3.3 KubeOS 必须启用 kptr_restrict 机制，以防止内核地址泄露。
 
 **级别：** 要求（MEDIUM）
 
@@ -303,9 +263,9 @@ kernel.randomize_va_space = 2
 
 **规则说明：**
 
-Some adversaries launch attacks with the intent of executing code in nonexecutable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware enforced or software enforced, with hardware providing the greater strength of mechanism.
+部分攻击者旨在非可执行内存区域（Non-executable Memory Regions）或受禁止访问的内存地址中执行恶意代码。用于保护内存的安全机制包括数据执行阻止（Data Execution Prevention, DEP）和地址空间布局随机化（Address Space Layout Randomization, ASLR）等。其中，数据执行阻止机制既可由硬件（Hardware）强制实施，也可由软件（Software）强制实施；在 Linux 环境下，硬件机制（通常依赖 CPU 的 NX bit 或 XD bit）能提供更强的防护效力。
 
-Examples of attacks are buffer overflow attacks.
+此类攻击的典型示例包括缓冲区溢出攻击（Buffer Overflow Attacks）。
 
 **规则影响：**
 
@@ -330,7 +290,7 @@ kernel.kptr_restrict = 1
 kernel.kptr_restrict = 1
 ```
 
-### 3.4 SLEM 5 must not forward Internet Protocol version 4 (IPv4) source-routed packets.
+### 3.4 KubeOS 禁止转发 IPv4 源路由（Source-Routed）数据包。
 
 **级别：** 要求（MEDIUM）
 
@@ -338,7 +298,9 @@ kernel.kptr_restrict = 1
 
 **规则说明：**
 
-Source-routed packets allow the source of the packet to suggest that routers forward the packet along a different path than configured on the router, which can be used to bypass network security measures. This requirement applies only to the forwarding of source-routed traffic, such as when IPv4/IPv6 forwarding is enabled and the system is functioning as a router.
+源路由数据包允许发送方指示路由器将数据包沿着与路由器配置路径不同的路径进行转发，攻击者可利用此机制绕过网络安全措施（如防火墙规则）。
+
+本安全要求仅适用于源路由流量的转发场景，即当系统启用了 IPv4/IPv6 转发功能（net.ipv4.ip_forward 或 net.ipv6.conf.all.forwarding 为 1）且系统充当路由器角色时。
 
 **规则影响：**
 
@@ -363,7 +325,7 @@ Source-routed packets allow the source of the packet to suggest that routers for
 # sudo sysctl --system
 ```
 
-### 3.5 SLEM 5 must not forward Internet Protocol version 4 (IPv4) source-routed packets by default.
+### 3.5 KubeOS 默认禁止转发 IPv4 源路由（Source-Routed）数据包。
 
 **级别：** 要求（MEDIUM）
 
@@ -371,7 +333,9 @@ Source-routed packets allow the source of the packet to suggest that routers for
 
 **规则说明：**
 
-Source-routed packets allow the source of the packet to suggest that routers forward the packet along a different path than configured on the router, which can be used to bypass network security measures. This requirement applies only to the forwarding of source-routed traffic, such as when IPv4 forwarding is enabled and the system is functioning as a router.
+源路由数据包允许发送方指示路由器沿着与路由器配置路径不同的路径转发数据包，攻击者可利用此机制绕过网络安全措施（如防火墙规则）。
+
+本安全要求仅适用于源路由流量的转发场景，即当系统启用了 IPv4 转发功能（net.ipv4.ip_forward 为 1）且系统充当路由器角色时。
 
 **规则影响：**
 
@@ -396,7 +360,7 @@ Source-routed packets allow the source of the packet to suggest that routers for
 # sudo sysctl --system
 ```
 
-### 3.6 SLEM 5 must prevent Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages from being accepted.
+### 3.6 KubeOS 必须禁止接收 IPv4 ICMP 重定向（ICMP Redirect）消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -404,7 +368,7 @@ Source-routed packets allow the source of the packet to suggest that routers for
 
 **规则说明：**
 
-ICMP redirect messages are used by routers to inform hosts that a more direct route exists for a particular destination. These messages modify the host's route table and are unauthenticated. An illicit ICMP redirect message could result in a man-in-the-middle attack.
+ICMP 重定向消息由路由器发出，用于通知主机存在通往特定目的地的更优路径。此类消息会修改主机路由表，且缺乏身份认证机制。恶意（非法）的 ICMP 重定向消息可能导致中间人攻击（Man-in-the-Middle, MITM）。
 
 **规则影响：**
 
@@ -430,7 +394,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 # sudo sysctl --system
 ```
 
-### 3.7 SLEM 5 must not allow interfaces to accept Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages by default.
+### 3.7 KubeOS 默认不得允许网络接口接收 IPv4 ICMP 重定向消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -438,7 +402,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 
 **规则说明：**
 
-ICMP redirect messages are used by routers to inform hosts that a more direct route exists for a particular destination. These messages modify the host's route table and are unauthenticated. An illicit ICMP redirect message could result in a man-in-the-middle attack.
+ICMP 重定向消息（ICMP Redirect）由路由器发出，旨在通知主机存在通往特定目的地的更优（更短）路径。此类消息会动态修改主机内核路由表，且由于 ICMP 协议缺乏身份认证（Unauthenticated）机制，攻击者可伪造此类消息。接收非法的 ICMP 重定向消息可能导致中间人攻击（Man-in-the-Middle, MITM），使攻击者能够劫持或篡改网络流量。
 
 **规则影响：**
 
@@ -463,7 +427,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 # sudo sysctl --system
 ```
 
-### 3.8 SLEM 5 must not send Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirects.
+### 3.8 KubeOS 默认不得发送 IPv4 ICMP 重定向消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -471,7 +435,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 
 **规则说明：**
 
-ICMP redirect messages are used by routers to inform hosts that a more direct route exists for a particular destination. These messages contain information from the system's route table, possibly revealing portions of the network topology.
+ICMP 重定向消息通常由路由器发出，旨在告知主机存在通往特定目的地的更优（更短）路径。此类消息包含源自系统路由表（Route Table）的具体信息，若主机违规发送，可能会导致网络拓扑结构（Network Topology）的部分细节泄露，从而增加被攻击者探测的风险。
 
 **规则影响：**
 
@@ -496,7 +460,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 # sudo sysctl --system
 ```
 
-### 3.9 SLEM 5 must not allow interfaces to send Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages by default.
+### 3.9 KubeOS 默认不得允许网络接口发送 IPv4 ICMP 重定向消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -504,7 +468,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 
 **规则说明：**
 
-ICMP redirect messages are used by routers to inform hosts that a more direct route exists for a particular destination. These messages contain information from the system's route table, possibly revealing portions of the network topology.
+ICMP 重定向消息通常由路由器发出，旨在告知主机存在通往特定目的地的更优（更短）路径。此类消息包含源自系统路由表（Route Table）的具体信息，若主机违规发送，可能会导致网络拓扑结构（Network Topology）的部分细节泄露，从而增加被攻击者探测的风险。
 
 **规则影响：**
 
@@ -528,7 +492,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 # sudo sh -c 'echo "net.ipv4.conf.default.send_redirects=0" >> /etc/sysctl.d/99-stig.conf'
 ```
 
-### 3.10 SLEM 5 must not be performing Internet Protocol version 4 (IPv4) packet forwarding unless the system is a router.
+### 3.10 除非系统充当路由器角色，否则 KubeOS 默认不得执行 IPv4 数据包转发。
 
 **级别：** 要求（MEDIUM）
 
@@ -536,7 +500,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 
 **规则说明：**
 
-Routing protocol daemons are typically used on routers to exchange network topology information with other routers. If this software is used when not required, system network information may be unnecessarily transmitted across the network.
+路由协议守护进程（Routing Protocol Daemons，如 ospfd、bgpd 等）通常仅部署在路由器上，用于与其他路由器交换网络拓扑信息。若在非路由器场景（如普通服务器或主机）下启用该功能，将导致系统网络信息被不必要地广播或传输至网络中，增加网络拓扑被探测和攻击面扩大的风险。
 
 **规则影响：**
 
@@ -561,7 +525,7 @@ Routing protocol daemons are typically used on routers to exchange network topol
 # sudo sysctl --system
 ```
 
-### 3.11 SLEM 5 must be configured to use TCP syncookies.
+### 3.11 KubeOS 必须配置启用 TCP SYN Cookies。
 
 **级别：** 要求（MEDIUM）
 
@@ -569,9 +533,9 @@ Routing protocol daemons are typically used on routers to exchange network topol
 
 **规则说明：**
 
-Denial of service (DoS) is a condition in which a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. 
+拒绝服务攻击（DoS）是指合法用户无法访问系统资源的状态。当发生此类攻击时，组织可能无法履行其核心职能，或被迫在性能严重受损的情况下运行。
 
-Managing excess capacity ensures that sufficient capacity is available to counter flooding attacks. Employing increased capacity and service redundancy may reduce the susceptibility to some DoS attacks. Managing excess capacity may include, for example, establishing selected usage priorities, quotas, or partitioning.
+通过管理超额容量（Excess Capacity），可确保系统拥有足够的资源来抵御洪水攻击（Flooding Attacks）。增加容量和服务冗余可以降低系统对部分 DoS 攻击的敏感度。管理超额容量的措施可能包括：设定特定使用优先级、实施配额限制（Quotas）或进行资源分区（Partitioning）等。
 
 **规则影响：**
 
@@ -596,7 +560,7 @@ Managing excess capacity ensures that sufficient capacity is available to counte
 # sudo sysctl --system
 ```
 
-### 3.12 SLEM 5 must not forward Internet Protocol version 6 (IPv6) source-routed packets.
+### 3.12 KubeOS 不得转发源路由的 IPv6 数据包。
 
 **级别：** 要求（MEDIUM）
 
@@ -604,7 +568,9 @@ Managing excess capacity ensures that sufficient capacity is available to counte
 
 **规则说明：**
 
-Source-routed packets allow the source of the packet to suggest that routers forward the packet along a different path than configured on the router, which can be used to bypass network security measures. This requirement applies only to the forwarding of source-routed traffic, such as when IPv4 forwarding is enabled and the system is functioning as a router.
+源路由（Source Routing）数据包允许发送方指定数据包在网络中传输的路径，而非由路由器根据标准路由表自动决定。这种机制可能被攻击者利用，使其数据包绕过防火墙、入侵检测系统（IDS）或其他网络安全措施，从而进入受保护的网络区域。
+
+此安全要求主要针对系统作为路由器（Router）运行时的源路由流量转发行为。若系统仅作为普通主机（Host），通常不涉及路由转发逻辑，但必须确保内核参数禁止此类行为。
 
 **规则影响：**
 
@@ -629,7 +595,7 @@ Source-routed packets allow the source of the packet to suggest that routers for
 # sudo sysctl --system
 ```
 
-### 3.13 SLEM 5 must not forward Internet Protocol version 6 (IPv6) source-routed packets by default.
+### 3.13 请使用linux术语翻译以下英语为中文，确保语义通顺，规则明确:
 
 **级别：** 要求（MEDIUM）
 
@@ -637,7 +603,9 @@ Source-routed packets allow the source of the packet to suggest that routers for
 
 **规则说明：**
 
-Source-routed packets allow the source of the packet to suggest that routers forward the packet along a different path than configured on the router, which can be used to bypass network security measures. This requirement applies only to the forwarding of source-routed traffic, such as when IPv4 forwarding is enabled and the system is functioning as a router.
+源路由（Source Routing）数据包允许发送方指定数据包在网络中传输的路径，而非由路由器根据标准路由表自动决策。该机制可能被攻击者利用，使其数据包绕过防火墙、入侵检测系统（IDS）或其他网络安全策略，从而进入受保护的网络区域。
+
+此安全要求主要针对系统作为路由器（Router）运行时的源路由流量转发行为。若系统作为普通主机（Host）运行，虽不涉及转发逻辑，但仍需确保内核层面默认禁止此类行为，以符合最小权限原则。
 
 **规则影响：**
 
@@ -662,7 +630,7 @@ Source-routed packets allow the source of the packet to suggest that routers for
 # sudo sysctl --system
 ```
 
-### 3.14 SLEM 5 must prevent Internet Protocol version 6 (IPv6) Internet Control Message Protocol (ICMP) redirect messages from being accepted.
+### 3.14 KubeOS 必须阻止接受 IPv6 ICMP 重定向消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -670,7 +638,7 @@ Source-routed packets allow the source of the packet to suggest that routers for
 
 **规则说明：**
 
-ICMP redirect messages are used by routers to inform hosts that a more direct route exists for a particular destination. These messages modify the host's route table and are unauthenticated. An illicit ICMP redirect message could result in a man-in-the-middle attack.
+ICMP 重定向（ICMP Redirect）消息由路由器发送，用于告知主机存在到达特定目标更优（更直接）的路径。主机收到此类消息后，会更新其路由表（Routing Table）。由于 ICMP 重定向消息未经过身份验证（Unauthenticated），攻击者可伪造此类消息，诱导主机将流量错误地路由到攻击者控制的节点，从而实施中间人攻击（Man-in-the-Middle, MITM），窃取或篡改敏感数据。
 
 **规则影响：**
 
@@ -695,7 +663,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 # sudo sysctl --system
 ```
 
-### 3.15 SLEM 5 must not allow interfaces to accept Internet Protocol version 6 (IPv6) Internet Control Message Protocol (ICMP) redirect messages by default.
+### 3.15 KubeOS 默认不得允许网络接口接受 IPv6 ICMP 重定向消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -703,7 +671,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 
 **规则说明：**
 
-ICMP redirect messages are used by routers to inform hosts that a more direct route exists for a particular destination. These messages modify the host's route table and are unauthenticated. An illicit ICMP redirect message could result in a man-in-the-middle attack.
+ICMP 重定向（ICMP Redirect）消息由路由器发送，旨在通知主机存在到达特定目标更优（更直接）的下一跳路径。主机若接受此类消息，将自动更新其内核路由表（Routing Table）。由于 ICMP 重定向消息缺乏身份验证机制（Unauthenticated），攻击者可伪造此类消息，诱导主机将流量错误地重定向至攻击者控制的节点，从而实施中间人攻击（Man-in-the-Middle, MITM），导致数据被窃听、篡改或阻断。
 
 **规则影响：**
 
@@ -728,7 +696,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 # sudo sysctl --system
 ```
 
-### 3.16 SLEM 5 must not be performing Internet Protocol version 6 (IPv6) packet forwarding unless the system is a router.
+### 3.16 KubeOS 默认不得执行 IPv6 数据包转发，除非该系统被配置为路由器。
 
 **级别：** 要求（MEDIUM）
 
@@ -736,7 +704,7 @@ ICMP redirect messages are used by routers to inform hosts that a more direct ro
 
 **规则说明：**
 
-Routing protocol daemons are typically used on routers to exchange network topology information with other routers. If this software is used when not required, system network information may be unnecessarily transmitted across the network.
+路由协议守护进程（Routing Protocol Daemons）通常仅运行在路由器上，用于与其他路由器交换网络拓扑信息。如果系统在非路由器场景下（如普通主机或工作负载节点）开启了 IPv6 数据包转发功能，且未实际运行路由服务，可能会导致系统网络信息被不必要地广播或透传到网络中，增加网络暴露面及被探测攻击的风险。
 
 **规则影响：**
 
@@ -761,7 +729,7 @@ sysctl net.ipv6.conf.all.forwarding
 # sudo sysctl --system
 ```
 
-### 3.17 SLEM 5 must not be performing Internet Protocol version 6 (IPv6) packet forwarding by default unless the system is a router.
+### 3.17 KubeOS 默认不得执行 IPv6 数据包转发，除非该系统被明确配置为路由器。
 
 **级别：** 要求（MEDIUM）
 
@@ -769,7 +737,7 @@ sysctl net.ipv6.conf.all.forwarding
 
 **规则说明：**
 
-Routing protocol daemons are typically used on routers to exchange network topology information with other routers. If this software is used when not required, system network information may be unnecessarily transmitted across the network.
+路由协议守护进程（Routing Protocol Daemons）通常仅部署于路由器节点，用于与其他路由器交换网络拓扑信息。若系统在非路由器角色（如普通计算节点或主机）上启用 IPv6 数据包转发功能，可能导致系统网络配置及拓扑信息被不必要地广播或透传至网络中，从而增加网络暴露面，提升被路由探测或攻击的风险。
 
 **规则影响：**
 
@@ -796,7 +764,7 @@ sysctl net.ipv6.conf.default.forwarding
 
 ## 4 kdump
 
-### 4.1 SLEM 5 kernel core dumps must be disabled unless needed.
+### 4.1 除非确有必要，否则必须禁用 KubeOS 内核核心转储（Kernel Core Dumps）。
 
 **级别：** 要求（MEDIUM）
 
@@ -804,7 +772,7 @@ sysctl net.ipv6.conf.default.forwarding
 
 **规则说明：**
 
-Kernel core dumps may contain the full contents of system memory at the time of the crash. Kernel core dumps may consume a considerable amount of disk space and may result in denial of service (DoS) by exhausting the available space on the target file system partition.
+内核核心转储可能包含系统在崩溃时的全部内存内容。内核核心转储可能会占用大量磁盘空间，并可能导致拒绝服务（DoS）攻击，从而耗尽目标文件系统分区上的可用空间。
 
 **规则影响：**
 
@@ -828,7 +796,7 @@ systemctl status kdump.service
 
 ## 5 yum
 
-### 5.1 SLEM 5 must remove all outdated software components after updated versions have been installed.
+### 5.1 KubeOS 在安装更新版本后，必须移除所有过时的软件组件。
 
 **级别：** 要求（MEDIUM）
 
@@ -836,7 +804,7 @@ systemctl status kdump.service
 
 **规则说明：**
 
-Previous versions of software components that are not removed from the information system after updates have been installed may be exploited by adversaries. Some information technology products may remove older versions of software automatically from the information system.
+在信息系统上安装软件更新后，若未彻底移除旧版本软件组件，攻击者可能利用旧版本中已知但未修复的安全漏洞（CVE）发起攻击。某些 IT 产品可能具备自动清理旧版本软件的功能，但 KubeOS 必须确保在升级过程中，显式地清理不再需要的旧包，以消除潜在的攻击面。
 
 **规则影响：**
 
@@ -856,7 +824,7 @@ Previous versions of software components that are not removed from the informati
 
 ## 6 分区&文件系统
 
-### 6.1 A separate file system must be used for SLEM 5 user home directories (such as /home or an equivalent).
+### 6.1 KubeOS 的用户主目录（如 /home 或其等效路径）必须使用独立文件系统。
 
 **级别：** 要求（MEDIUM）
 
@@ -864,7 +832,7 @@ Previous versions of software components that are not removed from the informati
 
 **规则说明：**
 
-The use of separate file systems for different paths can protect the system from failures resulting from a file system becoming full or failing.
+为不同路径使用独立文件系统，可防止因文件系统空间耗尽或文件系统故障而引发的系统失效。
 
 **规则影响：**
 
@@ -882,7 +850,7 @@ The use of separate file systems for different paths can protect the system from
 
 在镜像制作时配置
 
-### 6.2 SLEM 5 must use a separate file system for /var.
+### 6.2 KubeOS 必须为 /var 目录使用独立文件系统。
 
 **级别：** 要求（MEDIUM）
 
@@ -890,7 +858,7 @@ The use of separate file systems for different paths can protect the system from
 
 **规则说明：**
 
-The use of separate file systems for different paths can protect the system from failures resulting from a file system becoming full or failing.
+为不同路径使用独立文件系统，可防止因文件系统空间耗尽或文件系统故障而引发的系统失效。
 
 **规则影响：**
 
@@ -908,7 +876,7 @@ The use of separate file systems for different paths can protect the system from
 
 在镜像制作时配置
 
-### 6.3 SLEM 5 must use a separate file system for the system audit data path.
+### 6.3 KubeOS 必须为系统审计数据路径使用独立文件系统。
 
 **级别：** 要求（MEDIUM）
 
@@ -916,7 +884,7 @@ The use of separate file systems for different paths can protect the system from
 
 **规则说明：**
 
-The use of separate file systems for different paths can protect the system from failures resulting from a file system becoming full or failing.
+为不同路径使用独立文件系统，可防止因文件系统空间耗尽或文件系统故障而引发的系统失效。
 
 **规则影响：**
 
@@ -934,7 +902,7 @@ The use of separate file systems for different paths can protect the system from
 
 在镜像制作时配置
 
-### 6.4 SLEM 5 file systems that are being imported via Network File System (NFS) must be mounted to prevent files with the setuid and setgid bit set from being executed.
+### 6.4 通过网络文件系统（NFS）导入的 KubeOS 文件系统，必须通过挂载选项防止执行设置了 setuid 和 setgid 位的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -942,7 +910,7 @@ The use of separate file systems for different paths can protect the system from
 
 **规则说明：**
 
-The "nosuid" mount option causes the system to not execute "setuid" and "setgid" files with owner privileges. This option must be used for mounting any file system not containing approved "setuid" and "setguid" files. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.
+nosuid 挂载选项可阻止系统以文件所有者（Owner）的权限执行设置了 setuid 和 setgid 位的文件。对于不包含经批准的 setuid 和 setgid 文件的文件系统，在挂载时必须使用此选项。从不受信任的文件系统执行文件，会增加未授权用户获取非法管理权限的风险。
 
 **规则影响：**
 
@@ -960,7 +928,7 @@ The "nosuid" mount option causes the system to not execute "setuid" and "setgid"
 
 在镜像制作时配置
 
-### 6.5 SLEM 5 file systems that are being imported via Network File System (NFS) must be mounted to prevent binary files from being executed.
+### 6.5 通过网络文件系统（NFS）导入的 KubeOS 文件系统，必须挂载以防止执行二进制文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -968,7 +936,7 @@ The "nosuid" mount option causes the system to not execute "setuid" and "setgid"
 
 **规则说明：**
 
-The "noexec" mount option causes the system to not execute binary files. This option must be used for mounting any file system not containing approved binary files, as they may be incompatible. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.
+noexec 挂载选项可阻止系统执行二进制文件。对于不包含经批准的二进制文件的文件系统，在挂载时必须使用此选项，因为这些文件可能不兼容。从不受信任的文件系统执行文件，会增加未授权用户获取非法管理权限的风险。
 
 **规则影响：**
 
@@ -986,7 +954,7 @@ The "noexec" mount option causes the system to not execute binary files. This op
 
 在镜像制作时配置
 
-### 6.6 SLEM 5 file systems that are used with removable media must be mounted to prevent files with the setuid and setgid bit set from being executed.
+### 6.6 使用可移动介质的 KubeOS 文件系统，必须通过挂载选项防止执行设置了 setuid 和 setgid 位的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -994,7 +962,7 @@ The "noexec" mount option causes the system to not execute binary files. This op
 
 **规则说明：**
 
-The "nosuid" mount option causes the system to not execute "setuid" and "setgid" files with owner privileges. This option must be used for mounting any file system not containing approved "setuid" and "setguid" files. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.
+nosuid 挂载选项可阻止系统以文件所有者（Owner）的权限执行设置了 setuid 和 setgid 位的文件。对于不包含经批准的 setuid 和 setgid 文件的文件系统，在挂载时必须使用此选项。从不受信任的文件系统（如可移动介质）执行文件，会增加未授权用户获取非法管理权限的风险。
 
 **规则影响：**
 
@@ -1009,7 +977,7 @@ The "nosuid" mount option causes the system to not execute "setuid" and "setgid"
 
 无
 
-### 6.7 SLEM 5 file systems that contain user home directories must be mounted to prevent files with the setuid and setgid bit set from being executed.
+### 6.7 包含用户家目录的 KubeOS 文件系统，必须挂载以防止执行设置了 setuid 和 setgid 位的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -1017,7 +985,7 @@ The "nosuid" mount option causes the system to not execute "setuid" and "setgid"
 
 **规则说明：**
 
-The "nosuid" mount option causes the system to not execute setuid and setgid files with owner privileges. This option must be used for mounting any file system not containing approved setuid and setguid files. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.
+nosuid 挂载选项可阻止系统以文件所有者（Owner）的权限执行设置了 setuid 和 setgid 位的文件。对于不包含经批准的 setuid 和 setgid 文件的文件系统，在挂载时必须使用此选项。从不可信的文件系统执行文件，会增加未授权用户获取非法管理权限的风险。
 
 **规则影响：**
 
@@ -1035,7 +1003,7 @@ The "nosuid" mount option causes the system to not execute setuid and setgid fil
 
 在镜像制作时配置
 
-### 6.8 SLEM 5 must disable the file system automounter unless required.
+### 6.8 除非业务必需，否则 KubeOS 必须禁用文件系统自动挂载服务（Automounter）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1043,7 +1011,7 @@ The "nosuid" mount option causes the system to not execute setuid and setgid fil
 
 **规则说明：**
 
-Automatically mounting file systems permits easy introduction of unknown devices, thereby facilitating malicious activity.
+禁止启用文件系统自动挂载功能允许系统自动识别并挂载未知的外部设备。
 
 **规则影响：**
 
@@ -1066,7 +1034,7 @@ systemctl status autofs
 # sudo systemctl disable autofs
 ```
 
-### 6.9 All SLEM 5 persistent disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure or modification of all information that requires at-rest protection.
+### 6.9 KubeOS 所有持久化磁盘分区必须实施加密机制，以防止需要静态数据保护（Data-at-Rest Protection）的所有信息发生未授权披露或篡改。
 
 **级别：** 要求（HIGH）
 
@@ -1074,9 +1042,9 @@ systemctl status autofs
 
 **规则说明：**
 
-SLEM 5 handling data requiring data-at-rest protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.
+KubeOS 处理需要静态数据保护的数据时，必须采用加密机制，以防止未经授权的披露和修改静态信息。 
 
-Selection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).
+选择加密机制的依据是保护组织信息完整性的需求。该机制的强度应与信息的安全类别和/或分类相匹配。组织可以灵活地选择对存储设备上的所有信息进行加密（即全盘加密），或对特定的数据结构（例如文件、记录或字段）进行加密。
 
 **规则影响：**
 
@@ -1103,7 +1071,7 @@ Selection of a cryptographic mechanism is based on the need to protect the integ
 
 ## 7 文件权限
 
-### 7.1 SLEM 5 must have directories that contain system commands set to a mode of 755 or less permissive.
+### 7.1 KubeOS 包含系统命令的目录权限必须设置为 755 或更低权限（即权限值不大于 755）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1111,9 +1079,9 @@ Selection of a cryptographic mechanism is based on the need to protect the integ
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+若 KubeOS 允许任意用户修改软件库（Software Libraries），则这些修改可能在未经过健全变更管理流程（Change Management Process）所规定的适当测试与审批的情况下被实施。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于包含可访问且可配置的软件库的 KubeOS 系统，例如解释型语言（Interpreted Languages）的库文件。软件库的概念同样涵盖具有提权（Escalated Privileges）执行能力的特权程序。仅允许经过资质认证且获得授权的个体访问信息系统组件，以执行包括升级和修改在内的变更操作。
 
 **规则影响：**
 
@@ -1139,7 +1107,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.2 SLEM 5 must have system commands set to a mode of 755 or less permissive.
+### 7.2 KubeOS 系统命令的权限必须设置为 755 或更低（即权限值不大于 755）
 
 **级别：** 要求（MEDIUM）
 
@@ -1147,9 +1115,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+若 KubeOS 允许任意用户修改软件库（Software Libraries），则这些修改可能在未经过健全变更管理流程（Change Management Process）所规定的适当测试与审批的情况下被实施。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于包含可访问且可配置的软件库的 KubeOS 系统，例如解释型语言（Interpreted Languages）的库文件。软件库的概念同样涵盖具有提权（Escalated Privileges）执行能力的特权程序。仅允许经过资质认证且获得授权的个体访问信息系统组件，以执行包括升级和修改在内的变更操作。
 
 **规则影响：**
 
@@ -1175,7 +1143,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.3 SLEM 5 library directories must have mode 755 or less permissive.
+### 7.3 KubeOS 库目录的权限必须设置为 755 或更低（即权限值不大于 755）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1183,9 +1151,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+若 KubeOS 允许任意用户修改软件库（Software Libraries），则这些修改可能在未经过健全变更管理流程（Change Management Process）所规定的适当测试与审批的情况下被实施。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于包含可访问且可配置的软件库的 KubeOS 系统，例如解释型语言（Interpreted Languages）的库文件。软件库的概念同样涵盖具有提权（Escalated Privileges）执行能力的特权程序。仅允许经过资质认证且获得授权的个体访问信息系统组件，以执行包括升级和修改在内的变更操作。
 
 **规则影响：**
 
@@ -1210,7 +1178,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.4 SLEM 5 library files must have mode 755 or less permissive.
+### 7.4 KubeOS 库文件（Library Files）的权限必须设置为 755 或更低（即权限值不大于 755）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1218,9 +1186,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+若 KubeOS 允许任意用户修改软件库，则这些修改可能在未经过健全变更管理流程（Change Management Process）所规定的适当测试与审批的情况下被实施。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于包含可访问且可配置的软件库的 KubeOS 系统，例如解释型语言（Interpreted Languages）的库文件。软件库的概念同样涵盖具有提权（Escalated Privileges）执行能力的特权程序。仅允许经过资质认证且获得授权的个体访问信息系统组件，以执行包括升级和修改在内的变更操作。
 
 **规则影响：**
 
@@ -1245,7 +1213,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.5 All SLEM 5 local interactive user home directories must have mode 750 or less permissive.
+### 7.5 所有 KubeOS 本地交互式用户的家目录（Home Directories）权限必须设置为 750 或更低（即权限值不大于 750）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1253,7 +1221,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-Excessive permissions on local interactive user home directories may allow unauthorized access to user files by other users.
+本地交互式用户家目录若权限设置过大，可能导致其他用户未经授权使用（Access）和访问（Access）该用户的文件。
 
 **规则影响：**
 
@@ -1275,7 +1243,7 @@ Excessive permissions on local interactive user home directories may allow unaut
 # sudo chmod 750 {目标目录}
 ```
 
-### 7.6 All SLEM 5 local initialization files must have mode 740 or less permissive.
+### 7.6 所有 KubeOS 本地初始化文件（Local Initialization Files）的权限必须设置为 740 或更低（即权限值不大于 740）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1283,7 +1251,7 @@ Excessive permissions on local interactive user home directories may allow unaut
 
 **规则说明：**
 
-Local initialization files are used to configure the user's shell environment upon logon. Malicious modification of these files could compromise accounts upon logon.
+本地初始化文件用于在用户登录时配置其 Shell 环境。若这些文件遭到恶意篡改，将在用户登录时导致账户凭证或环境被破坏。
 
 **规则影响：**
 
@@ -1305,7 +1273,7 @@ Local initialization files are used to configure the user's shell environment up
 # sudo chmod 750 {目标文件}
 ```
 
-### 7.7 SLEM 5 SSH daemon public host key files must have mode 644 or less permissive.
+### 7.7 KubeOS SSH 守护进程（SSH Daemon）的公钥主机密钥文件（Public Host Key Files）权限必须设置为 644 或更低（即权限值不大于 644）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1313,7 +1281,7 @@ Local initialization files are used to configure the user's shell environment up
 
 **规则说明：**
 
-If a public host key file is modified by an unauthorized user, the SSH service may be compromised.
+若公钥主机密钥文件被未经授权的用户篡改，SSH 服务可能会遭到破坏。
 
 **规则影响：**
 
@@ -1335,7 +1303,7 @@ If a public host key file is modified by an unauthorized user, the SSH service m
 # sudo chmod 644 /etc/ssh/ssh_host*key.pub
 ```
 
-### 7.8 SLEM 5 SSH daemon private host key files must have mode 640 or less permissive.
+### 7.8 KubeOS SSH 守护进程的私钥主机密钥文件权限必须设置为 640 或更低（即权限值不大于 640）。
 
 **级别：** 要求（MEDIUM）
 
@@ -1343,7 +1311,7 @@ If a public host key file is modified by an unauthorized user, the SSH service m
 
 **规则说明：**
 
-If an unauthorized user obtains the private SSH host key file, the host could be impersonated.
+若未经授权的用户获取了 SSH 主机私钥文件，该主机可能被冒充
 
 **规则影响：**
 
@@ -1366,7 +1334,7 @@ If an unauthorized user obtains the private SSH host key file, the host could be
 # sudo chmod 640 /etc/ssh/ssh_host*key
 ```
 
-### 7.9 SLEM 5 library files must be owned by root.
+### 7.9 KubeOS 库文件（Library Files）必须由 root 用户所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1374,9 +1342,9 @@ If an unauthorized user obtains the private SSH host key file, the host could be
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+若 KubeOS 允许任何用户对软件库文件进行修改，这些更改可能会绕过健全变更管理流程中必要的测试与审批环节而被实施。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+本要求适用于包含可访问且可配置的软件库的 KubeOS 环境（例如解释型语言环境）。软件库的范围还包括以提权（Escalated Privileges）执行的特权程序。只有具备资质且获得授权的个人才应被允许访问信息系统组件，以发起变更（包括升级和修改）。
 
 **规则影响：**
 
@@ -1401,7 +1369,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.10 SLEM 5 library files must be group-owned by root.
+### 7.10 KubeOS 库文件（Library Files）必须归属 root 用户组。
 
 **级别：** 要求（MEDIUM）
 
@@ -1409,9 +1377,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+若 KubeOS 允许任何用户对软件库文件进行修改，这些更改可能会绕过健全变更管理流程中必要的测试与审批环节而被实施。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+本要求适用于包含可访问且可配置的软件库的 KubeOS 环境（例如解释型语言环境）。软件库的范围还包括以提权（Escalated Privileges）执行的特权程序。只有具备资质且获得授权的个人才应被允许访问信息系统组件，以发起变更（包括升级和修改）。
 
 **规则影响：**
 
@@ -1436,7 +1404,8 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.11 SLEM 5 library directories must be owned by root.
+
+### 7.11 KubeOS 库目录必须由 root 用户所有.
 
 **级别：** 要求（MEDIUM）
 
@@ -1444,9 +1413,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+如果 KubeOS 允许任何用户更改软件库，则这些更改可能在未经适当测试和批准的情况下实施，而这些测试和批准是健全变更管理流程的一部分。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于具有可访问和可配置软件库的 KubeOS，例如解释型语言的情况。软件库还包括以提权权限执行的特权程序。只有合格且获授权的个人才被允许获取信息系统组件的访问权限，以便发起变更，包括升级和修改。
 
 **规则影响：**
 
@@ -1471,7 +1440,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.12 SLEM 5 library directories must be group-owned by root.
+### 7.12 KubeOS 库目录必须由 root 组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1479,9 +1448,10 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+如果 KubeOS 允许任何用户更改软件库，则这些更改可能在未经适当测试和批准的情况下实施，而这些测试和批准是健全变更管理流程的一部分。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于具有可访问和可配置软件库的 KubeOS，例如解释型语言的情况。软件库还包括以提权权限执行的特权程序。只有合格且获授权的个人才被允许获取信息系统组件的访问权限，以便发起变更，包括升级和修改。
+
 
 **规则影响：**
 
@@ -1506,7 +1476,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.13 SLEM 5 must have system commands owned by root.
+### 7.13 KubeOS 必须由 root 用户所有系统命令。
 
 **级别：** 要求（MEDIUM）
 
@@ -1514,9 +1484,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+如果 KubeOS 允许任何用户更改软件库，则这些更改可能在未经适当测试和批准的情况下实施，而这些测试和批准是健全变更管理流程的一部分。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于具有可访问和可配置软件库的 KubeOS，例如解释型语言的情况。软件库还包括以提权权限执行的特权程序。只有合格且获授权的个人才被允许获取信息系统组件的访问权限，以便发起变更，包括升级和修改。
 
 **规则影响：**
 
@@ -1541,7 +1511,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.14 SLEM 5 must have system commands group-owned by root or a system account.
+### 7.14 KubeOS 系统命令必须由 root 或系统账户组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1549,9 +1519,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+如果 KubeOS 允许任何用户更改软件库，则这些更改可能在未经适当测试和批准的情况下实施，而这些测试和批准是健全变更管理流程的一部分。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于具有可访问和可配置软件库的 KubeOS，例如解释型语言的情况。软件库还包括以提权权限执行的特权程序。只有合格且获授权的个人才被允许获取信息系统组件的访问权限，以便发起变更，包括升级和修改。
 
 **规则影响：**
 
@@ -1576,7 +1546,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.15 SLEM 5 must have directories that contain system commands owned by root.
+### 7.15 KubeOS 包含系统命令的目录必须由 root 用户所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1584,9 +1554,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+如果 KubeOS 允许任何用户更改软件库，则这些更改可能在未经适当测试和批准的情况下实施，而这些测试和批准是健全变更管理流程的一部分。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于具有可访问和可配置软件库的 KubeOS，例如解释型语言的情况。软件库还包括以提权权限执行的特权程序。只有合格且获授权的个人才被允许获取信息系统组件的访问权限，以便发起变更，包括升级和修改。
 
 **规则影响：**
 
@@ -1611,7 +1581,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.16 SLEM 5 must have directories that contain system commands group-owned by root.
+### 7.16 KubeOS 包含系统命令的目录必须由 root 组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1619,9 +1589,9 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-If SLEM 5 were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+如果 KubeOS 允许任何用户更改软件库，则这些更改可能在未经适当测试和批准的情况下实施，而这些测试和批准是健全变更管理流程的一部分。
 
-This requirement applies to SLEM 5 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.
+此要求适用于具有可访问和可配置软件库的 KubeOS，例如解释型语言的情况。软件库还包括以提权权限执行的特权程序。只有合格且获授权的个人才被允许获取信息系统组件的访问权限，以便发起变更，包括升级和修改。
 
 **规则影响：**
 
@@ -1646,7 +1616,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 # sudo reboot
 ```
 
-### 7.17 All SLEM 5 files and directories must have a valid owner.
+### 7.17 所有 KubeOS 文件和目录必须具有有效的所有者。
 
 **级别：** 要求（MEDIUM）
 
@@ -1654,7 +1624,7 @@ This requirement applies to SLEM 5 with software libraries that are accessible a
 
 **规则说明：**
 
-Unowned files and directories may be unintentionally inherited if a user is assigned the same User Identifier (UID) as the UID of the unowned files.
+如果用户被分配与未拥有文件相同的用户标识符 (UID)，则可能会无意中继承未拥有文件。
 
 **规则影响：**
 
@@ -1678,7 +1648,7 @@ Unowned files and directories may be unintentionally inherited if a user is assi
 # sudo chown <用户> <文件>
 ```
 
-### 7.18 All SLEM 5 files and directories must have a valid group owner.
+### 7.18 所有 KubeOS 文件和目录必须具有有效的组所有者。
 
 **级别：** 要求（MEDIUM）
 
@@ -1686,7 +1656,7 @@ Unowned files and directories may be unintentionally inherited if a user is assi
 
 **规则说明：**
 
-Files without a valid group owner may be unintentionally inherited if a group is assigned the same Group Identifier (GID) as the GID of the files without a valid group owner.
+如果没有有效组所有者的文件被分配与没有有效组所有者的文件相同的组标识符 (GID)，则可能会无意中继承这些文件。
 
 **规则影响：**
 
@@ -1710,7 +1680,7 @@ Files without a valid group owner may be unintentionally inherited if a group is
 # sudo chgrp <组名> <文件名>
 ```
 
-### 7.19 All SLEM 5 local interactive user home directories must be group-owned by the home directory owner's primary group.
+### 7.19 所有 KubeOS 本地交互式用户主目录必须由主目录所有者的主组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1718,7 +1688,7 @@ Files without a valid group owner may be unintentionally inherited if a group is
 
 **规则说明：**
 
-If the Group Identifier (GID) of a local interactive user's home directory is not the same as the primary GID of the user, this would allow unauthorized access to the user's files, and users that share the same group may not be able to access files that they legitimately should.
+如果本地交互式用户主目录的组标识符 (GID) 与该用户的主 GID 不同，这将允许未经授权的用户访问该用户的文件，并且共享同一组的用户可能无法访问他们合法应访问的文件。
 
 **规则影响：**
 
@@ -1740,7 +1710,7 @@ If the Group Identifier (GID) of a local interactive user's home directory is no
 # sudo chgrp users {目标目录}
 ```
 
-### 7.20 All SLEM 5 world-writable directories must be group-owned by root, sys, bin, or an application group.
+### 7.20 所有 KubeOS 世界可写目录必须由 root、sys、bin 或应用程序组所有。
 
 **级别：** 要求（MEDIUM）
 
@@ -1772,7 +1742,7 @@ The only authorized public directories are those temporary directories supplied 
 # sudo chgrp root <目录>
 ```
 
-### 7.21 The sticky bit must be set on all SLEM 5 world-writable directories.
+### 7.21 所有 KubeOS 世界可写目录必须设置粘滞位。
 
 **级别：** 要求（MEDIUM）
 
@@ -1780,11 +1750,11 @@ The only authorized public directories are those temporary directories supplied 
 
 **规则说明：**
 
-Preventing unauthorized information transfers mitigates the risk of information, including encrypted representations of information, produced by the actions of prior users/roles (or the actions of processes acting on behalf of prior users/roles) from being available to any current users/roles (or current processes) that obtain access to shared system resources (e.g., registers, main memory, and hard disks) after those resources have been released back to information systems. The control of information in shared resources is also commonly referred to as object reuse and residual information protection.
+防止未经授权的信息传输可降低以下风险：先前用户/角色（或代表先前用户/角色执行的进程）产生的信息，包括信息的加密表示，在先前用户/角色（或当前进程）在释放资源后重新获得对共享系统资源（例如寄存器、主存储器和硬盘）的访问时，这些信息可能对任何当前用户/角色（或当前进程）可用。共享资源中信息的控制也常称为对象重用和残留信息保护。
 
-This requirement generally applies to the design of an information technology product, but it can also apply to the configuration of particular information system components that are, or use, such products. This can be verified by acceptance/validation processes in DOD or other government agencies.
+此要求通常适用于信息技术产品的设计，但也可能适用于配置特定使用此类产品的信息系统组件。这可以通过国防部或其他政府机构的接受/验证过程进行验证。
 
-There may be shared resources with configurable protections (e.g., files in storage) that may be assessed on specific information system components.
+可能存在具有可配置保护的共享资源（例如存储中的文件），这些资源可以在特定的信息系统组件上进行评估。
 
 **规则影响：**
 
@@ -1807,7 +1777,7 @@ There may be shared resources with configurable protections (e.g., files in stor
 注：对于每个全局可写目录，将上述命令中的“/tmp”替换为尚未设置粘滞位的全局可写目录。
 ```
 
-### 7.22 SLEM 5 must prevent unauthorized users from accessing system error messages.
+### 7.22 KubeOS 必须防止未经授权的用户访问系统错误消息。
 
 **级别：** 要求（MEDIUM）
 
@@ -1815,9 +1785,9 @@ There may be shared resources with configurable protections (e.g., files in stor
 
 **规则说明：**
 
-Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify SLEM 5 or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.
+只有授权人员才应知晓错误及其详细信息。错误消息是组织运营状态的指示器，或者可以识别 KubeOS 或平台。此外，不得通过错误消息向未经授权的人员或其指定代表泄露个人身份信息 (PII) 和运营信息。
 
-The structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements.
+组织和发展团队必须仔细考虑错误消息的结构和内容。信息系统识别和处理错误条件的程度由组织政策和运营需求指导。
 
 **规则影响：**
 
@@ -1839,7 +1809,7 @@ The structure and content of error messages must be carefully considered by the 
 # sudo chmod 640 /var/log/messages
 ```
 
-### 7.23 SLEM 5 must generate error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries.
+### 7.23 KubeOS 必须生成提供纠正行动所需信息的错误消息，同时不泄露可能被对手利用的信息。
 
 **级别：** 要求（MEDIUM）
 
@@ -1847,11 +1817,11 @@ The structure and content of error messages must be carefully considered by the 
 
 **规则说明：**
 
-Any operating system providing too much information in error messages risks compromising the data and security of the structure, and content of error messages needs to be carefully considered by the organization.
+任何在错误消息中提供过多信息的操作系统都有风险损害数据和安全性，并且错误消息的结构和内容需要由组织仔细考虑。
 
-Organizations carefully consider the structure/content of error messages. The extent to which information systems are able to identify and handle error conditions is guided by organizational policy and operational requirements. Information that could be exploited by adversaries includes, for example, erroneous logon attempts with passwords entered by mistake as the username, mission/business information that can be derived from (if not stated explicitly by) information recorded, and personal information, such as account numbers, social security numbers, and credit card numbers.
+组织仔细考虑错误消息的结构/内容。信息系统识别和处理错误条件的程度由组织政策和运营需求指导。可能被对手利用的信息包括，例如，错误登录尝试，其中误输入的密码作为用户名，可以从记录的信息中派生（如果未明确说明）的任务/业务信息，以及个人信息，例如账号、社会安全号码和信用卡号码。
 
-The /var/log/btmp, /var/log/wtmp, and /var/log/lastlog files have group write and global read permissions to allow for the lastlog function to perform. Limiting the permissions beyond this configuration will result in the failure of functions that rely on the lastlog database.
+/var/log/btmp、/var/log/wtmp 和 /var/log/lastlog 文件具有组写和全局读权限，以允许 lastlog 功能执行。限制超出此配置的权限将导致依赖 lastlog 数据库的功能失败。
 
 **规则影响：**
 
@@ -1873,7 +1843,7 @@ The /var/log/btmp, /var/log/wtmp, and /var/log/lastlog files have group write an
 # sudo find /var/log -perm /137 ! -name '*[bw]tmp' ! -name '*lastlog' -type f -exec chmod 640 '{}' \；
 ```
 
-### 7.24 All SLEM 5 local interactive user home directories defined in the /etc/passwd file must exist.
+### 7.24 /etc/passwd 文件中定义的所有 KubeOS 本地交互式用户主目录必须存在。
 
 **级别：** 要求（MEDIUM）
 
@@ -1881,7 +1851,7 @@ The /var/log/btmp, /var/log/wtmp, and /var/log/lastlog files have group write an
 
 **规则说明：**
 
-If a local interactive user has a home directory defined that does not exist, the user may be given access to the / directory as the current working directory upon logon. This could create a denial of service (DoS) because the user would not be able to access their logon configuration files, and it may give them visibility to system files they normally would not be able to access.
+如果本地交互式用户定义了不存在的主目录，则用户在登录时可能会被赋予 / 目录作为当前工作目录。这可能导致拒绝服务 (DoS)，因为用户将无法访问其登录配置文件，并且可能会给他们提供他们通常无法访问的系统文件的可见性。
 
 **规则影响：**
 
@@ -1906,7 +1876,7 @@ If a local interactive user has a home directory defined that does not exist, th
 # sudo chmod 0750 /home/{用户名}
 ```
 
-### 7.25 All SLEM 5 local initialization files must not execute world-writable programs.
+### 7.25 所有 KubeOS 本地初始化文件不得执行世界可写程序。
 
 **级别：** 要求（MEDIUM）
 
@@ -1914,7 +1884,7 @@ If a local interactive user has a home directory defined that does not exist, th
 
 **规则说明：**
 
-If user start-up files execute world-writable programs, especially in unprotected directories, they could be maliciously modified to destroy user files or otherwise compromise the system at the user level. If the system is compromised at the user level, it is easier to elevate privileges to eventually compromise the system at the root and network level.
+如果用户启动文件执行世界可写程序，特别是在受保护目录中，它们可能被恶意修改以破坏用户文件或以其他方式在用户级别损害系统。如果系统在用户级别被妥协，则更容易提升权限以最终在根和网络级别损害系统。
 
 **规则影响：**
 
@@ -1940,7 +1910,7 @@ find / -xdev -perm -002 -type f -exec ls -ld {} \;
 
 ## 8 网络
 
-### 8.1 SLEM 5 must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services as defined in the Ports, Protocols, and Services Management (PPSM) Category Assignments List (CAL) and vulnerability assessments.
+### 8.1 KubeOS 必须根据端口、协议和服务管理 (PPSM) 类别分配列表 (CAL) 和漏洞评估，禁止或限制使用功能、端口、协议和/或服务。
 
 **级别：** 要求（MEDIUM）
 
@@ -1948,9 +1918,9 @@ find / -xdev -perm -002 -type f -exec ls -ld {} \;
 
 **规则说明：**
 
-To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.
+为了防止未经授权的设备连接、未经授权的信息传输或未经授权的分隔隧道（即数据类型的嵌入），组织必须禁用或禁用信息系统上未使用或不必要的物理和逻辑端口/协议。
 
-Additionally, operating system remote access functionality must have the capability to immediately disconnect current users remotely accessing the information system and/or disable further remote access. The speed of disconnect or disablement varies based on the criticality of mission functions and the need to eliminate immediate or future remote access to organizational information systems.
+此外，操作系统远程访问功能必须能够立即断开当前远程访问信息系统用户的连接和/或禁用进一步的远程访问。断开连接或禁用的速度根据任务功能的紧迫性以及消除对组织信息系统的即时或未来远程访问的需要而有所不同。
 
 **规则影响：**
 
@@ -1975,7 +1945,7 @@ systemctl status firewalld.service
 
 ## 9 chrony
 
-### 9.1 SLEM 5 clock must, for networked systems, be synchronized to an authoritative DOD time source at least every 24 hours.
+### 9.1 KubeOS 时钟必须对于联网系统，至少每 24 小时同步一次权威国防部时间源。
 
 **级别：** 要求（MEDIUM）
 
@@ -1983,11 +1953,11 @@ systemctl status firewalld.service
 
 **规则说明：**
 
-Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside the configured acceptable allowance (drift) may be inaccurate.
+不准确的时戳使得关联事件更加困难，并可能导致不准确的分析。确定系统在特定事件发生时的正确时间对于进行取证分析和调查系统事件至关重要。超出配置的可接受允许值（漂移）之外的源可能不准确。
 
-Synchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network.
+同步内部信息系统时钟为具有多个系统时钟和通过网络连接的系统提供统一的时戳。
 
-Organizations should consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints).
+组织应考虑可能没有定期访问权威时间源的端点（例如移动、远程工作和战术端点）。
 
 **规则影响：**
 
@@ -2012,7 +1982,7 @@ server <time_source> maxpoll 16
 
 ## 10 网卡配置
 
-### 10.1 SLEM 5 must not have network interfaces in promiscuous mode unless approved and documented.
+### 10.1 除非获得批准和记录，否则 KubeOS 不得将网络接口配置为混杂模式。
 
 **级别：** 要求（MEDIUM）
 
@@ -2020,9 +1990,9 @@ server <time_source> maxpoll 16
 
 **规则说明：**
 
-Network interfaces in promiscuous mode allow for the capture of all network traffic visible to the system. If unauthorized individuals can access these applications, it may allow then to collect information such as logon IDs, passwords, and key exchanges between systems.
+混杂模式下的网络接口允许捕获系统可见的所有网络流量。如果未经授权的个人可以访问这些应用程序，则可能允许他们收集诸如登录 ID、密码和系统之间的密钥交换等信息。
 
-If the system is being used to perform a network troubleshooting function, the use of these tools must be documented with the information system security officer (ISSO) and restricted to only authorized personnel.
+如果系统用于执行网络故障排除功能，则必须与信息系统安全官员 (ISSO) 记录这些工具的使用，并仅限于授权人员。
 
 **规则影响：**
 
@@ -2046,7 +2016,7 @@ ip link | grep -i promisc
 
 ## 11 openssh
 
-### 11.1 SLEM 5 must display the Standard Mandatory DOD Notice and Consent Banner before granting access via SSH.
+### 11.1 KubeOS 必须配置为：所有与 SSH 流量关联的网络连接在变得无响应后终止。
 
 **级别：** 要求（MEDIUM）
 
@@ -2054,59 +2024,9 @@ ip link | grep -i promisc
 
 **规则说明：**
 
-Display of a standardized and approved use notification before granting access to SLEM 5 ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
+在短时间内终止无响应的 SSH 会话，可减少未经授权的人员接管已在控制台或控制台端口上启用且无人看管的管理会话的机会窗口。此外，快速终止空闲的 SSH 会话也将释放由被管网络元素承诺的资源。
 
-System use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.
-
-The banner must be formatted in accordance with applicable DOD policy. Use the following verbiage for SLEM 5 that can accommodate banners of 1300 characters:
-
-"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
-
-By using this IS (which includes any device attached to this IS), you consent to the following conditions:
-
--The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.
-
--At any time, the USG may inspect and seize data stored on this IS.
-
--Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.
-
--This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.
-
--Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."
-
-**规则影响：**
-
-无
-
-**检查方法：**
-
-
-```bash
-使用以下命令检查，若返回值为Banner /etc/issue/，则pass，否则fail：
-grep -w '^Banner /etc/issue/' /etc/ssh/sshd_config
-```
-
-**修复方法：**
-
-
-```bash
-使用以下命令修改/etc/ssh/sshd_config文件，增加或修改以下文字，然后重启sshd服务：
-# vim /etc/ssh/sshd_config
-Banner /etc/issue/
-# sudo systemctl restart sshd.service
-```
-
-### 11.2 SLEM 5 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.
-
-**级别：** 要求（MEDIUM）
-
-**适用版本：** ALL
-
-**规则说明：**
-
-Terminating an unresponsive SSH session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle SSH session will also free up resources committed by the managed network element.
-
-Terminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the operating system level and deallocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. This does not mean the operating system terminates all sessions or network access; it only ends the unresponsive session and releases the resources associated with that session.
+终止与通信会话关联的网络连接包括，例如，在操作系统级别分配关联的 TCP/IP 地址/端口对，以及在多个应用程序会话使用单个操作系统级别网络连接时，在应用程序级别分配网络资源。这并不意味着操作系统终止所有会话或网络访问；它仅结束无响应的会话并释放与该会话关联的资源。
 
 **规则影响：**
 
@@ -2130,7 +2050,7 @@ ClientAliveCountMax 1
 # sudo systemctl restart sshd.service
 ```
 
-### 11.3 SLEM 5 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.
+### 11.2 KubeOS 必须配置为：所有与 SSH 流量关联的网络连接在变得无响应 10 分钟后终止。
 
 **级别：** 要求（MEDIUM）
 
@@ -2138,9 +2058,9 @@ ClientAliveCountMax 1
 
 **规则说明：**
 
-Terminating an unresponsive SSH session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle SSH session will also free up resources committed by the managed network element. 
+在短时间内终止无响应的 SSH 会话，可减少未经授权的人员接管已在控制台或控制台端口上启用且无人看管的管理会话的机会窗口。此外，快速终止空闲的 SSH 会话也将释放由被管网络元素承诺的资源。
 
-Terminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the operating system level and deallocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. This does not mean that the operating system terminates all sessions or network access; it only ends the unresponsive session and releases the resources associated with that session.
+终止与通信会话关联的网络连接包括，例如，在操作系统级别分配关联的 TCP/IP 地址/端口对，以及在多个应用程序会话使用单个操作系统级别网络连接时，在应用程序级别分配网络资源。这并不意味着操作系统终止所有会话或网络访问；它仅结束无响应的会话并释放与该会话关联的资源。
 
 **规则影响：**
 
@@ -2164,7 +2084,7 @@ ClientAliveInterval 600
 # sudo systemctl restart sshd.service
 ```
 
-### 11.4 SLEM 5 SSH daemon must disable forwarded remote X connections for interactive users, unless to fulfill documented and validated mission requirements.
+### 11.3 除非为满足文档化和验证过的任务需求，否则 KubeOS SSH 守护进程必须为交互式用户禁用转发远程 X 连接。
 
 **级别：** 要求（MEDIUM）
 
@@ -2172,11 +2092,11 @@ ClientAliveInterval 600
 
 **规则说明：**
 
-The security risk of using X11 forwarding is that the client's X11 display server may be exposed to attack when the SSH client requests forwarding. A system administrator may have a stance in which they want to protect clients that may expose themselves to attack by unwittingly requesting X11 forwarding, which can warrant a ''no'' setting.
+使用 X11 转发的安全风险在于，当 SSH 客户端请求转发时，客户端的 X11 显示服务器可能会暴露于攻击之下。系统管理员可能持有一种立场，希望保护那些可能因无意中请求 X11 转发而暴露于攻击的客户端，这可能需要设置为“否”（禁用）。
 
-X11 forwarding should be enabled with caution. Users with the ability to bypass file permissions on the remote host (for the user's X11 authorization database) can access the local X11 display through the forwarded connection. An attacker may then be able to perform activities such as keystroke monitoring if the ForwardX11Trusted option is also enabled.
+应谨慎启用 X11 转发。能够绕过远程主机上文件权限的用户（针对用户 X11 授权数据库）可以通过转发连接访问本地 X11 显示。如果同时启用了 ForwardX11Trusted 选项，攻击者随后可能能够执行诸如键盘记录等活动。
 
-If X11 services are not required for the system's intended function, they should be disabled or restricted as appropriate to the system's needs.
+如果 X11 服务不是系统预期功能所必需的，则应根据系统需求禁用或限制它们。
 
 **规则影响：**
 
@@ -2200,7 +2120,7 @@ ClientAliveInterval 600
 # sudo systemctl restart sshd.service
 ```
 
-### 11.5 SLEM 5 must deny direct logons to the root account using remote access via SSH.
+### 11.4 KubeOS 必须禁止通过 SSH 远程访问直接登录 root 账户。
 
 **级别：** 要求（MEDIUM）
 
@@ -2208,15 +2128,15 @@ ClientAliveInterval 600
 
 **规则说明：**
 
-To ensure individual accountability and prevent unauthorized access, organizational users must be individually identified and authenticated.
+为确保个人责任并防止未经授权的访问，组织用户必须 individually 标识和认证。
 
-A group authenticator is a generic account used by multiple individuals. Use of a group authenticator alone does not uniquely identify individual users. Examples of the group authenticator is the Unix OS "root" user account, the Windows "Administrator" account, the "sa" account, or a "helpdesk" account.
+组认证者是供多个个人使用的通用账户。单独使用组认证者无法唯一标识个人用户。组认证者的示例包括 Unix OS 的“root”用户账户、Windows 的“Administrator”账户、“sa”账户或“helpdesk”账户。
 
-For example, the Unix and Windows SLEM 5 offer a "switch user" capability, allowing users to authenticate with their individual credentials and, when needed, "switch" to the administrator role. This method provides for unique individual authentication prior to using a group authenticator.
+例如，Unix 和 Windows KubeOS 提供“切换用户”功能，允许用户使用其个人凭据进行认证，并在需要时“切换”到管理员角色。此方法在使用组认证者之前提供唯一的个人认证。
 
-Users (and any processes acting on behalf of users) need to be uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization, which outlines specific user actions that can be performed on SLEM 5 without identification or authentication.
+除组织中明确标识和记录的具体用户可在 KubeOS 上执行无需标识或认证的操作外，所有其他访问都需要对（代表用户行事的）用户（及任何进程）进行唯一标识和认证。
 
-Requiring individuals to be authenticated with an individual authenticator prior to using a group authenticator allows for traceability of actions, as well as adding an additional level of protection of the actions that can be taken with group account knowledge.
+要求个人在使用组认证者之前使用个人认证者进行认证，允许对操作进行追溯，并为使用组账户知识可采取的操作增加额外的保护级别。
 
 **规则影响：**
 
@@ -2239,7 +2159,7 @@ grep -w '^PermitRootLogin no' /etc/ssh/sshd_config
 PermitRootLogin no
 ```
 
-### 11.6 SLEM 5 must log SSH connection attempts and failures to the server.
+### 11.5 KubeOS 必须记录 SSH 连接尝试及失败到服务器。
 
 **级别：** 要求（MEDIUM）
 
@@ -2247,11 +2167,11 @@ PermitRootLogin no
 
 **规则说明：**
 
-Remote access services, such as those providing remote access to network devices and information systems, which lack automated monitoring capabilities, increase risk and make remote user access management difficult at best.
+缺乏自动监控功能的远程访问服务（例如提供网络设备信息系统远程访问的服务）会增加风险，并使远程用户访问管理变得困难。
 
-Remote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
+远程访问是指授权用户（或信息系统）通过外部、非组织控制的网络通信，对 DOD 非公开信息系统的访问。远程访问方法包括，例如，拨号、宽带和无线。
 
-Automated monitoring of remote access sessions allows organizations to detect cyberattacks and also ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities, such as Remote Desktop Protocol (RDP), on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).
+对远程访问会话的自动监控允许组织检测网络攻击，并通过审计各种信息系统组件（例如服务器、工作站、笔记本电脑、智能手机和平板电脑）上远程访问功能（如远程桌面协议 (RDP)）的连接活动，确保持续符合远程访问策略。
 
 **规则影响：**
 
@@ -2274,7 +2194,7 @@ grep -w '^LogLevel VERBOSE' /etc/ssh/sshd_config
 LogLevel VERBOSE
 ```
 
-### 11.7 SLEM 5 must display the date and time of the last successful account logon upon an SSH logon.
+### 11.6 KubeOS 必须在 SSH 登录时显示上次成功账户登录的日期和时间。
 
 **级别：** 要求（MEDIUM）
 
@@ -2282,7 +2202,7 @@ LogLevel VERBOSE
 
 **规则说明：**
 
-Providing users with feedback on when account accesses via SSH last occurred facilitates user recognition and reporting of unauthorized account use.
+向用户提供通过 SSH 进行的账户访问上次发生时间的反馈，有助于用户识别和报告未经授权的账户使用。
 
 **规则影响：**
 
@@ -2305,7 +2225,7 @@ grep -w '^PrintLastLog yes' /etc/ssh/sshd_config
 PrintLastLog yes
 ```
 
-### 11.8 SLEM 5 SSH daemon must be configured to not allow authentication using known hosts authentication.
+### 11.7 KubeOS SSH 守护进程必须配置为不允许使用 known hosts 认证进行认证。
 
 **级别：** 要求（MEDIUM）
 
@@ -2313,7 +2233,7 @@ PrintLastLog yes
 
 **规则说明：**
 
-Configuring this setting for the SSH daemon provides additional assurance that remote logon via SSH will require a password, even in the event of misconfiguration elsewhere.
+为 SSH 守护进程配置此设置可提供额外保证，即使其他地方配置错误，通过 SSH 的远程登录也需要密码。
 
 **规则影响：**
 
@@ -2336,7 +2256,7 @@ grep -w '^IgnoreUserKnownHosts yes' /etc/ssh/sshd_config
 gnoreUserKnownHosts yes
 ```
 
-### 11.9 SLEM 5 SSH daemon must perform strict mode checking of home directory configuration files.
+### 11.8 KubeOS SSH 守护进程必须对主目录配置文件执行严格模式检查。
 
 **级别：** 要求（MEDIUM）
 
@@ -2344,7 +2264,7 @@ gnoreUserKnownHosts yes
 
 **规则说明：**
 
-If other users have access to modify user-specific SSH configuration files, they may be able to log on to the system as another user.
+如果其他用户有权修改用户特定的 SSH 配置文件，他们可能能够以另一个用户的身份登录系统。
 
 **规则影响：**
 
@@ -2367,7 +2287,7 @@ grep -w '^StrictModes yes' /etc/ssh/sshd_config
 StrictModes yes
 ```
 
-### 11.10 SLEM 5, for PKI-based authentication, must enforce authorized access to the corresponding private key.
+### 11.9 对于基于 PKI 的认证，KubeOS 必须强制执行对相应私钥的授权访问。
 
 **级别：** 要求（MEDIUM）
 
@@ -2375,13 +2295,13 @@ StrictModes yes
 
 **规则说明：**
 
-If the private key is discovered, an attacker can use the key to authenticate as an authorized user and gain access to the network infrastructure.
+如果私钥被发现，攻击者可以使用该密钥以授权用户的身份进行认证并访问网络基础设施。
 
-The cornerstone of the PKI is the private key used to encrypt or digitally sign information.
+PKI 的基石是用于加密或数字签名的私钥。
 
-If the private key is stolen, this will lead to the compromise of the authentication and nonrepudiation gained through PKI because the attacker can use the private key to digitally sign documents and pretend to be the authorized user.
+如果私钥被盗，这将导致通过 PKI 获得的认证和不可否认性的妥协，因为攻击者可以使用私钥对文档进行数字签名并冒充授权用户。
 
-Both the holders of a digital certificate and the issuing authority must protect the computers, storage devices, or whatever they use to keep the private keys.
+数字证书的持有者和颁发机构都必须保护用于保存私钥的计算机、存储设备或其他设备。
 
 **规则影响：**
 
@@ -2403,7 +2323,7 @@ ssh-keygen -y -f /etc/ssh/ssh_host_dsa_key
 # sudo ssh-keygen -n <密码短语>
 ```
 
-### 11.11 SLEM 5 must have SSH installed to protect the confidentiality and integrity of transmitted information.
+### 11.10 KubeOS 必须安装 SSH 以保护传输信息的机密性和完整性。
 
 **级别：** 要求（HIGH）
 
@@ -2411,11 +2331,11 @@ ssh-keygen -y -f /etc/ssh/ssh_host_dsa_key
 
 **规则说明：**
 
-Without protection of the transmitted information, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read or altered. 
+如果没有对传输信息的保护，机密性和完整性可能会受到损害，因为未受保护的通信可能会被拦截，并被读取或篡改。
 
-This requirement applies to both internal and external networks and all types of information system components from which information can be transmitted (e.g., servers, mobile devices, notebook computers, printers, copiers, scanners, and facsimile machines). Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. 
+此要求适用于内部和外部网络，以及可以从其传输信息的所有类型的信息系统组件（例如服务器、移动设备、笔记本电脑、打印机、复印机、扫描仪和传真机）。位于受控边界物理保护之外的通信路径容易受到拦截和修改的可能性。
 
-Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, logical means (cryptography) do not have to be employed, and vice versa.
+保护组织信息的机密性和完整性可以通过物理方式（例如，采用物理分发系统）或逻辑方式（例如，采用密码技术）来实现。如果采用物理保护方式，则不必采用逻辑方式（密码学），反之亦然。
 
 **规则影响：**
 
@@ -2434,7 +2354,7 @@ Protecting the confidentiality and integrity of organizational information can b
 
 在镜像制作过程中安装openssh组件
 
-### 11.12 SLEM 5 must use SSH to protect the confidentiality and integrity of transmitted information.
+### 11.11 KubeOS 必须使用 SSH 来保护传输信息的机密性和完整性。
 
 **级别：** 要求（HIGH）
 
@@ -2442,11 +2362,11 @@ Protecting the confidentiality and integrity of organizational information can b
 
 **规则说明：**
 
-Without protection of the transmitted information, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read or altered.
+如果没有对传输信息的保护，机密性和完整性可能会受到损害，因为未受保护的通信可能会被拦截，并被读取或篡改。
 
-This requirement applies to both internal and external networks and all types of information system components from which information can be transmitted (e.g., servers, mobile devices, notebook computers, printers, copiers, scanners, and facsimile machines). Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification.
+此要求适用于内部和外部网络，以及可以从其传输信息的所有类型的信息系统组件（例如服务器、移动设备、笔记本电脑、打印机、复印机、扫描仪和传真机）。位于受控边界物理保护之外的通信路径容易受到拦截和修改的可能性。
 
-Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, logical means (cryptography) do not have to be employed, and vice versa.
+保护组织信息的机密性和完整性可以通过物理方式（例如，采用物理分发系统）或逻辑方式（例如，采用密码技术）来实现。如果采用物理保护方式，则不必采用逻辑方式（密码学），反之亦然。
 
 **规则影响：**
 
@@ -2469,7 +2389,7 @@ Protecting the confidentiality and integrity of organizational information can b
 # systemctl enable sshd
 ```
 
-### 11.13 SLEM 5 must not allow unattended or automatic logon via SSH.
+### 11.12 KubeOS 必须不允许通过 SSH 进行无人值守或自动登录。
 
 **级别：** 要求（HIGH）
 
@@ -2477,7 +2397,7 @@ Protecting the confidentiality and integrity of organizational information can b
 
 **规则说明：**
 
-Failure to restrict system access via SSH to authenticated users negatively impacts SLEM 5 security.
+未能限制通过 SSH 对经过认证用户的系统访问，会对 KubeOS 安全性产生负面影响。
 
 **规则影响：**
 
@@ -2497,7 +2417,7 @@ Failure to restrict system access via SSH to authenticated users negatively impa
 
 修改/etc/ssh/sshd_config文件，配置PermitUserEnvironment字段为no，重启sshd服务：
 
-### 11.14 SLEM 5 must implement DOD-approved encryption to protect the confidentiality of SSH remote connections.
+### 11.13 KubeOS 必须实施 DOD 批准的加密以保护 SSH 远程连接的机密性。
 
 **级别：** 要求（HIGH）
 
@@ -2505,13 +2425,13 @@ Failure to restrict system access via SSH to authenticated users negatively impa
 
 **规则说明：**
 
-Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.
+如果没有机密性保护机制，未经授权的个人可能会通过远程访问会话获取敏感信息。
 
-Remote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
+远程访问是指授权用户（或信息系统）通过外部、非组织控制的网络通信，对 DOD 非公开信息系统的访问。远程访问方法包括，例如，拨号、宽带和无线。
 
-Encryption provides a means to secure the remote connection to prevent unauthorized access to the data traversing the remote access connection (e.g., RDP), thereby providing a degree of confidentiality. The encryption strength of a mechanism is selected based on the security categorization of the information.
+加密提供了一种手段，用于保护远程连接，以防止未经授权访问通过远程访问连接传输的数据（例如 RDP），从而提供一定程度的机密性。机制的加密强度是基于信息的安全分类选择的。
 
-The system will attempt to use the first cipher presented by the client that matches the server list. Listing the values "strongest to weakest" is a method to ensure the use of the strongest cipher available to secure the SSH connection.
+系统将尝试使用客户端提出的第一个与服务器列表匹配的密码。将值按“最强到最弱”列出是一种确保使用可用于保护 SSH 连接的最强密码的方法。
 
 **规则影响：**
 
@@ -2535,7 +2455,7 @@ Ciphers aes256-ctr,aes192-ctr,aes128-ctr
 # systemctl restart sshd
 ```
 
-### 11.15 SLEM 5 SSH daemon must be configured to only use Message Authentication Codes (MACs) employing FIPS 140-2/140-3 approved cryptographic hash algorithms.
+### 11.14 KubeOS SSH 守护进程必须配置为仅使用采用 FIPS 140-2/140-3 批准的密码哈希算法的消息认证码 (MACs)。
 
 **级别：** 要求（HIGH）
 
@@ -2543,13 +2463,13 @@ Ciphers aes256-ctr,aes192-ctr,aes128-ctr
 
 **规则说明：**
 
-Without cryptographic integrity protections, information can be altered by unauthorized users without detection.
+如果没有密码完整性保护，未经授权的用户可以在未检测到情况下更改信息。
 
-Remote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
+远程访问（例如 RDP）是指授权用户（或信息系统）通过外部、非组织控制的网络通信，对 DOD 非公开信息系统的访问。远程访问方法包括，例如，拨号、宽带和无线。
 
-Cryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.
+用于保护信息完整性的密码机制包括，例如，使用非对称加密的签名哈希函数，使公共密钥能够验证哈希信息，同时保持用于生成哈希的秘密密钥的机密性。
 
-The system will attempt to use the first hash presented by the client that matches the server list. Listing the values "strongest to weakest" is a method to ensure the use of the strongest hash available to secure the SSH connection.
+系统将尝试使用客户端提出的第一个与服务器列表匹配的哈希。将值按“最强到最弱”列出是一种确保使用可用于保护 SSH 连接的最强哈希的方法。
 
 **规则影响：**
 
@@ -2572,7 +2492,7 @@ The system will attempt to use the first hash presented by the client that match
 hmac-sha2-512,hmac-sha2-256
 ```
 
-### 11.16 SLEM 5 SSH server must be configured to use only FIPS 140-2/140-3 validated key exchange algorithms.
+### 11.15 KubeOS SSH 服务器必须配置为仅使用 FIPS 140-2/140-3 验证的密钥交换算法。
 
 **级别：** 要求（HIGH）
 
@@ -2580,9 +2500,9 @@ hmac-sha2-512,hmac-sha2-256
 
 **规则说明：**
 
-Without cryptographic integrity protections provided by FIPS 140-2/140-3 validated cryptographic algorithms, information can be viewed and altered by unauthorized users without detection.
+如果没有由 FIPS 140-2/140-3 验证的密码算法提供的密码完整性保护，未经授权的用户可以在未检测到情况下查看和更改信息。
 
-The system will attempt to use the first algorithm presented by the client that matches the server list. Listing the values "strongest to weakest" is a method to ensure the use of the strongest algorithm available to secure the SSH connection.
+系统将尝试使用客户端提出的第一个与服务器列表匹配的算法。将值按“最强到最弱”列出是一种确保使用可用于保护 SSH 连接的最强算法的方法。
 
 **规则影响：**
 
@@ -2605,7 +2525,7 @@ The system will attempt to use the first algorithm presented by the client that 
 KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256
 ```
 
-### 11.17 There must be no .shosts files on SLEM 5.
+### 11.16 KubeOS 上不得存在 .shosts 文件。
 
 **级别：** 要求（HIGH）
 
@@ -2613,7 +2533,7 @@ KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-he
 
 **规则说明：**
 
-The .shosts files are used to configure host-based authentication for individual users or the system via SSH. Host-based authentication is not sufficient for preventing unauthorized access to the system as it does not require interactive identification and authentication of a connection request or for the use of two-factor authentication.
+.shosts 文件用于通过 SSH 为单个用户或系统配置基于主机的认证。基于主机的认证不足以防止对系统的未经授权访问，因为它不要求对连接请求进行交互式标识和认证，也不要求使用双因素认证。
 
 **规则影响：**
 
@@ -2635,7 +2555,7 @@ The .shosts files are used to configure host-based authentication for individual
 rm /<文件路径>/.shosts
 ```
 
-### 11.18 There must be no shosts.equiv files on SLEM 5.
+### 11.17 KubeOS 上不得存在 shosts.equiv 文件。
 
 **级别：** 要求（HIGH）
 
@@ -2643,7 +2563,7 @@ rm /<文件路径>/.shosts
 
 **规则说明：**
 
-The shosts.equiv files are used to configure host-based authentication for the system via SSH. Host-based authentication is not sufficient for preventing unauthorized access to the system, as it does not require interactive identification and authentication of a connection request, or for the use of two-factor authentication.
+shosts.equiv 文件用于通过 SSH 为系统配置基于主机的认证。基于主机的认证不足以防止对系统的未经授权访问，因为它不要求对连接请求进行交互式标识和认证，也不要求使用双因素认证。
 
 **规则影响：**
 
@@ -2665,7 +2585,7 @@ The shosts.equiv files are used to configure host-based authentication for the s
 rm /<文件路径>/shosts.equiv
 ```
 
-### 11.19 SLEM 5 must not allow unattended or automatic logon via the graphical user interface (GUI).
+### 11.18 KubeOS 不允许通过图形用户界面 (GUI) 进行无人值守或自动登录。
 
 **级别：** 要求（HIGH）
 
@@ -2673,7 +2593,7 @@ rm /<文件路径>/shosts.equiv
 
 **规则说明：**
 
-Failure to restrict system access to authenticated users negatively impacts SLEM 5 security.
+未能将系统访问限制为经过认证的用户，会对 KubeOS 安全性产生负面影响。
 
 **规则影响：**
 
@@ -2702,7 +2622,7 @@ Failure to restrict system access to authenticated users negatively impacts SLEM
 
 ## 12 网卡设置
 
-### 12.1 SLEM 5 wireless network adapters must be disabled unless approved and documented.
+### 12.1 除非经过批准和记录，否则 KubeOS 无线网卡必须禁用。
 
 **级别：** 要求（MEDIUM）
 
@@ -2710,11 +2630,11 @@ Failure to restrict system access to authenticated users negatively impacts SLEM
 
 **规则说明：**
 
-Without protection of communications with wireless peripherals, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read, altered, or used to compromise SLEM 5.
+如果没有保护与无线外围设备的通信，机密性和完整性可能会受到损害，因为未受保护的通信可能会被拦截、读取、篡改或用于损害 KubeOS。
 
-This requirement applies to wireless peripheral technologies (e.g., wireless mice, keyboards, displays, etc.) used with a SLEM 5. Wireless peripherals (e.g., Wi-Fi/Bluetooth/IR keyboards, mice, pointing devices, and Near Field Communications [NFC]) present a unique challenge by creating an open, unsecured port on a computer. Wireless peripherals must meet DOD requirements for wireless data transmission and be approved for use by the AO. Even though some wireless peripherals, such as mice and pointing devices, do not ordinarily carry information that need to be protected, modification of communications with these wireless peripherals may be used to compromise SLEM 5. Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification.
+此要求适用于与 KubeOS 一起使用的外围无线技术（例如无线鼠标、键盘、显示器等）。无线外围设备（例如 Wi-Fi/蓝牙/红外键盘、鼠标、指点设备和近场通信 [NFC]）通过创建计算机上的开放、未受保护的端口带来独特的挑战。无线外围设备必须满足 DOD 对无线数据传输的要求，并经 AO 批准使用。尽管某些无线外围设备（例如鼠标和指点设备）通常不携带需要保护的信息，但与这些无线外围设备的通信修改可能被用于损害 KubeOS。位于受控边界物理保护之外的通信路径容易受到拦截和修改的可能性。
 
-Protecting the confidentiality and integrity of communications with wireless peripherals can be accomplished by physical means (e.g., employing physical barriers to wireless radio frequencies) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa. If the wireless peripheral is only passing telemetry data, encryption of the data may not be required.
+保护与无线外围设备通信的机密性和完整性可以通过物理方式（例如，采用针对无线射频的物理屏障）或逻辑方式（例如，采用密码技术）来实现。如果采用物理保护方式，则不必采用逻辑方式（密码学），反之亦然。如果无线外围设备仅传输遥测数据，则可能不需要加密数据。
 
 **规则影响：**
 
@@ -2751,7 +2671,7 @@ route: ipv4 default via 10.0.0.1 proto dhcp
 
 ## 13 usb-storage
 
-### 13.1 SLEM 5 must disable the USB mass storage kernel module.
+### 13.1 KubeOS 必须禁用 USB 大容量存储内核模块。
 
 **级别：** 要求（MEDIUM）
 
@@ -2759,9 +2679,9 @@ route: ipv4 default via 10.0.0.1 proto dhcp
 
 **规则说明：**
 
-Without identifying devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.
+如果没有识别设备，可能会引入未标识或未知设备，从而促进恶意活动。
 
-Peripherals include but are not limited to such devices as flash drives, external storage, and printers.
+外围设备包括但不限于闪存驱动器、外部存储器和打印机。
 
 **规则影响：**
 
@@ -2785,7 +2705,7 @@ blacklist usb-storage
 
 ## 14 用户账号&口令
 
-### 14.1 All SLEM 5 local interactive user accounts, upon creation, must be assigned a home directory.
+### 14.1 所有 KubeOS 本地交互式用户账户在创建时必须分配主目录。
 
 **级别：** 要求（MEDIUM）
 
@@ -2793,7 +2713,7 @@ blacklist usb-storage
 
 **规则说明：**
 
-If local interactive users are not assigned a valid home directory, there is no place for the storage and control of files they should own.
+如果未为本地交互式用户分配有效的主目录，则没有地方存储和控制他们应拥有的文件。
 
 **规则影响：**
 
@@ -2817,7 +2737,7 @@ grep -i "^CREATE_HOME yes" /etc/login.defs
 CREATE_HOME yes
 ```
 
-### 14.2 SLEM 5 default permissions must be defined in such a way that all authenticated users can only read and modify their own files.
+### 14.2 KubeOS 默认权限必须定义得使所有经过认证的用户只能读取和修改自己的文件。
 
 **级别：** 要求（MEDIUM）
 
@@ -2825,7 +2745,7 @@ CREATE_HOME yes
 
 **规则说明：**
 
-Setting the most restrictive default permissions ensures that when new accounts are created, they do not have unnecessary access.
+设置最严格的默认权限可确保在创建新账户时，它们没有不必要的访问权限。
 
 **规则影响：**
 
@@ -2849,7 +2769,7 @@ grep -i "^UMASK 077" /etc/login.defs
 UMASK 077
 ```
 
-### 14.3 SLEM 5 shadow password suite must be configured to enforce a delay of at least five seconds between logon prompts following a failed logon attempt.
+### 14.3 KubeOS shadow密码套件必须配置为在失败登录尝试后的登录提示之间强制执行至少五秒的延迟。
 
 **级别：** 要求（MEDIUM）
 
@@ -2857,7 +2777,7 @@ UMASK 077
 
 **规则说明：**
 
-Limiting the number of logon attempts over a certain time interval reduces the chances that an unauthorized user may gain access to an account.
+限制超过一定时间间隔内的登录尝试次数，可降低未经授权的用户获得账户访问权限的机会。
 
 **规则影响：**
 
@@ -2881,7 +2801,7 @@ grep -wi "^fail_delay 5" /etc/login.defs
 FAIL_DELAY 5
 ```
 
-### 14.4 All SLEM 5 local interactive users must have a home directory assigned in the /etc/passwd file.
+### 14.4 所有 KubeOS 本地交互用户必须在 /etc/passwd 文件中分配一个主目录
 
 **级别：** 要求（MEDIUM）
 
@@ -2889,7 +2809,7 @@ FAIL_DELAY 5
 
 **规则说明：**
 
-If local interactive users are not assigned a valid home directory, there is no place for the storage and control of files they should own.
+如果未为本地交互用户分配有效的home目录，则无法存储和控制他们应拥有的文件。
 
 **规则影响：**
 
@@ -2918,7 +2838,7 @@ done
 # sudo usermod -d {用户家目录} {用户名}
 ```
 
-### 14.5 All SLEM 5 local interactive user initialization files executable search paths must contain only paths that resolve to the users' home directory.
+### 14.5 所有 KubeOS 本地交互式用户初始化文件的可执行搜索路径必须仅包含解析为用户主目录的路径
 
 **级别：** 要求（MEDIUM）
 
@@ -2926,7 +2846,7 @@ done
 
 **规则说明：**
 
-The executable search path (typically the PATH environment variable) contains a list of directories for the shell to search to find executables. If this path includes the current working directory (other than the user's home directory), executables in these directories may be executed instead of system commands. This variable is formatted as a colon-separated list of directories. If there is an empty entry, such as a leading or trailing colon or two consecutive colons, this is interpreted as the current working directory. If deviations from the default system search path for the local interactive user are required, they must be documented with the information system security officer (ISSO).
+可执行文件搜索路径（通常是 PATH 环境变量）包含一个目录列表，供 shell 查找可执行文件。如果该路径包含当前工作目录（用户主目录除外），则这些目录中的可执行文件可能会被执行，而不是系统命令。该变量被格式化为以冒号分隔的目录列表。如果存在空条目，例如开头或结尾的冒号，或两个连续的冒号，则会被解释为当前工作目录。如果本地交互式用户的默认系统搜索路径需要偏离，必须与信息系统安全官（ISSO）进行记录。
 
 **规则影响：**
 
@@ -2946,7 +2866,7 @@ The executable search path (typically the PATH environment variable) contains a 
 修改/home/<username>/.bash_profile文件，设置正确的PATH环境变量：
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
-### 14.6 SLEM 5 must automatically expire temporary accounts within 72 hours.
+### 14.6 KubeOS必须自动在72小时内使临时账户失效
 
 **级别：** 要求（MEDIUM）
 
@@ -2954,11 +2874,11 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 **规则说明：**
 
-Temporary accounts are privileged or nonprivileged accounts established during pressing circumstances, such as new software or hardware configuration or an incident response, where the need for prompt account activation requires bypassing normal account authorization procedures. If any inactive temporary accounts are left enabled on the system and are not either manually removed or automatically expired within 72 hours, the security posture of the system will be degraded and exposed to exploitation by unauthorized users or insider threat actors. 
+临时账户是在紧急情况下（如新软件或硬件配置、事件响应等）建立的具有特权或非特权权限的账户，其创建目的是为了在需要快速激活账户时绕过正常的账户授权流程。如果系统中存在未激活的临时账户，并且这些账户在72小时内既未被手动删除也未自动失效，系统的安全态势将会被削弱，从而暴露给未经授权的用户或内部威胁行为者进行利用。
 
-Temporary accounts are different from emergency accounts. Emergency accounts, also known as "last resort" or "break glass" accounts, are local logon accounts enabled on the system for emergency use by authorized system administrators to manage a system when standard logon methods are failing or not available. Emergency accounts are not subject to manual removal or scheduled expiration requirements.
+临时账户与应急账户不同。应急账户，也称为“最后手段”或“破窗”账户，是系统中为授权系统管理员在标准登录方式失效或不可用时，用于紧急管理系统的本地登录账户。应急账户不受手动删除或计划失效要求的约束。
 
-The automatic expiration of temporary accounts may be extended as needed by the circumstances, but it must not be extended indefinitely. A documented permanent account should be established for privileged users who need long-term maintenance accounts.
+临时账户的自动失效时间可根据具体情况进行适当延长，但不得无限期延长。对于需要长期维护账户的特权用户，应建立有文档记录的永久账户。
 
 **规则影响：**
 
@@ -2979,7 +2899,7 @@ The automatic expiration of temporary accounts may be extended as needed by the 
 # chage -E $(date -d +3days +%Y-%m-%d) <temporary_account_name>
 ```
 
-### 14.7 SLEM 5 must never automatically remove or disable emergency administrator accounts.
+### 14.7 KubeOS不能自动删除或禁用紧急管理员帐户
 
 **级别：** 要求（MEDIUM）
 
@@ -2987,7 +2907,7 @@ The automatic expiration of temporary accounts may be extended as needed by the 
 
 **规则说明：**
 
-Emergency administrator accounts, also known as "last resort" or "break glass" accounts, are local logon accounts enabled on the system for emergency use by authorized system administrators to manage a system when standard logon methods are failing or not available. Emergency accounts are not subject to manual removal or scheduled expiration requirements.
+紧急管理员帐户，是在系统上启用的本地登录帐户，供授权系统管理员在标准登录方法失败或不可用时紧急使用，以管理系统。紧急帐户不受手动删除或计划到期要求的限制。
 
 **规则影响：**
 
@@ -3008,7 +2928,7 @@ Emergency administrator accounts, also known as "last resort" or "break glass" a
 # chage -I -1 -M 99999 <emergency_administrator_account_name>
 ```
 
-### 14.8 SLEM 5 must not have unnecessary accounts.
+### 14.8 KubeOS不能有不必要的帐户.
 
 **级别：** 要求（MEDIUM）
 
@@ -3016,7 +2936,7 @@ Emergency administrator accounts, also known as "last resort" or "break glass" a
 
 **规则说明：**
 
-Accounts providing no operational purpose provide additional opportunities for system compromise. Unnecessary accounts include user accounts for individuals not requiring access to the system and application accounts for applications not installed on the system.
+没有操作目的的帐户为系统提供了更多的危害机会。不必要的帐户包括不需要访问系统的个人的用户帐户和系统上未安装的应用程序的应用程序帐户。
 
 **规则影响：**
 
@@ -3036,7 +2956,7 @@ Accounts providing no operational purpose provide additional opportunities for s
 # userdel <username>
 ```
 
-### 14.9 SLEM 5 must not have unnecessary account capabilities.
+### 14.9 KubeOS不能有不必要的帐户权能.
 
 **级别：** 要求（MEDIUM）
 
@@ -3044,7 +2964,7 @@ Accounts providing no operational purpose provide additional opportunities for s
 
 **规则说明：**
 
-Accounts providing no operational purpose provide additional opportunities for system compromise. Therefore all necessary noninteractive accounts should not have an interactive shell assigned to them.
+没有操作目的的帐户提供了额外的系统风险。因此，所有必要的非交互式帐户不应该为其分配交互式shell。
 
 **规则影响：**
 
@@ -3066,7 +2986,7 @@ Accounts providing no operational purpose provide additional opportunities for s
 # usermod --shell /sbin/nologin <username>
 ```
 
-### 14.10 SLEM 5 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity after password expiration.
+### 14.10 KubeOS必须在密码到期后35天不活跃后禁用帐户标识符（个人、组、角色和设备）
 
 **级别：** 要求（MEDIUM）
 
@@ -3074,9 +2994,9 @@ Accounts providing no operational purpose provide additional opportunities for s
 
 **规则说明：**
 
-Inactive identifiers pose a risk to systems and applications because attackers may exploit an inactive identifier and potentially obtain undetected access to the system. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained.
+非活动标识符会给系统和应用程序带来风险，因为攻击者可能会利用非活动标识符，并可能获得对系统的未检测的访问权限。非活动帐户的所有者不会注意到，如果对其用户帐户的未经授权的访问已获得。
 
-SLEM 5 must track periods of inactivity and disable application identifiers after 35 days of inactivity.
+KubeOS必须跟踪不活动的时间段，并在不活动35天后禁用应用程序标识符。
 
 **规则影响：**
 
@@ -3096,7 +3016,7 @@ SLEM 5 must track periods of inactivity and disable application identifiers afte
 修改/etc/default/useradd文件，添加或修改配置：
 INACTIVE=35
 
-### 14.11 SLEM 5 must not have duplicate User IDs (UIDs) for interactive users.
+### 14.11 KubeOS对于交互式用户，不能有重复的用户ID(UID)
 
 **级别：** 要求（MEDIUM）
 
@@ -3104,13 +3024,13 @@ INACTIVE=35
 
 **规则说明：**
 
-To ensure accountability and prevent unauthenticated access, interactive users must be identified and authenticated to prevent potential misuse and compromise of the system.
+为了确保问责制和防止未经身份验证的访问，必须识别和验证交互式用户，以防止系统的潜在滥用和危害。
 
-Interactive users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Interactive users (and processes acting on behalf of users) must be uniquely identified and authenticated to all accesses, except for the following: 
+交互式用户包括组织雇员或组织认为具有同等雇员身份的个人（例如，承包商）。交互式用户（和代表用户行事的进程）必须唯一标识并对所有访问进行身份验证，以下情况除外：
 
-1) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and
+1)由组织明确标识和记录的访问。组织记录无需识别或认证即可在信息系统上执行的特定用户操作；
 
-2) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals in group accounts (e.g., shared privilege accounts) or for detailed accountability of individual activity.
+2)通过授权使用组身份验证器而不进行个人身份验证而发生的访问。组织可能需要团体帐户（例如共享特权帐户）中的个人的唯一标识，或者需要对个人活动进行详细的问责。
 
 **规则影响：**
 
@@ -3132,7 +3052,7 @@ Interactive users include organizational employees or individuals the organizati
 原则上用户UID是唯一的，若存在重复UID，需要使用useradd、usermod、userdel工具来管理用户。
 ```
 
-### 14.12 SLEM 5 must display the date and time of the last successful account logon upon logon.
+### 14.12 KubeOS必须在登录时显示上次成功登录帐户的日期和时间
 
 **级别：** 要求（MEDIUM）
 
@@ -3140,7 +3060,7 @@ Interactive users include organizational employees or individuals the organizati
 
 **规则说明：**
 
-Providing users with feedback on when account accesses last occurred facilitates user recognition and reporting of unauthorized account use.
+向用户提供上次帐户访问发生时间的反馈，有助于用户识别和报告未经授权的帐户使用。
 
 **规则影响：**
 
@@ -3158,7 +3078,7 @@ Providing users with feedback on when account accesses last occurred facilitates
 修改/etc/pam.d/login文件，在头部配置：
 session required pam_lastlog.so showfailed
 
-### 14.13 SLEM 5 must initiate a session lock after a 15-minute period of inactivity.
+### 14.13 KubeOS必须在15分钟的非活动期间后启动会话锁定
 
 **级别：** 要求（MEDIUM）
 
@@ -3166,11 +3086,11 @@ session required pam_lastlog.so showfailed
 
 **规则说明：**
 
-A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence.
+会话超时锁定是一种临时措施，当用户停止工作并离开信息系统的物理邻近区域，但由于暂时性离开而未注销时，系统会采取此措施。
 
-Rather than relying on the users to manually lock their SLEM 5 session prior to vacating the vicinity, SLEM 5 needs to be able to identify when a user's session has idled and take action to initiate the session lock.
+与其依赖用户在离开前手动锁定 KubeOS 会话，KubeOS 需要能够识别用户会话何时处于空闲状态，并采取行动启动会话锁定。 
 
-The session lock is implemented at the point where session activity can be determined and/or controlled.
+会话锁定在能够确定和/或控制会话活动的位置实现。
 
 **规则影响：**
 
@@ -3196,7 +3116,7 @@ readonly TMOUT
 export TMOUT
 ```
 
-### 14.14 SLEM 5 must lock an account after three consecutive invalid access attempts.
+### 14.14 KubeOS 必须在连续三次无效访问尝试后锁定账户
 
 **级别：** 要求（MEDIUM）
 
@@ -3204,9 +3124,9 @@ export TMOUT
 
 **规则说明：**
 
-By limiting the number of failed access attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Limits are imposed by locking the account.
+通过限制失败的访问尝试次数，可以降低通过用户密码猜测（也称为暴力破解）方式未经授权访问系统的风险。限制措施是通过锁定账户来实现的。 
 
-The pam_tally2.so module maintains a count of attempted accesses. This includes username entry into a logon field as well as password entry. With counting access attempts, it is possible to lock an account without presenting a password into the password field. This should be taken into consideration as it poses as an avenue for denial of service (DoS).
+pam_faillock.so 模块会记录尝试访问的次数。这包括在登录字段中输入用户名以及输入密码。通过统计访问尝试次数，可以在不输入密码字段的情况下锁定账户。这一点需要加以考虑，因为它可能成为拒绝服务（DoS）攻击的一种途径。
 
 **规则影响：**
 
@@ -3228,7 +3148,7 @@ The pam_tally2.so module maintains a count of attempted accesses. This includes 
 auth required pam_faillock.so onerr=fail silent audit deny=3
 account required pam_faillock.so
 
-### 14.15 SLEM 5 must enforce a delay of at least five seconds between logon prompts following a failed logon attempt via pluggable authentication modules (PAM).
+### 14.15 KubeOS必须强制在通过可插拔身份验证模块（PAM）登录尝试失败后的登录提示之间至少有5秒的延迟
 
 **级别：** 要求（MEDIUM）
 
@@ -3236,7 +3156,7 @@ account required pam_faillock.so
 
 **规则说明：**
 
-Limiting the number of logon attempts over a certain time interval reduces the chances that an unauthorized user may gain access to an account.
+限制特定时间间隔内的登录尝试次数可以减少未经授权的用户访问帐户的机会。
 
 **规则影响：**
 
@@ -3253,7 +3173,7 @@ Limiting the number of logon attempts over a certain time interval reduces the c
 修改/etc/pam.d/common-auth文件，增加或修改配置：
 auth required pam_faildelay.so delay=5000000
 
-### 14.16 SLEM 5 must use the invoking user's password for privilege escalation when using "sudo".
+### 14.16 KubeOS在使用“sudo”时，必须使用调用用户的密码进行提权
 
 **级别：** 要求（MEDIUM）
 
@@ -3261,9 +3181,9 @@ auth required pam_faildelay.so delay=5000000
 
 **规则说明：**
 
-The sudoers security policy requires that users authenticate themselves before they can use sudo. When sudoers requires authentication, it validates the invoking user's credentials. If the rootpw, targetpw, or runaspw flags are defined and not disabled, by default the operating system will prompt the invoking user for the "root" user password.
+sudoers安全策略要求用户在使用sudo之前进行身份验证。当sudoers需要身份验证时，它会验证调用用户的凭据。如果定义了rootpw、targetpw或runaspw标志但未禁用，则默认情况下，操作系统将提示调用用户输入“root”用户密码。
 
-For more information on each of the listed configurations, reference the sudoers(5) manual page.
+有关列出的每个配置的更多信息，请参考sudoers(5)手册页。
 
 **规则影响：**
 
@@ -3288,7 +3208,7 @@ Defaults !targetpw
 Defaults !rootpw
 Defaults !runaspw
 
-### 14.17 SLEM 5 must reauthenticate users when changing authenticators, roles, or escalating privileges.
+### 14.17 KubeOS在更改身份验证、角色或提升权限时必须重新验证用户
 
 **级别：** 要求（MEDIUM）
 
@@ -3296,9 +3216,9 @@ Defaults !runaspw
 
 **规则说明：**
 
-Without reauthentication, users may access resources or perform tasks for which they do not have authorization.
+如果没有重新身份验证，用户可以访问资源或执行他们没有授权的任务
 
-When SLEM 5 provides the capability to change user authenticators, change security roles, or escalate a functional capability, it is critical the user reauthenticate.
+当KubeOS提供了更改用户身份验证、更改安全角色或升级功能的功能时，用户重新身份验证至关重要
 
 **规则影响：**
 
@@ -3324,7 +3244,7 @@ When SLEM 5 provides the capability to change user authenticators, change securi
 # sed -i '/!authenticate/d' /etc/sudoers
 ```
 
-### 14.18 SLEM 5 must require reauthentication when using the "sudo" command.
+### 14.18  KubeOS在使用“sudo”命令时必须要求重新身份验证
 
 **级别：** 要求（MEDIUM）
 
@@ -3332,11 +3252,11 @@ When SLEM 5 provides the capability to change user authenticators, change securi
 
 **规则说明：**
 
-Without reauthentication, users may access resources or perform tasks for which they do not have authorization.
+如果没有重新身份验证，用户可能会访问资源或执行他们没有授权的任务。
 
-When operating systems provide the capability to escalate a functional capability, it is critical the organization requires the user to reauthenticate when using the "sudo" command.
+当操作系统提供升级功能的能力时，组织要求用户在使用“sudo”命令时重新进行身份验证是至关重要的。
 
-If the value is set to an integer less than 0, the user's time stamp will not expire and the user will not have to reauthenticate for privileged actions until the user's session is terminated.
+如果该值设置为小于0的整数，则用户的时间戳不会过期，并且用户在终止用户的会话之前不必为特权操作重新进行身份验证。
 
 **规则影响：**
 
@@ -3357,7 +3277,7 @@ If the value is set to an integer less than 0, the user's time stamp will not ex
 修改/etc/sudoers文件，添加或修改配置：
 Defaults timestamp_timeout=0
 
-### 14.19 SLEM 5 must restrict privilege elevation to authorized personnel.
+### 14.19 KubeOS必须限制权限提升给授权人员
 
 **级别：** 要求（MEDIUM）
 
@@ -3365,7 +3285,7 @@ Defaults timestamp_timeout=0
 
 **规则说明：**
 
-The sudo command allows a user to execute programs with elevated (administrator) privileges. It prompts the user for their password and confirms the request to execute a command by checking a file, called sudoers. If the "sudoers" file is not configured correctly, any user defined on the system can initiate privileged actions on the target system.
+sudo命令允许用户以提升的（管理员）权限执行程序。它提示用户输入密码，并通过检查一个名为sudoers的文件来确认执行命令的请求。如果“sudoers”文件未正确配置，则系统上定义的任何用户都可以在目标系统上启动特权操作。
 
 **规则影响：**
 
@@ -3389,7 +3309,7 @@ ALL     ALL=(ALL:ALL) ALL
 ALL     ALL=(ALL) ALL
 ALL     ALL=(ALL:ALL) ALL
 
-### 14.20 SLEM 5 must specify the default "include" directory for the /etc/sudoers file.
+### 14.20 KubeOS必须为/etc/sudoers文件指定默认的“include”目录
 
 **级别：** 要求（MEDIUM）
 
@@ -3397,9 +3317,9 @@ ALL     ALL=(ALL:ALL) ALL
 
 **规则说明：**
 
-The "sudo" command allows authorized users to run programs (including shells) as other users, system users, and root. The "/etc/sudoers" file is used to configure authorized "sudo" users as well as the programs they are allowed to run. Some configuration options in the "/etc/sudoers" file allow configured users to run programs without reauthenticating. Use of these configuration options makes it easier for one compromised account to be used to compromise other accounts.
+“sudo”命令允许授权用户以其他用户、系统用户和root身份运行程序（包括shell）。“/etc/sudoers”文件用于配置授权的“sudo”用户以及允许他们运行的程序。“/etc/sudoers”文件中的某些配置选项允许已配置的用户在不重新验证的情况下运行程序。使用这些配置选项可以使一个受感染帐户更容易地用于危害其他帐户。
 
-It is possible to include other sudoers files from within the sudoers file currently being parsed using the @include and @includedir directives. For compatibility with sudo versions prior to 1.9.1, #include and #includedir are also accepted. When sudo reaches this line it will suspend processing of the current file (/etc/sudoers) and switch to the specified file/directory. Once the end of the included file(s) is reached, the rest of /etc/sudoers will be processed. Files that are included may themselves include other files. A hard limit of 128 nested include files is enforced to prevent include file loops.
+可以使用@include和@includeir指令从当前正在解析的sudoers文件中包含其他sudoers文件。为了与1.9.1之前的sudo版本兼容，#include和#includeir也被接受。当sudo到达此行时，它将暂停当前文件（/etc/sudoers）的处理，并切换到指定的文件/目录。一旦到达包含文件的结尾（s），将处理/etc/sudoers的其余部分。包含的文件本身可能包含其他文件。强制使用128个嵌套的包含文件的硬限制，以防止包含文件循环。
 
 **规则影响：**
 
@@ -3423,7 +3343,7 @@ It is possible to include other sudoers files from within the sudoers file curre
 #includedir /etc/sudoers.d
 ```
 
-### 14.21 SLEM 5 must enforce passwords that contain at least one uppercase character.
+### 14.21 KubeOS必须强制使用至少包含一个大写字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3431,9 +3351,9 @@ It is possible to include other sudoers files from within the sudoers file curre
 
 **规则说明：**
 
-Use of a complex password helps increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
+使用复杂密码有助于增加破坏密码所需的时间和资源。密码复杂度，或强度，是衡量密码在抵御猜测和暴力攻击企图方面的有效性。
 
-Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.
+密码复杂度是决定破解密码所需时间的几个因素中的一个。密码越复杂，在密码被泄露之前需要测试的可能组合的数量就越多。
 
 **规则影响：**
 
@@ -3455,7 +3375,7 @@ password requisite pam_cracklib.so ucredit=-1
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so ucredit=-1
 
-### 14.22 SLEM 5 must enforce passwords that contain at least one lowercase character.
+### 14.22 KubeOS必须强制使用至少包含一个小写字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3463,9 +3383,9 @@ password requisite pam_pwquality.so ucredit=-1
 
 **规则说明：**
 
-Use of a complex password helps increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
+使用复杂密码有助于增加破坏密码所需的时间和资源。密码复杂度，或强度，是衡量密码抵抗猜测和暴力攻击企图的有效性的指标。
 
-Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.
+密码复杂度是决定破解密码所需时间的几个因素中的一个。密码越复杂，在密码被泄露之前需要测试的可能组合的数量就越多。
 
 **规则影响：**
 
@@ -3485,7 +3405,7 @@ Password complexity is one factor of several that determines how long it takes t
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so lcredit=-1
 
-### 14.23 SLEM 5 must enforce passwords that contain at least one numeric character.
+### 14.23 KubeOS必须强制使用至少包含一个数字字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3493,9 +3413,9 @@ password requisite pam_pwquality.so lcredit=-1
 
 **规则说明：**
 
-Use of a complex password helps increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
+使用复杂密码有助于增加破坏密码所需的时间和资源。密码复杂度，或强度，是衡量密码抵抗猜测和暴力攻击企图的有效性的一种度量。
 
-Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.
+密码复杂度是决定破解密码所需时间的几个因素中的一个。密码越复杂，在密码被泄露之前需要测试的可能组合的数量就越多。
 
 **规则影响：**
 
@@ -3515,19 +3435,18 @@ Password complexity is one factor of several that determines how long it takes t
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so dcredit=-1
 
-### 14.24 SLEM 5 must enforce passwords that contain at least one special character.
-
+### 14.24 KubeOS必须强制使用至少包含一个特殊字符的密码
 **级别：** 要求（MEDIUM）
 
 **适用版本：** ALL
 
 **规则说明：**
 
-Use of a complex password helps increase the time and resources required to compromise the password. Password complexity or strength is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
+使用复杂密码有助于增加破坏密码所需的时间和资源。密码复杂度或强度是衡量密码在抵御猜测和暴力攻击企图方面的有效性的指标。
 
-Password complexity is one factor in determining how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.
+密码复杂度是决定破解密码所需时间的一个因素。密码越复杂，在密码被泄露之前需要测试的可能组合的数量就越多。
 
-Special characters are not alphanumeric. Examples include: ~ ! @ # $ % ^ *.
+特殊字符不是字母数字字符。示例包括：~ ! @ # $ % ^ *.
 
 **规则影响：**
 
@@ -3547,7 +3466,7 @@ Special characters are not alphanumeric. Examples include: ~ ! @ # $ % ^ *.
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so ocredit=-1
 
-### 14.25 SLEM 5 must prevent the use of dictionary words for passwords.
+### 14.25 KubeOS必须防止使用字典单词作为密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3555,7 +3474,7 @@ password requisite pam_pwquality.so ocredit=-1
 
 **规则说明：**
 
-If SLEM 5 allows the user to select passwords based on dictionary words, this increases the chances of password compromise by increasing the opportunity for successful guesses and brute-force attacks.
+如果KubeOS允许用户根据字典单词选择密码，这将通过增加成功猜测和暴力破解攻击的机会来增加密码泄露的机会。
 
 **规则影响：**
 
@@ -3575,7 +3494,7 @@ If SLEM 5 allows the user to select passwords based on dictionary words, this in
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so
 
-### 14.26 SLEM 5 must employ passwords with a minimum of 15 characters.
+### 14.26 KubeOS必须使用至少15个字符的密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3583,9 +3502,9 @@ password requisite pam_pwquality.so
 
 **规则说明：**
 
-The shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised.
+密码越短，在密码被泄露之前需要测试的可能组合的数量就越少。
 
-Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps determine strength and how long it takes to crack a password. Use of more characters in a password helps exponentially increase the time and/or resources required to compromise the password.
+密码复杂度，或强度，是衡量密码抵抗猜测和暴力攻击企图的有效性的指标。密码长度是几个因素中的一个，有助于确定密码的强度和破解密码所需的时间。在密码中使用更多的字符有助于指数性地增加破坏密码所需的时间和/或资源。
 
 **规则影响：**
 
@@ -3605,7 +3524,7 @@ Password complexity, or strength, is a measure of the effectiveness of a passwor
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so minlen=15
 
-### 14.27 SLEM 5 must require the change of at least eight of the total number of characters when passwords are changed.
+### 14.27 KubeOS在修改密码时，必须要求至少修改总字符数的8个字符
 
 **级别：** 要求（MEDIUM）
 
@@ -3613,7 +3532,7 @@ password requisite pam_pwquality.so minlen=15
 
 **规则说明：**
 
-If SLEM 5 allows the user to consecutively reuse extensive portions of passwords, this increases the chances of password compromise by increasing the window of opportunity for attempts at guessing and brute-force attacks.
+如果KubeOS允许用户连续重用大量的密码，这通过增加猜测和暴力破解尝试的机会窗口来增加密码泄露的机会
 
 **规则影响：**
 
@@ -3633,7 +3552,7 @@ If SLEM 5 allows the user to consecutively reuse extensive portions of passwords
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwquality.so difok=8
 
-### 14.28 SLEM 5 must not allow passwords to be reused for a minimum of five generations.
+### 14.28 KubeOS 必须禁止密码在至少五次内重复使用
 
 **级别：** 要求（MEDIUM）
 
@@ -3641,7 +3560,7 @@ password requisite pam_pwquality.so difok=8
 
 **规则说明：**
 
-Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.
+密码复杂度或强度是衡量密码抵抗猜测和暴力攻击企图的有效性的指标。如果信息系统或应用程序允许用户在密码超过其定义的生存期时连续重复使用其密码，则最终结果是密码未按照策略要求进行更改。
 
 **规则影响：**
 
@@ -3661,7 +3580,7 @@ Password complexity, or strength, is a measure of the effectiveness of a passwor
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password requisite pam_pwhistory.so remember=5 use_authtok
 
-### 14.29 SLEM 5 must configure the Linux Pluggable Authentication Modules (PAM) to only store encrypted representations of passwords.
+### 14.29 KubeOS必须配置Linux可插拔身份验证模块（PAM）以仅存储密码的加密表示形式
 
 **级别：** 要求（MEDIUM）
 
@@ -3669,7 +3588,7 @@ password requisite pam_pwhistory.so remember=5 use_authtok
 
 **规则说明：**
 
-Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.
+任何时候都需要保护密码，加密是保护密码的标准方法。如果密码没有加密，它们可能会被明文读取（即明文）并且很容易被泄露。
 
 **规则影响：**
 
@@ -3689,7 +3608,7 @@ Passwords need to be protected at all times, and encryption is the standard meth
 修改/etc/pam.d/common-password文件，添加或修改配置：
 password required pam_unix.so sha512
 
-### 14.30 SLEM 5 must employ user passwords with a minimum lifetime of 24 hours (one day).
+### 14.30 KubeOS必须使用至少24小时（一天）的用户密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3697,7 +3616,7 @@ password required pam_unix.so sha512
 
 **规则说明：**
 
-Enforcing a minimum password lifetime helps prevent repeated password changes to defeat the password reuse or history enforcement requirement. If users are allowed to immediately and continually change their password, the password could be repeatedly changed in a short period of time to defeat the organization's policy regarding password reuse.
+实施最短密码有效期期有助于防止重复更改密码以破坏密码重用或历史强制要求。如果允许用户立即和持续地更改其密码，则密码可能会在短时间内被反复更改，从而破坏组织关于密码重用的策略。
 
 **规则影响：**
 
@@ -3719,7 +3638,7 @@ Enforcing a minimum password lifetime helps prevent repeated password changes to
 # passwd -n 1 <username>
 ```
 
-### 14.31 SLEM 5 must employ user passwords with a maximum lifetime of 60 days.
+### 14.31 KubeOS必须使用最长有效期为60天的用户密码
 
 **级别：** 要求（MEDIUM）
 
@@ -3727,7 +3646,7 @@ Enforcing a minimum password lifetime helps prevent repeated password changes to
 
 **规则说明：**
 
-Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed periodically. If SLEM 5 does not limit the lifetime of passwords and force users to change their passwords, there is the risk that SLEM 5 passwords could be compromised.
+任何密码，无论多么复杂，最终都可以被破解。因此，需要定期修改密码。如果KubeOS不限制密码的有效期，并强制用户更改密码，则存在KubeOS密码可能被泄露的风险。
 
 **规则影响：**
 
@@ -3749,7 +3668,7 @@ Any password, no matter how complex, can eventually be cracked. Therefore, passw
 # passwd -x 60 <username>
 ```
 
-### 14.32 SLEM 5 must employ a password history file.
+### 14.32 KubeOS必须使用密码历史记录文件
 
 **级别：** 要求（MEDIUM）
 
@@ -3757,7 +3676,7 @@ Any password, no matter how complex, can eventually be cracked. Therefore, passw
 
 **规则说明：**
 
-Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.
+密码复杂度，或强度，是衡量密码抵抗猜测和暴力攻击企图的有效性的指标。如果信息系统或应用程序允许用户在密码超过其定义的有效期时连续重复使用其密码，则最终结果是密码未按照策略要求进行更改。
 
 **规则影响：**
 
@@ -3783,7 +3702,7 @@ Password complexity, or strength, is a measure of the effectiveness of a passwor
 # chmod 0600 /etc/security/opasswd
 ```
 
-### 14.33 SLEM 5 must employ FIPS 140-2/140-3 approved cryptographic hashing algorithm for system authentication (login.defs).
+### 14.33 KubeOS必须使用FIPS 140-2/140-3认可的加密哈希算法来进行系统身份验证（login.defs）
 
 **级别：** 要求（MEDIUM）
 
@@ -3791,11 +3710,11 @@ Password complexity, or strength, is a measure of the effectiveness of a passwor
 
 **规则说明：**
 
-Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied on to provide confidentiality or integrity, and DOD data may be compromised.
+用于对加密模块进行身份验证的未经批准的机制未经验证，因此不能依赖这些机制来提供机密性或完整性，并且数据可能会受到破坏。
 
-SLEM 5 using encryption are required to use FIPS 140-2/140-3 compliant mechanisms for authenticating to cryptographic modules.
+使用加密的KubeOS需要使用符合FIPS 140-2/140-3的机制来对加密模块进行身份验证。
 
-FIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules use authentication that meets DOD requirements. This allows for Security Levels 1, 2, 3, or 4 for use on a general-purpose computing system.
+FIPS 140-2/140-3是验证用于访问加密模块的机制是否使用符合要求的身份验证的当前标准。这允许在通用计算系统上使用安全级别1、2、3或4。
 
 **规则影响：**
 
@@ -3815,7 +3734,7 @@ FIPS 140-2/140-3 is the current standard for validating that mechanisms used to 
 修改/etc/login.defs文件，添加或修改配置：
 ENCRYPT_METHOD SHA512
 
-### 14.34 SLEM 5 must be configured to create or update passwords with a minimum lifetime of 24 hours (one day).
+### 14.34 KubeOS必须配置为创建或更新密码，其有效期至少为24小时（一天）
 
 **级别：** 要求（MEDIUM）
 
@@ -3823,7 +3742,7 @@ ENCRYPT_METHOD SHA512
 
 **规则说明：**
 
-Enforcing a minimum password lifetime helps prevent repeated password changes to defeat the password reuse or history enforcement requirement. If users are allowed to immediately and continually change their password, the password could be repeatedly changed in a short period of time to defeat the organization's policy regarding password reuse.
+实施最短的密码有效期有助于防止重复更改密码，以违反密码重用或历史强制要求。如果允许用户立即和持续地更改其密码，则密码可能会在短时间内被反复更改，从而破坏组织关于密码重用的策略。
 
 **规则影响：**
 
@@ -3843,7 +3762,7 @@ Enforcing a minimum password lifetime helps prevent repeated password changes to
 修改/etc/login.defs文件，添加或修改配置：
 PASS_MIN_DAYS 1
 
-### 14.35 SLEM 5 must be configured to create or update passwords with a maximum lifetime of 60 days.
+### 14.35 KubeOS必须配置为创建或更新密码，最长有效期为60天
 
 **级别：** 要求（MEDIUM）
 
@@ -3851,7 +3770,7 @@ PASS_MIN_DAYS 1
 
 **规则说明：**
 
-Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed periodically. If SLEM 5 does not limit the lifetime of passwords and force users to change their passwords, there is the risk that SLEM 5 passwords could be compromised.
+任何密码，无论多么复杂，最终都可以被破解。因此，需要定期修改密码。如果KubeOS不限制密码的有效期，并强制用户更改密码，则存在KubeOS密码可能被泄露的风险。
 
 **规则影响：**
 
@@ -3871,7 +3790,7 @@ Any password, no matter how complex, can eventually be cracked. Therefore, passw
 修改/etc/login.defs文件，添加或修改配置：
 PASS_MAX_DAYS   7
 
-### 14.36 SLEM 5 must implement multifactor authentication for access to privileged accounts via pluggable authentication modules (PAM).
+### 14.36 KubeOS必须通过可插拔认证模块（PAM）实现对特权帐户的多因素认证。
 
 **级别：** 要求（MEDIUM）
 
@@ -3879,15 +3798,15 @@ PASS_MAX_DAYS   7
 
 **规则说明：**
 
-Using an authentication device, such as a Common Access Card (CAC) or token that is separate from the information system, ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.
+使用与信息系统分离的身份验证设备（例如通用访问卡(CAC）或令牌)，可确保即使信息系统受到破坏，该危害也不会影响身份验证设备上存储的凭据。
 
-Multifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards such as the U.S. Government Personal Identity Verification (PIV) card and the DOD CAC.
+需要与信息系统分离的设备获得访问权限的多因素解决方案包括，例如，提供基于时间或挑战响应的验证器的硬件令牌和智能卡，如美国政府个人身份验证（PIV）卡和国防部CAC。
 
-A privileged account is defined as an information system account with authorizations of a privileged user.
+特权帐户定义为具有特权用户授权的信息系统帐户。
 
-Remote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
+远程访问是指授权用户（或信息系统）通过外部非组织控制的网络访问国防部非公共信息系统。远程接入方式包括拨号、宽带、无线等。
 
-This requirement only applies to components where this is specific to the function of the device or has the concept of an organizational user (e.g., VPN, proxy capability). This does not apply to authentication for the purpose of configuring the device itself (management).
+此要求仅适用于特定于设备功能或具有组织用户概念（例如，VPN、代理功能）的组件。这不适用于为配置设备本身（管理）而进行的身份验证。
 
 **规则影响：**
 
@@ -3903,11 +3822,10 @@ This requirement only applies to components where this is specific to the functi
 
 **修复方法：**
 
-
 修改/etc/pam.d/common-auth文件，添加或修改配置：
 auth sufficient pam_pkcs11.so
 
-### 14.37 SLEM 5 must implement certificate status checking for multifactor authentication.
+### 14.37 KubeOS必须为多因素身份验证实现证书状态检查。
 
 **级别：** 要求（MEDIUM）
 
@@ -3915,15 +3833,15 @@ auth sufficient pam_pkcs11.so
 
 **规则说明：**
 
-Using an authentication device, such as a Common Access Card (CAC) or token separate from the information system, ensures credentials stored on the authentication device will not be affected if the information system is compromised.
+使用与信息系统分离的身份验证设备（如通用访问卡(CAC）或令牌)，可确保在信息系统受到破坏时，存储在身份验证设备上的凭据不会受到影响。
 
-Multifactor solutions that require devices separate from information systems to gain access include hardware tokens providing time-based or challenge-response authenticators, and smart cards such as the U.S. Government Personal Identity Verification (PIV) card and the DOD CAC.
+需要与信息系统分离的设备才能获得访问权限的多因素解决方案包括提供基于时间或挑战响应验证器的硬件令牌，以及诸如美国政府个人身份验证（PIV）卡和国防部CAC等智能卡。
 
-A privileged account is defined as an information system account with authorizations of a privileged user.
+特权帐户定义为具有特权用户授权的信息系统帐户。
 
-Remote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
+远程访问是指授权用户（或信息系统）通过外部非组织控制的网络访问非公共信息系统。远程接入方式包括拨号、宽带、无线等。
 
-This requirement only applies to components with device-specific functions, or for organizational users (e.g., VPN, proxy capability). This does not apply to authentication for the purpose of configuring the device itself (management).
+此要求仅适用于具有设备特定功能的组件，或组织用户（例如，VPN、代理功能）。这不适用于为配置设备本身（管理）而进行的身份验证。
 
 **规则影响：**
 
@@ -3941,7 +3859,7 @@ This requirement only applies to components with device-specific functions, or f
 
 修改 /etc/pam_pkcs11/pam_pkcs11.conf文件，修改配置：保证所有的cert_policy值中包含ocsp_on配置。
 
-### 14.38 If Network Security Services (NSS) is being used by SLEM 5 it must prohibit the use of cached authentications after one day.
+### 14.38 如果KubeOS正在使用网络安全服务（NSS），则必须在一天后禁止使用缓存的身份验证
 
 **级别：** 要求（MEDIUM）
 
@@ -3949,7 +3867,7 @@ This requirement only applies to components with device-specific functions, or f
 
 **规则说明：**
 
-If cached authentication information is out of date, the validity of the authentication information may be questionable.
+如果缓存的认证信息过期，认证信息的有效性可能会受到质疑。
 
 **规则影响：**
 
@@ -3970,7 +3888,7 @@ If cached authentication information is out of date, the validity of the authent
 在"[nss]"下配置
 memcache_timeout = 86400
 
-### 14.39 SLEM 5 must configure the Linux Pluggable Authentication Modules (PAM) to prohibit the use of cached offline authentications after one day.
+### 14.39 KubeOS必须配置Linux可插拔身份验证模块（PAM）以禁止在一天后使用缓存的离线身份验证
 
 **级别：** 要求（MEDIUM）
 
@@ -3978,7 +3896,7 @@ memcache_timeout = 86400
 
 **规则说明：**
 
-If cached authentication information is out of date, the validity of the authentication information may be questionable.
+如果缓存的认证信息过期，则认证信息的有效性可能会受到质疑。
 
 **规则影响：**
 
@@ -3997,7 +3915,7 @@ If cached authentication information is out of date, the validity of the authent
 在"[pam]"下配置
 offline_credentials_expiration = 1
 
-### 14.40 SLEM 5, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.
+### 14.40 KubeOS对于基于PKI的身份验证，必须通过构造指向可接受的信任锚的证书路径（包括状态信息）来验证证书
 
 **级别：** 要求（MEDIUM）
 
@@ -4005,13 +3923,15 @@ offline_credentials_expiration = 1
 
 **规则说明：**
 
-Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted.
+如果没有路径验证，则当提供任何尚未明确受信任的证书时，依赖方无法做出明智的信任决定。
 
-A trust anchor is an authoritative entity represented via a public key and associated data. It is used in the context of public key infrastructures, X.509 digital certificates, and DNSSEC.
+信任锚是通过公钥和相关数据表示的权威实体。它用于公钥基础设施、X.509数字证书和DNSSEC的上下文中。
 
-When there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a Certification Authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA.
+当存在信任链时，通常要信任的顶级实体成为信任锚；它可以是，例如，证书颁发机构（CA）。证书路径从主体证书开始，经过许多中间证书，直到可信根证书，通常由可信CA颁发。
 
-This requirement verifies that a certification path to an accepted trust anchor is used for certificate validation and that the path includes status information. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Status information for certification paths includes certificate revocation lists or online certificate status protocol responses. Validation of the certificate status information is out of scope for this requirement.
+此要求验证是否使用到接受的信任锚的证书路径进行证书验证，并且该路径是否包含状态信息。路径验证对于依赖方而言是必要的，当提供任何尚未明确受信任的证书时，可以做出知情的信任决定。
+
+证书路径的状态信息包括证书吊销列表或在线证书状态协议响应。验证证书状态信息不在此要求的范围之内。
 
 **规则影响：**
 
@@ -4029,7 +3949,7 @@ This requirement verifies that a certification path to an accepted trust anchor 
 修改 /etc/pam_pkcs11/pam_pkcs11.conf文件，添加或修改配置：
 cert_policy = ca,oscp_on,signature,crl_auto
 
-### 14.41 SLEM 5 must be configured to not overwrite Pluggable Authentication Modules (PAM) configuration on package changes.
+### 14.41 KubeOS必须配置为在包更改时不覆盖可插拔身份验证模块（PAM）配置
 
 **级别：** 要求（MEDIUM）
 
@@ -4037,7 +3957,7 @@ cert_policy = ca,oscp_on,signature,crl_auto
 
 **规则说明：**
 
-The "pam-config" command line utility automatically generates a system PAM configuration as packages are installed, updated, or removed from the system. "pam-config" removes configurations for PAM modules and parameters that it does not know about. It may render ineffective PAM configuration by the system administrator and thus impact system security.
+在系统中安装、更新或删除软件包时，“pam-config”命令行实用程序会自动生成系统PAM配置。“pam-config”会删除它不知道的PAM模块和参数的配置。它可能会使系统管理员的PAM配置无效，从而影响系统的安全性
 
 **规则影响：**
 
@@ -4059,7 +3979,7 @@ The "pam-config" command line utility automatically generates a system PAM confi
 # sudo sh -c 'for X in /etc/pam.d/common-*-pc; do cp -ivp --remove-destination $X ${X:0:-3}; done'
 ```
 
-### 14.42 SLEM 5 root account must be the only account with unrestricted access to the system.
+### 14.42 KubeOS root帐户必须是唯一对系统具有不受限制访问权限的帐户
 
 **级别：** 要求（HIGH）
 
@@ -4067,7 +3987,7 @@ The "pam-config" command line utility automatically generates a system PAM confi
 
 **规则说明：**
 
-If an account other than root also has a User Identifier (UID) of "0", it has root authority, giving that account unrestricted access to the entire SLEM 5. Multiple accounts with a UID of "0" afford an opportunity for potential intruders to guess a password for a privileged account.
+如果root以外的帐户也具有“0”的用户标识符（UID），则它具有root权限，从而使该帐户可以不受限制地访问整个KubeOS。UID为“0”的多个帐户为潜在入侵者提供了猜测特权帐户密码的机会。
 
 **规则影响：**
 
@@ -4089,7 +4009,7 @@ If an account other than root also has a User Identifier (UID) of "0", it has ro
 # usermod -g 0 root
 ```
 
-### 14.43 SLEM 5 must not be configured to allow blank or null passwords.
+### 14.43 KubeOS不能配置为允许空白或空密码
 
 **级别：** 要求（HIGH）
 
@@ -4097,7 +4017,7 @@ If an account other than root also has a User Identifier (UID) of "0", it has ro
 
 **规则说明：**
 
-Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.
+任何时候都需要保护密码，加密是保护密码的标准方法。如果密码没有加密，它们可能会被明文读取（即明文），并且很容易被泄露。
 
 **规则影响：**
 
@@ -4129,7 +4049,7 @@ auth        sufficient    pam_unix.so nullok try_first_pass
 password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_authtok
 ```
 
-### 14.44 SLEM 5 must not have accounts configured with blank or null passwords.
+### 14.44 KubeOS不能使用配置为空白或null密码的帐户
 
 **级别：** 要求（HIGH）
 
@@ -4137,7 +4057,7 @@ password    sufficient    pam_unix.so sha512 shadow nullok try_first_pass use_au
 
 **规则说明：**
 
-If an account has an empty password, anyone could log on and run commands with the privileges of that account. Accounts with empty passwords should never be used in operational environments.
+如果帐户的密码为空，则任何人都可以使用该帐户的权限登录并运行命令。不应该在操作环境中使用空密码的帐户。
 
 **规则影响：**
 
@@ -4162,7 +4082,7 @@ If an account has an empty password, anyone could log on and run commands with t
 # vim /etc/login.defs
 ```
 
-### 14.45 SLEM 5 must employ FIPS 140-2/140-3-approved cryptographic hashing algorithms for system authentication.
+### 14.45 KubeOS必须使用FIPS 140-2/140-3认可的加密哈希算法来进行系统身份验证
 
 **级别：** 要求（HIGH）
 
@@ -4170,9 +4090,9 @@ If an account has an empty password, anyone could log on and run commands with t
 
 **规则说明：**
 
-The system must use a strong hashing algorithm to store the password. The system must use a sufficient number of hashing rounds to ensure the required level of entropy.
+系统必须使用强哈希算法来存储密码。系统必须使用足够数量的哈希轮数，以确保所需的熵水平。
 
-Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.
+任何时候都需要保护密码，加密是保护密码的标准方法。如果密码不加密，它们可能被明文读取（即明文），并且很容易被泄露。
 
 **规则影响：**
 
@@ -4195,7 +4115,7 @@ Passwords need to be protected at all times, and encryption is the standard meth
 ENCRYPT_METHOD SHA512
 ```
 
-### 14.46 SLEM 5 shadow password suite must be configured to use a sufficient number of hashing rounds.
+### 14.46 KubeOS影子密码套件必须配置为使用足够数量的哈希轮数
 
 **级别：** 要求（HIGH）
 
@@ -4203,9 +4123,9 @@ ENCRYPT_METHOD SHA512
 
 **规则说明：**
 
-The system must use a strong hashing algorithm to store the password. The system must use a sufficient number of hashing rounds to ensure the required level of entropy.
+系统必须使用强哈希算法来存储密码。系统必须使用足够数量的哈希轮数，以确保所需的熵水平。
 
-Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.
+任何时候都需要保护密码，加密是保护密码的标准方法。如果密码没有加密，它们可能会被明文读取（即明文），并且很容易被泄露。
 
 **规则影响：**
 
@@ -4232,7 +4152,7 @@ SHA_CRYPT_MAX_ROUNDS 5000
 
 ## 15 SELinux
 
-### 15.1 SLEM 5 must enable the SELinux targeted policy.
+### 15.1 KubeOS必须启用SELinux targeted策略
 
 **级别：** 要求（MEDIUM）
 
@@ -4240,9 +4160,9 @@ SHA_CRYPT_MAX_ROUNDS 5000
 
 **规则说明：**
 
-Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
+如果没有对安全功能进行验证，安全功能可能无法正常运行，并且可能会忽略故障。安全功能定义为信息系统的硬件、软件和/或固件，负责实施系统安全策略并支持保护所基于的代码和数据的隔离。安全功能包括但不限于建立系统帐户、配置访问授权（即权限、特权）、设置要审计的事件以及设置入侵检测参数。
 
-This requirement applies to operating systems performing security function verification/testing and/or systems and environments that require this functionality.
+此要求适用于执行安全功能验证/测试的操作系统和/或需要此功能的系统和环境。
 
 **规则影响：**
 
@@ -4261,7 +4181,7 @@ This requirement applies to operating systems performing security function verif
 修改/etc/selinux/config文件，增加或修改配置：
 SELINUXTYPE=targeted
 
-### 15.2 SLEM 5 must prevent nonprivileged users from executing privileged functions, including disabling, circumventing, or altering implemented security safeguards/countermeasures.
+### 15.2 KubeOS必须防止非特权用户执行特权功能，包括禁用、规避或更改已实施的安全保障/对策。
 
 **级别：** 要求（MEDIUM）
 
@@ -4269,9 +4189,9 @@ SELINUXTYPE=targeted
 
 **规则说明：**
 
-Preventing nonprivileged users from executing privileged functions mitigates the risk that unauthorized individuals or processes may gain unnecessary access to information or privileges.
+防止非特权用户执行特权功能可以降低未经授权的个人或进程可能获得对信息或特权的不必要访问的风险。
 
-Privileged functions include, for example, establishing accounts, performing system integrity checks, or administering cryptographic key management activities. Nonprivileged users are individuals who do not possess appropriate authorizations. Circumventing intrusion detection and prevention mechanisms or malicious code protection mechanisms are examples of privileged functions that require protection from nonprivileged users.
+特权功能包括，例如，建立帐户，执行系统完整性检查，或管理加密密钥管理活动。非特权用户是指不拥有适当授权的个人。绕过入侵检测和防御机制或恶意代码保护机制是需要保护非特权用户的特权功能的示例。
 
 **规则影响：**
 
@@ -4313,7 +4233,7 @@ Privileged functions include, for example, establishing accounts, performing sys
 # semanage login -m -s user_u <username>
 ```
 
-### 15.3 SLEM 5 must use a Linux Security Module configured to enforce limits on system services.
+### 15.3 KubeOS必须使用配置为对系统服务实施限制的Linux安全模块
 
 **级别：** 要求（HIGH）
 
@@ -4321,9 +4241,9 @@ Privileged functions include, for example, establishing accounts, performing sys
 
 **规则说明：**
 
-Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
+如果没有对安全功能进行验证，安全功能可能无法正确运行，并且可能会忽略故障。安全功能被定义为信息系统的硬件、软件和/或固件，负责实施系统安全策略并支持保护所基于的代码和数据的隔离。安全功能包括但不限于建立系统帐户、配置访问授权（即权限、特权）、设置要审计的事件以及设置入侵检测参数。
 
-This requirement applies to operating systems performing security function verification/testing and/or systems and environments that require this functionality.
+此要求适用于执行安全功能验证/测试的操作系统和/或需要此功能的系统和环境。
 
 **规则影响：**
 
@@ -4352,7 +4272,7 @@ SELINUX=Enforcing
 
 ## 16 aide
 
-### 16.1 SLEM 5 must use a file integrity tool to verify correct operation of all security functions.
+### 16.1 KubeOS必须使用文件完整性工具来验证所有安全功能的正确运行
 
 **级别：** 要求（MEDIUM）
 
@@ -4360,9 +4280,9 @@ SELINUX=Enforcing
 
 **规则说明：**
 
-Without verification of the security functions, security functions may not operate correctly, and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
+如果没有对安全功能进行验证，安全功能可能无法正确运行，并且故障可能会被忽视。安全功能定义为信息系统的硬件、软件和/或固件，负责实施系统安全策略并支持保护所基于的代码和数据的隔离。安全功能包括但不限于建立系统帐户、配置访问授权（即权限、特权）、设置要审计的事件以及设置入侵检测参数。
 
-This requirement applies to SLEM 5 performing security function verification/testing and/or systems and environments that require this functionality.
+此要求适用于KubeOS执行安全功能验证/测试和/或需要此功能的系统和环境。
 
 **规则影响：**
 
@@ -4383,7 +4303,7 @@ This requirement applies to SLEM 5 performing security function verification/tes
 # yum -y install aide
 ```
 
-### 16.2 SLEM 5 file integrity tool must be configured to verify Access Control Lists (ACLs).
+### 16.2 KubeOS文件完整性工具必须配置来验证访问控制列表（ACL）
 
 **级别：** 要求（MEDIUM）
 
@@ -4391,7 +4311,7 @@ This requirement applies to SLEM 5 performing security function verification/tes
 
 **规则说明：**
 
-ACLs can provide permissions beyond those permitted through the file mode and must be verified by file integrity tools.
+ACL可以提供超过文件模式允许的权限，并且必须通过文件完整性工具进行验证。
 
 **规则影响：**
 
@@ -4415,7 +4335,7 @@ DIR = p+i+n+u+g+acl+selinux+xattrs
 PERMS = p+i+u+g+acl+selinux
 DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 
-### 16.3 SLEM 5 file integrity tool must be configured to verify extended attributes.
+### 16.3 KubeOS文件完整性工具需要配置，以验证扩展属性
 
 **级别：** 要求（MEDIUM）
 
@@ -4423,7 +4343,7 @@ DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 
 **规则说明：**
 
-Extended attributes in file systems are used to contain arbitrary data and file metadata with security implications.
+文件系统中的扩展属性用于包含具有安全影响的任意数据和文件元数据。
 
 **规则影响：**
 
@@ -4445,7 +4365,7 @@ FIPSR = p+i+n+u+g+s+m+c+acl+selinux+xattrs+sha256
 DIR = p+i+n+u+g+acl+selinux+xattrs
 DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 
-### 16.4 SLEM 5 file integrity tool must be configured to protect the integrity of the audit tools.
+### 16.4 KubeOS文件完整性工具必须配置，以保护审计工具的完整性
 
 **级别：** 要求（MEDIUM）
 
@@ -4453,13 +4373,13 @@ DATAONLY =  p+n+u+g+s+acl+selinux+xattrs+sha256
 
 **规则说明：**
 
-Protecting the integrity of the tools used for auditing purposes is a critical step toward ensuring the integrity of audit information. Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.
+保护用于审计目的的工具的完整性是确保审计信息完整性的关键步骤。审计信息包括成功审计信息系统活动所需的所有信息（例如，审计记录、审计设置和审计报告）。
 
-Audit tools include but are not limited to vendor-provided and open-source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.
+审计工具包括但不限于供应商提供的和成功查看和操作审计信息系统活动和记录所需的开源审计工具。审核工具包括自定义查询和报告生成器。
 
-It is not uncommon for attackers to replace the audit tools or inject code into the existing tools to provide the capability to hide or erase system activity from the audit logs.
+攻击者更换审计工具或向现有工具注入代码，以提供隐藏或清除审计日志中的系统活动的功能，这种情况并不罕见。
 
-To address this risk, audit tools must be cryptographically signed to provide the capability to identify when the audit tools have been modified, manipulated, or replaced. An example is a checksum hash of the file or files.
+为了解决这种风险，审计工具必须进行加密签名，以提供识别审计工具何时被修改、操作或替换的功能。例如，文件的校验和哈希。
 
 **规则影响：**
 
@@ -4492,7 +4412,7 @@ To address this risk, audit tools must be cryptographically signed to provide th
 /usr/sbin/augenrules p+i+n+u+g+s+b+acl+selinux+xattrs+sha512
 ```
 
-### 16.5 Advanced Intrusion Detection Environment (AIDE) must verify the baseline SLEM 5 configuration at least weekly.
+### 16.5 高级入侵检测环境（AIDE）必须至少每周验证一次KubeOS的基线配置
 
 **级别：** 要求（MEDIUM）
 
@@ -4500,9 +4420,9 @@ To address this risk, audit tools must be cryptographically signed to provide th
 
 **规则说明：**
 
-Unauthorized changes to the baseline configuration could make the system vulnerable to various attacks or allow unauthorized access to SLEM 5. Changes to SLEM 5 configurations can have unintended side effects, some of which may be relevant to security.
+对基线配置的未经授权的更改可能会使系统容易受到各种攻击，或允许未经授权的访问KubeOS。对KubeOS配置的更改可能会产生意想不到的副作用，其中一些可能与安全有关。
 
-Detecting such changes and providing an automated response can help avoid unintended, negative consequences that could ultimately affect the security state of SLEM 5. SLEM 5's information system security manager (ISSM)/information system security officer (ISSO) and system administrator (SA) must be notified via email and/or monitoring system trap when there is an unauthorized modification of a configuration item.
+检测此类更改并提供自动响应有助于避免可能最终影响KubeOS安全状态的意外的负面后果。KubeOS的信息系统安全管理员（ISSM）/信息系统安全官（ISSO）和系统管理员（SA）必须在未经授权的配置项修改时通过电子邮件和/或监控系统得到通知。
 
 **规则影响：**
 
@@ -4521,7 +4441,7 @@ Detecting such changes and providing an automated response can help avoid uninte
 修改/etc/cron.weekly/aide文件，添加或修改配置：
 space_left  = 25%
 
-### 16.6 SLEM 5 must notify the system administrator (SA) when Advanced Intrusion Detection Environment (AIDE) discovers anomalies in the operation of any security functions.
+### 16.6 KubeOS必须在高级入侵检测环境（AIDE）发现任何安全功能运行中的异常时通知系统管理员（SA）
 
 **级别：** 要求（MEDIUM）
 
@@ -4529,13 +4449,13 @@ space_left  = 25%
 
 **规则说明：**
 
-If anomalies are not acted on, security functions may fail to secure the system.
+如果不对异常进行操作，安全功能可能无法保护系统。
 
-Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
+安全功能定义为信息系统的硬件、软件和/或固件，负责实施系统安全策略并支持保护所基于的代码和数据的隔离。安全功能包括但不限于建立系统帐户、配置访问授权（即权限、特权）、设置要审计的事件以及设置入侵检测参数。
 
-Notifications provided by information systems include messages to local computer consoles and/or hardware indications, such as lights.
+信息系统提供的通知包括本地计算机控制台和/或硬件指示（例如指示灯）的消息。
 
-This capability must take into account operational requirements for availability for selecting an appropriate response. The organization may choose to shut down or restart the information system upon security function anomaly detection.
+这种能力必须考虑到可用性的操作要求，以选择适当的响应。组织可以选择在检测到安全功能异常时关闭或重新启动信息系统。
 
 **规则影响：**
 
@@ -4558,7 +4478,7 @@ This capability must take into account operational requirements for availability
 
 ## 17 日志审计
 
-### 17.1 SLEM 5 must offload rsyslog messages for networked systems in real time and offload standalone systems at least weekly.
+### 17.1 KubeOS必须实时卸载联网系统的rsyslog消息，并至少每周卸载独立系统
 
 **级别：** 要求（MEDIUM）
 
@@ -4566,9 +4486,9 @@ This capability must take into account operational requirements for availability
 
 **规则说明：**
 
-Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
+存储在一个位置的信息容易被意外或偶然的删除或更改。
 
-Offloading is a common process in information systems with limited audit storage capacity.
+卸载是审计存储容量有限的信息系统中的常见过程。
 
 **规则影响：**
 
@@ -4592,7 +4512,7 @@ Offloading is a common process in information systems with limited audit storage
 *.* @<日志接收端服务器IP>:514
 *.* @@<日志接收端服务器IP>:514
 
-### 17.2 SLEM 5 must have the auditing package installed.
+### 17.2 KubeOS必须安装审计包
 
 **级别：** 要求（MEDIUM）
 
@@ -4600,11 +4520,11 @@ Offloading is a common process in information systems with limited audit storage
 
 **规则说明：**
 
-Without establishing what type of events occurred, the source of events, where events occurred, and the outcome of events, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.
+如果不确定发生了什么类型的事件、事件的来源、事件发生的位置和事件的结果，就很难建立、关联和调查导致中断或攻击的事件。
 
-Audit record content that may be necessary to satisfy this requirement includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.
+满足此要求可能需要的审计记录内容包括，例如时间戳、源地址和目标地址、用户/进程标识符、事件描述、成功/失败指示、涉及的文件名以及调用的访问控制或流控制规则。
 
-Associating event types with detected events in SLEM 5 audit logs provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured SLEM 5.
+将事件类型与KubeOS审核日志中检测到的事件相关联，可以提供调查攻击、识别资源利用率或容量阈值或识别配置不当的KubeOS的方法。
 
 **规则影响：**
 
@@ -4627,7 +4547,7 @@ auditctl version 3.1.2
 # yum -y install audit
 ```
 
-### 17.3 SLEM 5 audit records must contain information to establish what type of events occurred, the source of events, where events occurred, and the outcome of events.
+### 17.3 KubeOS审计记录必须包含信息，以确定发生了什么类型的事件、事件的来源、事件发生的位置以及事件的结果
 
 **级别：** 要求（MEDIUM）
 
@@ -4635,11 +4555,11 @@ auditctl version 3.1.2
 
 **规则说明：**
 
-Without establishing what type of events occurred, the source of events, where events occurred, and the outcome of events, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.
+如果不确定发生了什么类型的事件、事件的来源、事件发生的位置和事件的结果，就很难建立、关联和调查导致中断或攻击的事件。
 
-Audit record content that may be necessary to satisfy this requirement includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.
+满足此要求可能需要的审计记录内容包括，例如时间戳、源地址和目标地址、用户/进程标识符、事件描述、成功/失败指示、涉及的文件名以及调用的访问控制或流控制规则。
 
-Associating event types with detected events in SLEM 5 audit logs provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured SLEM 5.
+将事件类型与KubeOS审核日志中检测到的事件相关联，可以提供调查攻击、识别资源利用率或容量阈值或识别配置不当的KubeOS的方法。
 
 **规则影响：**
 
@@ -4666,7 +4586,7 @@ enabled
 # systemctl start auditd.service
 ```
 
-### 17.4 The audit-audispd-plugins package must be installed on SLEM 5.
+### 17.4 在KubeOS上必须安装audit-audispd-plugins包
 
 **级别：** 要求（MEDIUM）
 
@@ -4674,11 +4594,11 @@ enabled
 
 **规则说明：**
 
-Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
+存储在一个位置的信息容易被意外或偶然的删除或更改。
 
-Offloading is a common process in information systems with limited audit storage capacity.
+卸载是审计存储容量有限的信息系统中的常见过程。
 
-The auditd service does not include the ability to send audit records to a centralized server for management directly. However, it can use a plug-in for audit event multiplexor to pass audit records to a remote server.
+auditd服务不包括将审核记录直接发送到集中服务器进行管理的功能。但是，它可以使用审计事件多路复用器的插件将审计记录传递到远程服务器。
 
 **规则影响：**
 
@@ -4699,7 +4619,7 @@ active = yes
 修改/etc/audit/plugins.d/au-remote.conf文件，添加或修改配置：
 active = yes
 
-### 17.5 SLEM 5 must allocate audit record storage capacity to store at least one week of audit records when audit records are not immediately sent to a central audit record storage facility.
+### 17.5 当审计记录没有立即发送到中央审计记录存储设施时，KbeOS必须分配审计记录存储容量以存储至少一周的审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -4707,9 +4627,9 @@ active = yes
 
 **规则说明：**
 
-To ensure SLEM 5 has a sufficient storage capacity in which to write the audit logs, SLEM 5 must be able to allocate audit record storage capacity.
+为了确保KubeOS有足够的存储容量来写入审计日志，KbeOS必须能够分配审计记录存储容量。
 
-The task of allocating audit record storage capacity is usually performed during initial installation of SLEM 5.
+分配审计记录存储容量的任务通常在KubeOS初始安装时执行。
 
 **规则影响：**
 
@@ -4735,7 +4655,7 @@ Filesystem                Size  Used Avail Use% Mounted on
 # systemctl start auditd
 ```
 
-### 17.6 SLEM 5 auditd service must notify the system administrator (SA) and information system security officer (ISSO) immediately when audit storage capacity is 75 percent full.
+### 17.6 KubeOS auditd服务必须在审计存储容量已满75%时立即通知系统管理员（SA）和信息系统安全官（ISSO）
 
 **级别：** 要求（MEDIUM）
 
@@ -4743,7 +4663,7 @@ Filesystem                Size  Used Avail Use% Mounted on
 
 **规则说明：**
 
-If security personnel are not notified immediately when storage volume reaches 75 percent utilization, they are unable to plan for audit record storage capacity expansion.
+如果在存储卷达到75%利用率时没有立即通知安全人员，他们就无法规划审计记录存储容量扩展。
 
 **规则影响：**
 
@@ -4764,7 +4684,7 @@ space_left = 25%
 修改/etc/audit/auditd.conf文件，添加或修改配置：
 space_left  = 25%
 
-### 17.7 SLEM 5 audit system must take appropriate action when the audit storage volume is full.
+### 17.7 KubeOS审计系统必须在审计存储卷已满时采取适当的操作
 
 **级别：** 要求（MEDIUM）
 
@@ -4772,13 +4692,13 @@ space_left  = 25%
 
 **规则说明：**
 
-It is critical that when SLEM 5 is at risk of failing to process audit logs as required, it takes action to mitigate the failure. Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. Responses to audit failure depend on the nature of the failure mode.
+关键是当KubeOS面临无法按要求处理审核日志的风险时，它会采取措施来缓解故障。审核处理失败包括软件/硬件错误、审核捕获机制故障以及达到或超过审核存储容量。对审核失败的响应取决于失败模式的性质。
 
-When availability is an overriding concern, other approved actions in response to an audit failure are as follows: 
+如果可用性是首要考虑的问题，则为响应审核失败而采取的其他经批准的措施如下：
 
-1) If the failure was caused by the lack of audit record storage capacity, SLEM 5 must continue generating audit records if possible (automatically restarting the audit service if necessary), overwriting the oldest audit records in a first-in-first-out manner.
+1)如果故障是由于缺乏审计记录存储容量导致的，则KubeOS必须在可能的情况下继续生成审计记录（必要时自动重启审计服务），以先进先出的方式覆盖最旧的审计记录。
 
-2) If audit records are sent to a centralized collection server and communication with this server is lost or the server fails, SLEM 5 must queue audit records locally until communication is restored or until the audit records are retrieved manually. Upon restoration of the connection to the centralized collection server, action should be taken to synchronize the local audit data with the collection server.
+2)如果审计记录被发送到集中收集服务器，并且与此服务器的通信丢失或服务器发生故障，则KubeOS必须在本地对审计记录进行排队，直到通信恢复或直到手动检索审计记录。恢复与集中采集服务器的连接后，应采取措施将本地审计数据与采集服务器同步。
 
 **规则影响：**
 
@@ -4799,7 +4719,10 @@ disk_full_action = HALT
 修改/etc/audit/auditd.conf文件，添加或修改配置：
 disk_full_action = HALT
 
-### 17.8 SLEM 5 must offload audit records onto a different system or media from the system being audited.
+
+
+
+### 17.8 KubeOS 必须将审计记录卸载到与被审计系统不同的系统或介质上
 
 **级别：** 要求（MEDIUM）
 
@@ -4807,9 +4730,7 @@ disk_full_action = HALT
 
 **规则说明：**
 
-Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
-
-Offloading is a common process in information systems with limited audit storage capacity.
+存储在一个位置的信息容易受到意外或偶然性的删除或篡改。卸载是审计存储容量有限的信息系统中常见的处理流程。
 
 **规则影响：**
 
@@ -4830,7 +4751,7 @@ network_failure_action = syslog
 修改/etc/audit/audisp-remote.conf文件，添加或修改配置：
 network_failure_action = syslog
 
-### 17.9 Audispd must take appropriate action when SLEM 5 audit storage is full.
+### 17.9 当 KubeOS 审计存储已满时，Audispd 必须采取适当的措施
 
 **级别：** 要求（MEDIUM）
 
@@ -4838,9 +4759,7 @@ network_failure_action = syslog
 
 **规则说明：**
 
-Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
-
-Offloading is a common process in information systems with limited audit storage capacity.
+存储在一个位置的信息容易受到意外或偶然性的删除或篡改。卸载是审计存储容量有限的信息系统中常见的处理流程。
 
 **规则影响：**
 
@@ -4861,7 +4780,7 @@ disk_full_action = syslog
 修改/etc/audit/audisp-remote.conf文件，添加或修改配置：
 disk_full_action = syslog
 
-### 17.10 SLEM 5 must protect audit rules from unauthorized modification.
+### 17.10 KubeOS 必须保护审计规则免受未经授权的修改
 
 **级别：** 要求（MEDIUM）
 
@@ -4869,7 +4788,7 @@ disk_full_action = syslog
 
 **规则说明：**
 
-Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果无法限制哪些角色和个人可以选择审计哪些事件，未经授权的人员就可能阻止对关键事件的审计。配置不当的审计可能会因审计日志过载而降低系统性能。配置不当的审计还可能使建立、关联和调查与事件相关的事件，或识别事件责任人变得更加困难。
 
 **规则影响：**
 
@@ -4901,7 +4820,7 @@ Without the capability to restrict which roles and individuals can select which 
 # chown root:root /etc/audit/rules.d/audit.rules
 ```
 
-### 17.11 SLEM 5 audit tools must have the proper permissions configured to protect against unauthorized access.
+### 17.11 KubeOS 审计工具必须配置适当的权限，以防止未经授权的访问
 
 **级别：** 要求（MEDIUM）
 
@@ -4909,11 +4828,9 @@ Without the capability to restrict which roles and individuals can select which 
 
 **规则说明：**
 
-Protecting audit information includes identifying and protecting the tools used to view and manipulate log data. Protecting audit tools is necessary to prevent unauthorized operation on audit information.
-
-SLEM 5 providing tools to interface with audit information will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys to make access decisions regarding the access to audit tools.
-
-Audit tools include, but are not limited to, vendor-provided and open-source audit tools needed to view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.
+保护审计信息包括识别和保护用于查看和操作日志数据的工具。保护审计工具对于防止对审计信息的未授权操作是必要的。
+KubeOS 提供与审计信息交互的工具时，将利用用户权限和角色来识别访问工具的用户以及该用户享有的相应权限，从而对审计工具的访问做出访问决策。
+审计工具包括但不限于供应商提供的和开源的审计工具，这些工具用于查看和操作审计信息系统活动和记录。审计工具还包括自定义查询和报告生成器。
 
 **规则影响：**
 
@@ -4953,7 +4870,7 @@ Audit tools include, but are not limited to, vendor-provided and open-source aud
 # chown root:root /usr/sbin/augenrules
 ```
 
-### 17.12 SLEM 5 audit tools must have the proper permissions applied to protect against unauthorized access.
+### 17.12 Audispd 必须将审计记录从被审计的 KubeOS 系统卸载到不同的系统或介质上
 
 **级别：** 要求（MEDIUM）
 
@@ -4961,37 +4878,7 @@ Audit tools include, but are not limited to, vendor-provided and open-source aud
 
 **规则说明：**
 
-Protecting audit information includes identifying and protecting the tools used to view and manipulate log data. Protecting audit tools is necessary to prevent unauthorized operation on audit information.
-
-SLEM 5 providing tools to interface with audit information will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys to make access decisions regarding the access to audit tools.
-
-Audit tools include, but are not limited to, vendor-provided and open-source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.
-
-**规则影响：**
-
-无
-
-**检查方法：**
-
-
-KubeOS无/etc/permissions.local文件，无需检测。
-
-**修复方法：**
-
-
-不涉及
-
-### 17.13 Audispd must offload audit records onto a different system or media from SLEM 5 being audited.
-
-**级别：** 要求（MEDIUM）
-
-**适用版本：** ALL
-
-**规则说明：**
-
-Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
-
-Offloading is a common process in information systems with limited audit storage capacity.
+存储在一个位置的信息容易受到意外或偶然性的删除或篡改。卸载是审计存储容量有限的信息系统中常见的处理流程。
 
 **规则影响：**
 
@@ -5010,7 +4897,7 @@ ping <ip_address>
 
 根据实际情况配置远端服务器IP，修改配置文件/etc/audit/audisp-remote.conf，增加或修改remote_server = <ip_address>
 
-### 17.14 The information system security officer (ISSO) and system administrator (SA), at a minimum, must have mail aliases to be notified of a SLEM 5 audit processing failure.
+### 17.13 信息系统安全官（ISSO）和系统管理员（SA）至少必须配置邮件别名，以便在 KubeOS 审计处理失败时接收通知
 
 **级别：** 要求（MEDIUM）
 
@@ -5018,11 +4905,9 @@ ping <ip_address>
 
 **规则说明：**
 
-It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.
-
-Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.
-
-This requirement applies to each audit data storage repository (i.e., distinct information system component where audit records are stored), the centralized audit storage capacity of organizations (i.e., all audit data storage repositories combined), or both.
+如果系统存在无法按要求处理审计日志的风险，让相关人员及时知晓至关重要。若无此通知，安全人员可能无法察觉审计功能即将发生的故障，进而可能对系统运行产生不利影响。
+审计处理故障包括软件/硬件错误、审计捕获机制故障，以及审计存储容量达到或超过上限。
+此要求适用于每个审计数据存储库（即存储审计记录的独立信息系统组件）、组织的集中式审计存储容量（即所有审计数据存储库的总和），或两者兼而有之。
 
 **规则影响：**
 
@@ -5041,7 +4926,7 @@ This requirement applies to each audit data storage repository (i.e., distinct i
 修改/etc/aliases文件，添加或修改配置：
 postmaster: root
 
-### 17.15 The information system security officer (ISSO) and system administrator (SA), at a minimum, must be alerted of a SLEM 5 audit processing failure event.
+### 17.14 信息系统安全官（ISSO）和系统管理员（SA）至少必须在 KubeOS 审计处理故障事件发生时收到告警
 
 **级别：** 要求（MEDIUM）
 
@@ -5049,11 +4934,9 @@ postmaster: root
 
 **规则说明：**
 
-It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.
-
-Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.
-
-This requirement applies to each audit data storage repository (i.e., distinct information system component where audit records are stored), the centralized audit storage capacity of organizations (i.e., all audit data storage repositories combined), or both.
+如果系统存在无法按要求处理审计日志的风险，让相关人员及时知晓至关重要。若无此通知，安全人员可能无法察觉审计功能即将发生的故障，进而可能对系统运行产生不利影响。
+审计处理故障包括软件/硬件错误、审计捕获机制故障，以及审计存储容量达到或超过上限。
+此要求适用于每个审计数据存储库（即存储审计记录的独立信息系统组件）、组织的集中式审计存储容量（即所有审计数据存储库的总和），或两者兼而有之。
 
 **规则影响：**
 
@@ -5070,7 +4953,7 @@ This requirement applies to each audit data storage repository (i.e., distinct i
 修改/etc/audit/auditd.conf文件，添加或修改配置：
 action_mail_acct = root
 
-### 17.16 SLEM 5 must generate audit records for all uses of the "chacl" command.
+### 17.15 KubeOS 必须针对所有对 "chacl" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5078,9 +4961,8 @@ action_mail_acct = root
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5104,7 +4986,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.17 SLEM 5 must generate audit records for all uses of the "chage" command.
+### 17.16 KubeOS 必须针对所有对 "chage" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5112,9 +4994,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5138,7 +5019,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.18 SLEM 5 must generate audit records for all uses of the "chcon" command.
+### 17.17 KubeOS 必须针对所有对 "chcon" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5146,9 +5027,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5172,7 +5052,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.19 SLEM 5 must generate audit records for all uses of the "chfn" command.
+### 17.18 KubeOS 必须针对所有对 "chfn" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5180,9 +5060,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5206,7 +5085,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.20 SLEM 5 must generate audit records for all uses of the "chmod" command.
+### 17.19 KubeOS 必须针对所有对 "chmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5214,9 +5093,8 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5240,7 +5118,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.21 SLEM 5 must generate audit records for a uses of the "chsh" command.
+### 17.20 KubeOS 必须针对所有对 "chsh" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5248,9 +5126,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5274,7 +5151,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.22 SLEM 5 must generate audit records for all uses of the "crontab" command.
+### 17.21 KubeOS 必须针对所有对 "crontab" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5282,9 +5159,8 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5308,7 +5184,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.23 SLEM 5 must generate audit records for all uses of the "gpasswd" command.
+### 17.22 KubeOS 必须针对所有对 "gpasswd" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5316,9 +5192,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5342,7 +5217,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.24 SLEM 5 must generate audit records for all uses of the "insmod" command.
+### 17.23 KubeOS 必须针对所有对 "insmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5350,21 +5225,14 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
-
-The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.
-
-DOD has defined the following list of events for which SLEM 5 will provide an audit record generation capability: 
-
-1) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);
-
-2) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system;
-
-3) All account creations, modifications, disabling, and terminations; and 
-
-4) All kernel module load, unload, and restart actions.
+如果不具备生成审计记录的能力，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
+审计事件列表是指需要生成审计的事件集合。该事件集合通常是系统能够生成审计记录的所有事件列表的一个子集。
+美国国防部（DOD）已定义了以下 KubeOS 必须提供审计记录生成能力的事件列表：
+1）成功和失败的访问、修改或删除权限、安全对象、安全级别或信息类别（如分类级别）的尝试；
+2）访问行为，例如成功和失败的登录尝试、特权活动或其他系统级访问、用户访问系统的起止时间、来自不同工作站的并发登录、成功和失败的对象访问、所有程序启动以及所有对信息系统的直接访问；
+3）所有账户的创建、修改、禁用和终止；以及
+4）所有内核模块的加载、卸载和重启操作。
 
 **规则影响：**
 
@@ -5389,7 +5257,7 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 # systemctl restart auditd.service
 ```
 
-### 17.25 SLEM 5 must generate audit records for all uses of the "kmod" command.
+### 17.24 KubeOS 必须针对所有对 "kmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5397,21 +5265,14 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 
 **规则说明：**
 
-Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
-
-The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.
-
-DOD has defined the following list of events for which SLEM 5 will provide an audit record generation capability: 
-
-1) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);
-
-2) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system;
-
-3) All account creations, modifications, disabling, and terminations; and 
-
-4) All kernel module load, unload, and restart actions.
+如果不具备生成审计记录的能力，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
+审计事件列表是指需要生成审计的事件集合。该事件集合通常是系统能够生成审计记录的所有事件列表的一个子集。
+美国国防部（DOD）已定义了以下 KubeOS 必须提供审计记录生成能力的事件列表：
+1）成功和失败的访问、修改或删除权限、安全对象、安全级别或信息类别（如分类级别）的尝试；
+2）访问行为，例如成功和失败的登录尝试、特权活动或其他系统级访问、用户访问系统的起止时间、来自不同工作站的并发登录、成功和失败的对象访问、所有程序启动以及所有对信息系统的直接访问；
+3）所有账户的创建、修改、禁用和终止；以及
+4）所有内核模块的加载、卸载和重启操作。
 
 **规则影响：**
 
@@ -5436,7 +5297,7 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 # systemctl restart auditd.service
 ```
 
-### 17.26 SLEM 5 must generate audit records for all uses of the "modprobe" command.
+### 17.25 KubeOS 必须针对所有对 "modprobe" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5444,21 +5305,14 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 
 **规则说明：**
 
-Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
-
-The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.
-
-DOD has defined the following list of events for which SLEM 5 will provide an audit record generation capability: 
-
-1) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);
-
-2) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system;
-
-3) All account creations, modifications, disabling, and terminations; and 
-
-4) All kernel module load, unload, and restart actions.
+如果不具备生成审计记录的能力，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
+审计事件列表是指需要生成审计的事件集合。该事件集合通常是系统能够生成审计记录的所有事件列表的一个子集。
+美国国防部（DOD）已定义了以下 KubeOS 必须提供审计记录生成能力的事件列表：
+1）成功和失败的访问、修改或删除权限、安全对象、安全级别或信息类别（如分类级别）的尝试；
+2）访问行为，例如成功和失败的登录尝试、特权活动或其他系统级访问、用户访问系统的起止时间、来自不同工作站的并发登录、成功和失败的对象访问、所有程序启动以及所有对信息系统的直接访问；
+3）所有账户的创建、修改、禁用和终止；以及
+4）所有内核模块的加载、卸载和重启操作。
 
 **规则影响：**
 
@@ -5483,7 +5337,7 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 # systemctl restart auditd.service
 ```
 
-### 17.27 SLEM 5 must generate audit records for all uses of the "newgrp" command.
+### 17.26 KubeOS 必须针对所有对 "newgrp" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5491,9 +5345,8 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5518,7 +5371,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.28 SLEM 5 must generate audit records for all uses of the "pam_timestamp_check" command.
+### 17.27 KubeOS 必须针对所有对 "pam_timestamp_check" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5526,9 +5379,8 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5553,7 +5405,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.29 SLEM 5 must generate audit records for all uses of the "passwd" command.
+### 17.28 KubeOS 必须针对所有对 "passwd" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5561,9 +5413,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5588,7 +5439,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.30 SLEM 5 must generate audit records for all uses of the "rm" command.
+### 17.29 KubeOS 必须针对所有对 "rm" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5596,9 +5447,8 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5623,7 +5473,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.31 SLEM 5 must generate audit records for all uses of the "rmmod" command.
+### 17.30 KubeOS 必须针对所有对 "rmmod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5631,21 +5481,14 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
-
-The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.
-
-DOD has defined the following list of events for which SLEM 5 will provide an audit record generation capability: 
-
-1) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);
-
-2) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system;
-
-3) All account creations, modifications, disabling, and terminations; and 
-
-4) All kernel module load, unload, and restart actions.
+如果不具备生成审计记录的能力，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
+审计事件列表是指需要生成审计的事件集合。该事件集合通常是系统能够生成审计记录的所有事件列表的一个子集。
+美国国防部（DOD）已定义了以下 KubeOS 必须提供审计记录生成能力的事件列表：
+1）成功和失败的访问、修改或删除权限、安全对象、安全级别或信息类别（如分类级别）的尝试；
+2）访问行为，例如成功和失败的登录尝试、特权活动或其他系统级访问、用户访问系统的起止时间、来自不同工作站的并发登录、成功和失败的对象访问、所有程序启动以及所有对信息系统的直接访问；
+3）所有账户的创建、修改、禁用和终止；以及
+4）所有内核模块的加载、卸载和重启操作。
 
 **规则影响：**
 
@@ -5670,7 +5513,7 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 # systemctl restart auditd.service
 ```
 
-### 17.32 SLEM 5 must generate audit records for all uses of the "setfacl" command.
+### 17.31 KubeOS 必须针对所有对 "setfacl" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5678,9 +5521,8 @@ DOD has defined the following list of events for which SLEM 5 will provide an au
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5705,7 +5547,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.33 SLEM 5 must generate audit records for all uses of the "ssh-agent" command.
+### 17.32 KubeOS 必须针对所有对 "ssh-agent" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5713,9 +5555,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5740,7 +5581,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.34 SLEM 5 must generate audit records for all uses of the "ssh-keysign" command.
+### 17.33 KubeOS 必须针对所有对 "ssh-keysign" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5748,9 +5589,8 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5775,7 +5615,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.35 SLEM 5 must generate audit records for all uses of the "su" command.
+### 17.34 KubeOS 必须针对所有对 "su" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5783,9 +5623,8 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5810,7 +5649,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.36 SLEM 5 must generate audit records for all uses of the "sudo" command.
+### 17.35 KubeOS 必须针对所有对 "sudo" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5818,9 +5657,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
-
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+如果审计记录包含的信息不足，将无法进行有害事件的重构或取证分析。
+组织至少必须对特权命令进行全文记录审计。组织必须维护足够详细的审计跟踪，以重构事件并确定入侵的原因和影响。
 
 **规则影响：**
 
@@ -5845,7 +5683,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.37 SLEM 5 must generate audit records for all uses of the "sudoedit" command.
+### 17.36 KubeOS 必须针对所有对 "sudoedit" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5853,9 +5691,8 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5880,7 +5717,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.38 SLEM 5 must generate audit records for all uses of the "unix_chkpwd" or "unix2_chkpwd" commands.
+### 17.37 KubeOS 必须针对所有对 "unix_chkpwd" 或 "unix2_chkpwd" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5888,9 +5725,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5916,7 +5752,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.39 SLEM 5 must generate audit records for all uses of the "usermod" command.
+### 17.38 KubeOS 必须针对所有对 "usermod" 命令的使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5924,9 +5760,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
-
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+如果不生成针对组织安全和业务需求的特定审计记录，将难以建立、关联和调查与事件相关的事件，或识别事件责任人。
+审计记录可由信息系统内的各个组件生成（例如，模块或策略过滤器）。
 
 **规则影响：**
 
@@ -5951,7 +5786,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.40 SLEM 5 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/group.
+### 17.39 KubeOS 必须针对所有影响 /etc/group 文件的账户创建、修改、禁用和终止事件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5959,9 +5794,8 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Auditing account creation mitigates this risk.
-
-To address access requirements, SLEM 5 may be integrated with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements.
+攻击者一旦获得系统的初始访问权限，往往会尝试创建一种持久化的方式以重新建立访问。实现该目的的一种简单方法就是创建新账户。对账户创建行为进行审计可以降低此类风险。
+为满足访问需求，KubeOS 可与满足或超出访问控制策略要求的企业级认证/访问/审计机制集成。
 
 **规则影响：**
 
@@ -5986,7 +5820,8 @@ To address access requirements, SLEM 5 may be integrated with enterprise-level a
 # systemctl restart auditd.service
 ```
 
-### 17.41 SLEM 5 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/security/opasswd.
+
+### 17.40 KubeOS必须为影响/etc/security/opasswd的所有帐户创建、修改、禁用和终止事件生成审核记录
 
 **级别：** 要求（MEDIUM）
 
@@ -5994,9 +5829,9 @@ To address access requirements, SLEM 5 may be integrated with enterprise-level a
 
 **规则说明：**
 
-Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Auditing account creation mitigates this risk.
+一旦攻击者建立了对系统的初始访问权限，攻击者通常会尝试创建一种持久的方法来重新建立访问权限。实现此目标的一种方法是，攻击者只需创建一个新帐户。审核账户创建可以降低这种风险。
 
-To address access requirements, SLEM 5 may be integrated with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements.
+为了满足访问需求，KbeOS可以与满足或超过访问控制策略要求的企业级身份验证/访问/审计机制集成。
 
 **规则影响：**
 
@@ -6021,17 +5856,16 @@ To address access requirements, SLEM 5 may be integrated with enterprise-level a
 # systemctl restart auditd.service
 ```
 
-### 17.42 SLEM 5 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/passwd.
-
+### 17.41 KubeOS必须为所有影响/etc/passwd的帐户创建、修改、禁用和终止事件生成审计记录
 **级别：** 要求（MEDIUM）
 
 **适用版本：** ALL
 
 **规则说明：**
 
-Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Auditing account creation mitigates this risk.
+一旦攻击者建立了对系统的初始访问权限，攻击者通常会尝试创建一种持久的方法来重新建立访问权限。实现此目的的一种方法是，攻击者只需创建一个新帐户。审核账户创建可以降低这种风险。
 
-To address access requirements, SLEM 5 may be integrated with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements.
+为了满足访问需求，KbeOS可以与满足或超过访问控制策略需求的企业级身份验证/访问/审计机制集成。
 
 **规则影响：**
 
@@ -6056,7 +5890,7 @@ To address access requirements, SLEM 5 may be integrated with enterprise-level a
 # systemctl restart auditd.service
 ```
 
-### 17.43 SLEM 5 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/shadow.
+### 17.42 KubeOS必须为影响/etc/shadow的所有帐户创建、修改、禁用和终止事件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6064,9 +5898,9 @@ To address access requirements, SLEM 5 may be integrated with enterprise-level a
 
 **规则说明：**
 
-Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Auditing account creation mitigates this risk.
+一旦攻击者建立了对系统的初始访问权限，攻击者通常会尝试创建一种持久的方法来重新建立访问权限。实现此目标的一种方法是，攻击者只需创建一个新帐户。审核帐户创建可以降低这种风险。
 
-To address access requirements, SLEM 5 may be integrated with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements.
+为了满足访问需求，KbeOS可以与满足或超过访问控制策略需求的企业级身份验证/访问/审计机制集成。
 
 **规则影响：**
 
@@ -6091,7 +5925,7 @@ To address access requirements, SLEM 5 may be integrated with enterprise-level a
 # systemctl restart auditd.service
 ```
 
-### 17.44 SLEM 5 must generate audit records for all uses of the "chmod", "fchmod" and "fchmodat" system calls.
+### 17.43 KubeOS必须为“chmod”、“fchmod”和“fchmodat”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6099,9 +5933,9 @@ To address access requirements, SLEM 5 may be integrated with enterprise-level a
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter). The system call rules are loaded into a matching engine that intercepts each syscall made by all programs on the system. Therefore, it is important to use syscall rules only when absolutely necessary since these affect performance. The more rules, the bigger the performance hit. However, the performance can be helped by combining syscalls into one rule whenever possible.
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。系统调用规则加载到匹配的引擎中，该引擎拦截系统上所有程序发出的每个系统调用。因此，仅在绝对必要时使用syscall规则非常重要，因为这些规则会影响性能。规则越多，对性能的冲击越大。但是，只要有可能，通过将syscall合并到一个规则中可以帮助提高性能。
 
 **规则影响：**
 
@@ -6127,17 +5961,16 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.45 SLEM 5 must generate audit records for all uses of the "chown", "fchown", "fchownat", and "lchown" system calls.
-
+### 17.44 KubeOS必须为所有使用"chown"、"fchown"、"fchownat"和"lchown"系统调用生成审计记录
 **级别：** 要求（MEDIUM）
 
 **适用版本：** ALL
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter). The system call rules are loaded into a matching engine that intercepts each syscall made by all programs on the system. Therefore, it is very important to use syscall rules only when absolutely necessary, since these affect performance. The more rules, the bigger the performance hit. The performance can be helped, however, by combining syscalls into one rule whenever possible.
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。系统调用规则加载到匹配的引擎中，该引擎拦截系统上所有程序发出的每个系统调用。因此，仅在绝对必要时使用syscall规则是非常重要的，因为这些会影响性能。规则越多，性能冲击越大。但是，尽可能将syscall合并到一个规则中，可以帮助提高性能。
 
 **规则影响：**
 
@@ -6163,7 +5996,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.46 SLEM 5 must generate audit records for all uses of the "creat", "open", "openat", "open_by_handle_at", "truncate", and "ftruncate" system calls.
+### 17.45 KubeOS必须为“creat”、“open”、“open_by_handle_at”、“truncate”和“ftruncate”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6171,9 +6004,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter). The system call rules are loaded into a matching engine that intercepts each syscall made by all programs on the system. Therefore, it is very important to use syscall rules only when absolutely necessary, since these affect performance. The more rules, the bigger the performance hit. The performance can be helped, however, by combining syscalls into one rule whenever possible.
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。系统调用规则加载到匹配的引擎中，该引擎拦截系统上所有程序发出的每个系统调用。因此，仅在绝对必要时使用syscall规则是非常重要的，因为这些会影响性能。规则越多，对性能的冲击越大。但是，只要有可能，将syscall合并到一个规则中，可以帮助提高性能。
 
 **规则影响：**
 
@@ -6205,7 +6038,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.47 SLEM 5 must generate audit records for all uses of the "delete_module" system call.
+### 17.46 KubeOS必须为“delete_module”系统调用的所有使用生成审核记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6213,9 +6046,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。
 
 **规则影响：**
 
@@ -6241,7 +6074,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.48 SLEM 5 must generate audit records for all uses of the "init_module" and "finit_module" system calls.
+### 17.47 KubeOS必须为“init_module”和“finit_module”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6249,9 +6082,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter). The system call rules are loaded into a matching engine that intercepts each syscall made by all programs on the system. Therefore, it is very important to use syscall rules only when absolutely necessary, since these affect performance. The more rules, the bigger the performance hit. The performance can be helped, however, by combining syscalls into one rule whenever possible.
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。系统调用规则加载到匹配的引擎中，该引擎拦截系统上所有程序发出的每个系统调用。因此，仅在绝对必要时使用syscall规则是非常重要的，因为这些会影响性能。规则越多，对性能的冲击越大。但是，尽可能将syscall合并到一个规则中，可以帮助提高性能。
 
 **规则影响：**
 
@@ -6277,7 +6110,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.49 SLEM 5 must generate audit records for all uses of the "mount" system call.
+### 17.48 KubeOS必须为“mount”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6285,9 +6118,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
+如果审计记录不包含足够的信息，则无法重建有害事件或进行取证分析。
 
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+至少，组织必须审计特权命令的全文记录。组织必须维护足够详细的审计跟踪，以重构事件，以确定危害的原因和影响。
 
 **规则影响：**
 
@@ -6313,7 +6146,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.50 SLEM 5 must generate audit records for all uses of the "setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", and "lremovexattr" system calls.
+### 17.49 KubeOS必须为“setxattr”、“fsetxattr”、“lsetxattr”、“removexattr”、“fremovexattr”和“lremovexattr”系统调用的所有使用生成审计记录。
 
 **级别：** 要求（MEDIUM）
 
@@ -6321,9 +6154,9 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter). The system call rules are loaded into a matching engine that intercepts each syscall made by all programs on the system. Therefore, it is very important to use syscall rules only when absolutely necessary, since these affect performance. The more rules, the bigger the performance hit. The performance can be helped, however, by combining syscalls into one rule whenever possible.
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。系统调用规则加载到匹配的引擎中，该引擎拦截系统上所有程序发出的每个系统调用。因此，仅在绝对必要时使用syscall规则是非常重要的，因为这些会影响性能。规则越多，对性能的冲击越大。但是，只要有可能，将syscall合并到一个规则中，可以帮助提高性能。
 
 **规则影响：**
 
@@ -6349,7 +6182,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.51 SLEM 5 must generate audit records for all uses of the "umount" system call.
+### 17.50 KubeOS必须为“umount”系统调用的所有使用生成审计记录。
 
 **级别：** 要求（MEDIUM）
 
@@ -6357,9 +6190,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
+如果审计记录不包含足够的信息，则无法重建有害事件或进行取证分析。
 
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+至少，组织必须审计特权命令的全文记录。组织必须维护足够详细的审计跟踪，以重构事件，以确定危害的原因和影响。
 
 **规则影响：**
 
@@ -6386,7 +6219,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.52 SLEM 5 must generate audit records for all uses of the "unlink", "unlinkat", "rename", "renameat", and "rmdir" system calls.
+### 17.51 KubeOS必须为“unlink”、“unlinkat”、“重命名”、“rmdir”系统调用的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6394,9 +6227,9 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter). The system call rules are loaded into a matching engine that intercepts each syscall made by all programs on the system. Therefore, it is very important to use syscall rules only when absolutely necessary, since these affect performance. The more rules, the bigger the performance hit. The performance can be helped, however, by combining syscalls into one rule whenever possible.
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。系统调用规则加载到匹配的引擎中，该引擎拦截系统上所有程序发出的每个系统调用。因此，仅在绝对必要时使用syscall规则是非常重要的，因为这些会影响性能。规则越多，对性能的冲击越大。但是，只要有可能，将syscall合并到一个规则中，可以帮助提高性能。
 
 **规则影响：**
 
@@ -6422,7 +6255,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.53 SLEM 5 must generate audit records for all uses of privileged functions.
+### 17.52 KubeOS必须为特权函数的所有使用生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6430,7 +6263,7 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Misuse of privileged functions, either intentionally or unintentionally by authorized users, or by unauthorized external entities that have compromised information system accounts, is a serious and ongoing concern and can have significant adverse impacts on organizations. Auditing the use of privileged functions is one way to detect such misuse and identify the risk from insider threats and the advanced persistent threat.
+授权用户有意或无意地滥用特权功能，或未经授权的外部实体破坏了信息系统帐户，是一个严重且持续的问题，可能会对组织造成重大不利影响。对特权功能的使用进行审计是检测此类滥用并识别来自内部威胁和高级持续性威胁的风险的一种方法。
 
 **规则影响：**
 
@@ -6460,7 +6293,7 @@ Misuse of privileged functions, either intentionally or unintentionally by autho
 # systemctl restart auditd.service
 ```
 
-### 17.54 SLEM 5 must generate audit records for all modifications to the "lastlog" file.
+### 17.53 KubeOS必须为“lastlog”文件的所有修改生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6468,9 +6301,9 @@ Misuse of privileged functions, either intentionally or unintentionally by autho
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。
 
 **规则影响：**
 
@@ -6495,7 +6328,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.55 SLEM 5 must generate audit records for all modifications to the "tallylog" file must generate an audit record.
+### 17.54 KubeOS必须生成审计记录对“txt”文件的所有修改都必须生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6503,9 +6336,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。
 
 **规则影响：**
 
@@ -6530,7 +6363,7 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 # systemctl restart auditd.service
 ```
 
-### 17.56 SLEM 5 must audit all uses of the sudoers file and all files in the "/etc/sudoers.d/" directory.
+### 17.55 KubeOS必须审计sudoers文件的所有使用以及“/etc/sudoers.d/”目录下的所有文件
 
 **级别：** 要求（MEDIUM）
 
@@ -6538,9 +6371,9 @@ grep -w /var/log/tallylog /etc/audit/rules.d/audit.rules
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
+如果审计记录不包含足够的信息，则无法重建有害事件或进行取证分析。
 
-At a minimum, the organization must audit the full-text recording of privileged access commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.
+至少，组织必须审核特权访问命令的全文记录。组织必须维护足够详细的审计跟踪，以重构事件，以确定危害的原因和影响。
 
 **规则影响：**
 
@@ -6569,7 +6402,7 @@ At a minimum, the organization must audit the full-text recording of privileged 
 # systemctl restart auditd.service
 ```
 
-### 17.57 Successful/unsuccessful uses of "setfiles" in SLEM 5 must generate an audit record.
+### 17.56 在KubeOS中成功/不成功使用“setfiles”必须生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6577,11 +6410,11 @@ At a minimum, the organization must audit the full-text recording of privileged 
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
+如果审计记录不包含足够的信息，则无法重建有害事件或进行取证分析。
 
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise. The "setfiles" command is primarily used to initialize the security context fields (extended attributes) on one or more filesystems (or parts of them). Usually it is initially run as part of the SELinux installation process (a step commonly known as labeling).
+至少，组织必须审计特权命令的全文记录。组织必须维护足够详细的审计跟踪，以重构事件，以确定危害的原因和影响。“setfiles”命令主要用于在一个或多个文件系统（或其中的一部分）上初始化安全上下文字段（扩展属性）。通常，它最初是作为SELinux安装过程的一部分（通常称为标记）运行的。
 
-When a user logs on, the AUID is set to the UID of the account that is being authenticated. Daemons are not user sessions and have the loginuid set to "-1". The AUID representation is an unsigned 32-bit integer, which equals "4294967295". The audit system interprets "-1", "4294967295", and "unset" in the same way.
+当用户登录时，AUID设置为正在进行身份验证的帐户的UID。守护进程不是用户会话，并且loginuid设置为“-1”。AUID表示是一个无符号的32位整数，等于“4294967295”。审计系统以相同的方式解释“-1”、“4294967295”和“unset”。
 
 **规则影响：**
 
@@ -6606,7 +6439,7 @@ When a user logs on, the AUID is set to the UID of the account that is being aut
 # systemctl restart auditd.service
 ```
 
-### 17.58 Successful/unsuccessful uses of "semanage" in SLEM 5 must generate an audit record.
+### 17.57 在KubeOS中使用“semanage”必须生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6614,11 +6447,11 @@ When a user logs on, the AUID is set to the UID of the account that is being aut
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
+如果审计记录不包含足够的信息，则无法重建有害事件或进行取证分析。
 
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise. The "semanage" command is used to configure certain elements of SELinux policy without requiring modification to or recompilation from policy sources.
+至少，组织必须审计特权命令的全文记录。组织必须维护足够详细的审计跟踪，以重构事件，以确定危害的原因和影响。“semanage”命令用于配置SELinux策略的某些元素，而不需要修改策略源或重新编译策略源。
 
-When a user logs on, the AUID is set to the UID of the account that is being authenticated. Daemons are not user sessions and have the loginuid set to "-1". The AUID representation is an unsigned 32-bit integer, which equals "4294967295". The audit system interprets "-1", "4294967295", and "unset" in the same way.
+当用户登录时，AUID设置为正在进行身份验证的帐户的UID。守护进程不是用户会话，并且loginuid设置为“-1”。AUID表示是一个无符号的32位整数，等于“4294967295”。审计系统以相同的方式解释“-1”、“4294967295”和“unset”。
 
 **规则影响：**
 
@@ -6643,7 +6476,7 @@ When a user logs on, the AUID is set to the UID of the account that is being aut
 # systemctl restart auditd.service
 ```
 
-### 17.59 Successful/unsuccessful uses of "setsebool" in SLEM 5 must generate an audit record.
+### 17.58 在KubeOS中使用“setebool”必须生成审计记录。
 
 **级别：** 要求（MEDIUM）
 
@@ -6651,11 +6484,11 @@ When a user logs on, the AUID is set to the UID of the account that is being aut
 
 **规则说明：**
 
-Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
+如果审计记录不包含足够的信息，则无法重建有害事件或进行取证分析。
 
-At a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise. The "setsebool" command sets the current state of a particular SELinux Boolean or a list of Booleans to a given value.
+至少，组织必须审计特权命令的全文记录。组织必须维护足够详细的审计跟踪，以重构事件，以确定危害的原因和影响。“setebool”命令将特定SELinux布尔值或布尔值列表的当前状态设置为给定值。
 
-When a user logs on, the AUID is set to the UID of the account that is being authenticated. Daemons are not user sessions and have the loginuid set to "-1". The AUID representation is an unsigned 32-bit integer, which equals "4294967295". The audit system interprets "-1", "4294967295", and "unset" in the same way.
+当用户登录时，AUID被设置为正在进行身份验证的帐户的UID。守护进程不是用户会话，并且loginuid设置为“-1”。AUID表示是一个无符号的32位整数，等于“4294967295”。审计系统对“-1”、“4294967295”和“unset”的解释是相同的。
 
 **规则影响：**
 
@@ -6680,7 +6513,7 @@ When a user logs on, the AUID is set to the UID of the account that is being aut
 # systemctl restart auditd.service
 ```
 
-### 17.60 SLEM 5 must generate audit records for the "/run/utmp file".
+### 17.59 KubeOS必须为“/run/utmp文件”生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6688,9 +6521,9 @@ When a user logs on, the AUID is set to the UID of the account that is being aut
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）中生成。
 
 **规则影响：**
 
@@ -6715,7 +6548,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.61 SLEM 5 must generate audit records for the "/var/log/btmp" file.
+### 17.60 KubeOS必须为“/var/log/btmp”文件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6723,9 +6556,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。
 
 **规则影响：**
 
@@ -6750,7 +6583,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.62 SLEM 5 must generate audit records for the "/var/log/wtmp" file.
+### 17.61 KubeOS必须为“/var/log/wtmp”文件生成审计记录
 
 **级别：** 要求（MEDIUM）
 
@@ -6758,9 +6591,9 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
+如果不生成特定于组织的安全和任务需求的审计记录，就很难建立、关联和调查与某个事件相关的事件，或确定事件的责任人。
 
-Audit records can be generated from various components within the information system (e.g., module or policy filter).
+审计记录可以从信息系统中的各种组件（例如，模块或策略过滤器）生成。
 
 **规则影响：**
 
@@ -6785,7 +6618,7 @@ Audit records can be generated from various components within the information sy
 # systemctl restart auditd.service
 ```
 
-### 17.63 SLEM 5 must not disable syscall auditing.
+### 17.62 KubeOS不能禁用syscall审计
 
 **级别：** 要求（MEDIUM）
 
@@ -6793,7 +6626,7 @@ Audit records can be generated from various components within the information sy
 
 **规则说明：**
 
-By default, SLEM 5 includes the "-a task,never" audit rule as a default. This rule suppresses syscall auditing for all tasks started with this rule in effect. Because the audit daemon processes the "audit.rules" file from the top down, this rule supersedes all other defined syscall rules; therefore no syscall auditing can take place on the operating system.
+默认情况下，KbeOS包含“-a task,never”审计规则作为默认的。此规则将禁止使用此规则启动的所有任务的系统调用审核。由于审计守护进程从上到下处理“audit.rules”文件，因此此规则取代了所有其他已定义的syscall规则；因此，操作系统上无法进行任何syscall审计。
 
 **规则影响：**
 
@@ -6818,7 +6651,7 @@ By default, SLEM 5 includes the "-a task,never" audit rule as a default. This ru
 # systemctl restart auditd.service
 ```
 
-### 17.64 SLEM 5 must limit the number of concurrent sessions to 10 for all accounts and/or account types.
+### 17.63 KubeOS必须将所有帐户和/或帐户类型的并发会话数限制为10
 
 **级别：** 建议（LOW）
 
@@ -6826,9 +6659,9 @@ By default, SLEM 5 includes the "-a task,never" audit rule as a default. This ru
 
 **规则说明：**
 
-SLEM 5 management includes the ability to control the number of users and user sessions that use a SLEM 5. Limiting the number of allowed users and sessions per user is helpful in reducing the risks related to denial-of-service (DoS) attacks.
+KubeOS管理包括控制使用KubeOS的用户和用户会话的数量的能力。限制每个用户允许的用户和会话的数量有助于降低与拒绝服务（DoS）攻击相关的风险。
 
-This requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based on mission needs and the operational environment for each system.
+此要求解决了信息系统帐户的并发会话，而不能解决单个用户通过多个系统帐户的并发会话。并发会话的最大数量应根据任务需求和每个系统的操作环境来定义。
 
 **规则影响：**
 
@@ -6851,7 +6684,7 @@ This requirement addresses concurrent sessions for information system accounts a
 * hard maxlogins 10
 ```
 
-### 17.65 SLEM 5 must have policycoreutils package installed.
+### 17.64 KubeOS必须安装policycoreutils包
 
 **级别：** 建议（LOW）
 
@@ -6859,9 +6692,9 @@ This requirement addresses concurrent sessions for information system accounts a
 
 **规则说明：**
 
-Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
+如果没有对安全功能进行验证，安全功能可能无法正常运行，故障可能会被忽视。安全功能定义为信息系统的硬件、软件和/或固件，负责实施系统安全策略并支持保护所基于的代码和数据的隔离。安全功能包括但不限于建立系统帐户、配置访问授权（即权限、特权）、设置要审计的事件以及设置入侵检测参数。
 
-Policycoreutils contains the policy core utilities that are required for basic operation of an SELinux-enabled system. These utilities include load_policy to load SELinux policies, setfile to label filesystems, newrole to switch roles, and run_init to run /etc/init.d scripts in the proper context.
+Policycoreutils包含启用SELinux的系统的基本操作所需的策略核心实用程序。这些实用程序包括load_policy（用于加载SELinux策略）、setfile（用于标记文件系统）、newrole（用于切换角色）以及run_init（用于在适当的上下文中运行/etc/init.d脚本）。
 
 **规则影响：**
 
@@ -6880,7 +6713,7 @@ Policycoreutils contains the policy core utilities that are required for basic o
 
 在镜像制作过程中安装policycoreutils
 
-### 17.66 SLEM 5 audit event multiplexor must be configured to use Kerberos.
+### 17.65 KubeOS审计事件多路复用器必须配置为使用Kerberos
 
 **级别：** 建议（LOW）
 
@@ -6888,9 +6721,9 @@ Policycoreutils contains the policy core utilities that are required for basic o
 
 **规则说明：**
 
-Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
+存储在一个位置的信息容易被意外或偶然的删除或更改。
 
-Allowing devices and users to connect to or from the system without first authenticating them allows untrusted access and can lead to a compromise or attack. Audit events that may include sensitive data must be encrypted prior to transmission. Kerberos provides a mechanism to provide both authentication and encryption for audit event records.
+允许设备和用户在不首先对其进行身份验证的情况下连接到系统或从系统连接到系统将导致不可信的访问，并可能导致危害或攻击。可能包含敏感数据的审计事件必须在传输之前加密。Kerberos提供了一种机制来为审计事件记录提供身份验证和加密。
 
 **规则影响：**
 
@@ -6915,7 +6748,7 @@ enable_krb5 = yes
 
 ## 18 systemd
 
-### 18.1 SLEM 5 must disable the x86 Ctrl-Alt-Delete key sequence.
+### 18.1 KubeOS必须禁用x86 Ctrl-Alt-Delete键序列
 
 **级别：** 要求（HIGH）
 
@@ -6923,7 +6756,7 @@ enable_krb5 = yes
 
 **规则说明：**
 
-A locally logged-on user who presses Ctrl-Alt-Delete when at the console can reboot the system. If accidentally pressed, as could happen in the case of a mixed OS environment, this can create the risk of short-term loss of availability of systems due to unintentional reboot. In the graphical user interface environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is reduced because the user will be prompted before any action is taken.
+在控制台按Ctrl-Alt-Delete组合键的本地登录用户可以重新引导系统。如果意外按下，就像在混合操作系统环境中可能发生的情况一样，这可能会造成由于意外重启而导致系统短期可用性丧失的风险。在图形用户界面环境中，Ctrl-Alt-Delete序列意外重启的风险会降低，因为在采取任何操作之前，会提示用户。
 
 **规则影响：**
 
@@ -6949,7 +6782,7 @@ A locally logged-on user who presses Ctrl-Alt-Delete when at the console can reb
 
 ## 19 grub
 
-### 19.1 SLEM 5 with a basic input/output system (BIOS) must require authentication upon booting into single-user and maintenance modes.
+### 19.1 具有基本输入/输出系统(BIOS)的KubeOS在引导进入单用户和维护模式时必须要求身份验证
 
 **级别：** 要求（HIGH）
 
@@ -6957,9 +6790,8 @@ A locally logged-on user who presses Ctrl-Alt-Delete when at the console can reb
 
 **规则说明：**
 
-To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.
-
-Access control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.
+为降低已获得批准的PKI颁发证书的实体未经授权访问敏感信息的风险，所有系统（例如，Web服务器和Web门户）必须正确配置为包含访问控制方法，这些方法不完全依赖于拥有证书进行访问。成功的身份验证不能自动授予实体对资产或安全边界的访问权限。必须实施授权程序和控制，以确保每个经过身份验证的实体也具有经过验证的和当前的授权。授权是确定一个实体在通过身份验证后是否被允许访问特定资产的过程。信息系统使用访问控制策略和执行机制来实现这一要求。
+访问控制策略包括基于身份的策略、基于角色的策略和基于属性的策略。访问实施机制包括访问控制列表、访问控制矩阵和密码学。应用程序必须采用这些策略和机制来控制信息系统中的用户（或代表用户行事的进程）与对象（例如，设备、文件、记录、进程、程序和域）之间的访问。
 
 **规则影响：**
 
@@ -6980,7 +6812,7 @@ Access control policies include identity-based policies, role-based policies, an
 # sudo mv /tmp/grub2.cfg /boot/grub2/grub.cfg
 ```
 
-### 19.2 SLEM 5 with Unified Extensible Firmware Interface (UEFI) implemented must require authentication upon booting into single-user mode and maintenance.
+### 19.2 实现了统一可扩展固件接口(UEFI)的KubeOS必须在引导至单用户模式和维护时要求身份验证
 
 **级别：** 要求（HIGH）
 
@@ -6988,7 +6820,7 @@ Access control policies include identity-based policies, role-based policies, an
 
 **规则说明：**
 
-If the system allows a user to boot into single-user or maintenance mode without authentication, any user that invokes single-user or maintenance mode is granted privileged access to all system information.
+如果系统允许用户在不进行身份验证的情况下引导至单用户或维护模式，则调用单用户或维护模式的任何用户都被授予对所有系统信息的特权访问权限。
 
 **规则影响：**
 
@@ -7011,7 +6843,7 @@ If the system allows a user to boot into single-user or maintenance mode without
 
 ## 20 rpm
 
-### 20.1 The SLEM 5 tool zypper must have gpgcheck enabled.
+### 20.1 KubeOS工具rpm必须开启gpgcheck。
 
 **级别：** 要求（HIGH）
 
@@ -7019,11 +6851,11 @@ If the system allows a user to boot into single-user or maintenance mode without
 
 **规则说明：**
 
-Changes to any software components can have significant effects on the overall security of SLEM 5. This requirement ensures the software has not been tampered with and has been provided by a trusted vendor.
+对任何软件组件的更改都可能对KubeOS的整体安全性产生重大影响。此要求可确保软件未被篡改，且由可信供应商提供。
 
-Accordingly, patches, service packs, device drivers, or SLEM 5 components must be signed with a certificate recognized and approved by the organization.
+相应地，补丁、服务包、设备驱动程序或KubeOS组件必须使用组织认可和批准的证书进行签名。
 
-Verifying the authenticity of the software prior to installation validates the integrity of the patch or upgrade received from a vendor. This ensures the software has not been tampered with and that it has been provided by a trusted vendor. Self-signed certificates are disallowed by this requirement. SLEM 5 should not have to verify the software again. This requirement does not mandate DOD certificates for this purpose; however, the certificate used to verify the software must be from an approved Certification Authority (CA).
+在安装之前验证软件的真实性，可以验证从供应商处收到的补丁或升级的完整性。这可确保软件未被篡改，并且由受信任的供应商提供。此要求不允许使用自签名证书。
 
 **规则影响：**
 
@@ -7041,7 +6873,7 @@ KubeOS无yum、单包升级场景，不涉及
 
 ## 21 telnet
 
-### 21.1 SLEM 5 must not have the telnet-server package installed.
+### 21.1 KubeOS不能安装telnet-server包
 
 **级别：** 要求（HIGH）
 
@@ -7049,11 +6881,11 @@ KubeOS无yum、单包升级场景，不涉及
 
 **规则说明：**
 
-It is detrimental for SLEM 5 to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked, and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
+KubeOS提供或默认安装超出需求或任务目标的功能是有害的。这些不必要的功能或服务经常会被忽视，因此可能会保持不安全。它们通过提供额外的攻击媒介增加了平台的风险。
 
-SLEM 5 is capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions and functions).
+KubeOS能够提供各种各样的功能和服务。默认提供的某些功能和服务可能不是支持基本组织运营（例如，关键任务和职能）所必需的。
 
-Examples of nonessential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but which cannot be disabled.
+非必要功能的示例包括但不限于与需求无关的软件包、工具和演示软件，或提供了并非每个任务都需要但不能禁用的广泛功能。
 
 **规则影响：**
 
@@ -7074,7 +6906,7 @@ Examples of nonessential capabilities include but are not limited to games, soft
 
 ## 22 FIPS
 
-### 22.1 FIPS 140-2/140-3 mode must be enabled on SLEM 5.
+### 22.1 FIPS 140-2/140-3模式必须在KubeOS上启用
 
 **级别：** 要求（HIGH）
 
@@ -7082,14 +6914,13 @@ Examples of nonessential capabilities include but are not limited to games, soft
 
 **规则说明：**
 
-Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. SLEM 5 must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.
+使用弱或未经测试的加密算法会破坏使用加密保护数据的目的。KubeOS必须实现符合联邦政府批准的更高标准的加密模块，因为这可以保证它们已经过测试和验证。
 
 **规则影响：**
 
 无
 
 **检查方法：**
-
 
 执行cat /proc/sys/crypto/fips_enabled 
 若返回值为1.则pass，否则fail
