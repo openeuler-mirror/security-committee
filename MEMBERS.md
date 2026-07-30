@@ -18,7 +18,7 @@
 |  <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitcode.com/zeng-wei2000)] | 漏洞管理专员 |
 |  <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitcode.com/Sam-Luo)] | 漏洞管理专员 |
 |  <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitcode.com/tony-hanbo)] | 安全规范和流程专员 |
-| <uromise@gmail.com> [[@iromise](https://gitcode.com/iromise)] | 基础设施安全专员 |
+| <liubaozheng@huawei.com> [[@iromise](https://gitcode.com/iromise)] | 基础设施安全专员 |
 | <wuksh@chinatelecom.cn> [[@wuzimo](https://gitcode.com/wuzimo)] | 漏洞管理专员 |
 | <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitcode.com/SPYFAMILY)] | 漏洞管理专员 |
 | <aron.xu@huawei.com> [[@happyaron](https://gitcode.com/happyaron)] | 漏洞管理专员 |
