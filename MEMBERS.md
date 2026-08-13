@@ -22,6 +22,8 @@
 | <wuksh@chinatelecom.cn> [[@wuzimo](https://gitcode.com/wuzimo)] | 漏洞管理专员 |
 | <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitcode.com/SPYFAMILY)] | 漏洞管理专员 |
 | <aron.xu@huawei.com> [[@happyaron](https://gitcode.com/happyaron)] | 漏洞管理专员 |
+| <caiqishen_yewu@cmss.chinamobile.com> [[@caiqs-sys](https://gitcode.com/caiqs-sys)] | 漏洞管理专员 |
+| <wangl1185@chinaunicom.cn> [[@wonleing](https://gitcode.com/wonleing)] | 漏洞管理专员 |
  
 
 

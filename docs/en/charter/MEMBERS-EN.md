@@ -20,6 +20,8 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - <wuksh@chinatelecom.cn> [[@wuzimo](https://gitcode.com/wuzimo)]
 - <xiexiunian@h-partners.com> [[@SPYFAMILY](https://gitcode.com/SPYFAMILY)]
 - <aron.xu@huawei.com> [[@happyaron](https://gitcode.com/happyaron)]
+- <caiqishen_yewu@cmss.chinamobile.com> [[@caiqs-sys](https://gitcode.com/caiqs-sys)]
+- <wangl1185@chinaunicom.cn> [[@wonleing](https://gitcode.com/wonleing)]
 
 ### Member Changes
 - [@yangli69393](https://gitcode.com/yangli69393) resigned in July 2021, and [@kylincuilei](https://gitcode.com/kylincuilei) took over the work.
