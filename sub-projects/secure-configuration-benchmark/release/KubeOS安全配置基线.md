@@ -4708,7 +4708,7 @@ disk_full_action = syslog
 
 
 ```bash
-1.执行stat -c "%n %U:%G %a" /var/log/audit，若返回值为/var/log/audit root:root 600，则pass，否则fail
+1.执行stat -c "%n %U:%G %a" /var/log/audit，若返回值为/var/log/audit root:root 700，则pass，否则fail
 2.执行stat -c "%n %U:%G %a" /var/log/audit/audit.log，若返回值为/var/log/audit/audit.log root:root 600，则pass，否则fail
 3.执行stat -c "%n %U:%G %a" /etc/audit/audit.rules，若返回值为/etc/audit/audit.rules root:root 640，则pass，否则fail
 4.执行stat -c "%n %U:%G %a" /etc/audit/rules.d/audit.rules，若返回值为/etc/audit/rules.d/audit.rules root:root 640，则pass，否则fail
@@ -4719,7 +4719,7 @@ disk_full_action = syslog
 
 ```bash
 1.使用chmod设置如下文件的权限：
-# chmod 600 /var/log/audit
+# chmod 700 /var/log/audit
 # chmod 600 /var/log/audit/audit.log
 # chmod 640 /etc/audit/audit.rules
 # chmod 640 /etc/audit/rules.d/audit.rules
