@@ -13,7 +13,7 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - <liujingang09@huawei.com> [[@liujingang09](https://gitcode.com/liujingang09)]
 - <tangjie@kylinsec.com.cn> [[@tangjie](https://gitcode.com/kylntj)]
 - <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitcode.com/mailofzxf)]
-- <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitcode.com/zeng-wei2000)]
+- <jishengli@uniontech.com> [[@jslallen](https://gitcode.com/jslallen)]
 - <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitcode.com/Sam-Luo)]
 - <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitcode.com/tony-hanbo)]
 - <uromise@gmail.com> [[@iromise](https://gitcode.com/iromise)]
@@ -31,4 +31,4 @@ The SC is responsible for classifying and handling openEuler security issues. Th
 - [@weidongkl](https://gitcode.com/weidongkl) resigned in March 2023, and [@movie0125](https://gitcode.com/movie0125) took over the work.
 - [@yanxiaobing2020](https://gitcode.com/yanxiaobing2020) resigned in June 2023, and [@luoyukai](https://gitcode.com/luoyukai) took over the work.
 - [@gwei3](https://gitcode.com/gwei3) resigned in September 2023.
-
+- [@zeng-wei2000](https://gitcode.com/zeng-wei2000) resigned in September 2026, and [@jslallen](https://gitcode.com/jslallen) took over the work.

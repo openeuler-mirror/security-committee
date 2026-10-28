@@ -15,7 +15,7 @@
 | <liujingang09@huawei.com> [[@liujingang09](https://gitcode.com/liujingang09)] | 安全规范和流程专员 & 安全构建发布专员 | 
 |  <tangjie@kylinsec.com.cn> [[@tangjie](https://gitcode.com/kylntj)] | 安全构建发布专员 | 
 |  <zhangxiangfeng@xfusion.com> [[@mailofzxf](https://gitcode.com/mailofzxf)] | 包引入专员 | 
-|  <zengwei1@uniontech.com> [[@zeng-wei2000](https://gitcode.com/zeng-wei2000)] | 漏洞管理专员 |
+|  <jishengli@uniontech.com> [[@jslallen](https://gitcode.com/jslallen)] | 漏洞管理专员 |
 |  <luoxiaoxing@huawei.com> [[@Sam-Luo](https://gitcode.com/Sam-Luo)] | 漏洞管理专员 |
 |  <yanghanbo2@huawei.com> [[@tony-hanbo](https://gitcode.com/tony-hanbo)] | 安全规范和流程专员 |
 | <liubaozheng@huawei.com> [[@iromise](https://gitcode.com/iromise)] | 基础设施安全专员 |
@@ -40,3 +40,4 @@
 - [@gwei3](https://gitcode.com/gwei3)于2023年9月卸任。
 - [@chenxi-mao](https://gitcode.com/chenxi-mao)于2024年5月卸任。
 - [@movie0125](https://gitcode.com/movie0125)于2024年5月卸任，[@zeng-wei2000](https://gitcode.com/zeng-wei2000)接替SC委员工作。
+- [@zeng-wei2000](https://gitcode.com/zeng-wei2000)于2026年9月卸任，[@jslallen](https://gitcode.com/jslallen)接替SC委员工作。
