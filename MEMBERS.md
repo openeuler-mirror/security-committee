@@ -24,7 +24,6 @@
 | <xiexiunian@h-partners.com> [[@SPYFAMILY](https://atomgit.com/SPYFAMILY)] | 漏洞管理专员 |
 | <aron.xu@huawei.com> [[@happyaron](https://atomgit.com/happyaron)] | 漏洞管理专员 |
 | <caiqishen_yewu@cmss.chinamobile.com> [[@caiqs-sys](https://atomgit.com/caiqs-sys)] | 漏洞管理专员 |
-| <wangl1185@chinaunicom.cn> [[@wonleing](https://atomgit.com/wonleing)] | 漏洞管理专员 |
  
 
 
