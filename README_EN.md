@@ -41,7 +41,7 @@ For details about the security handling process and security policies of the ope
 
 ## Code of Conduct
 
-+ It is subject to the constraints of [openEuler Code of Conduct](https://gitcode.com/openeuler/community/blob/master/code-of-conduct.md).
++ It is subject to the constraints of [openEuler Code of Conduct](https://atomgit.com/openeuler/community/blob/master/code-of-conduct.md).
 + It is subject to the constraints of [Code of Conduct for Members of the openEuler Security Committee](docs/zh/charter/security-committee-rules.md).
 
 ## Repository Structure Overview
