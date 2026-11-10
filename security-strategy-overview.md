@@ -164,10 +164,11 @@
 | 通过漏洞扫描                | ✔                           | ✘              | ✘        | ✘          | ✘              | ✘        |
 | 通过安全编译扫描            | ✔                           | ✘              | ✘        | ✔          | ✘              | ✘        |
 | 通过安全测试基线用例        | ✔                           | ✔              | ✔        | ✔          | ✔              | ✔        |
-| 通过安全片段引用扫描*       | ✔                           | ✔              | ✔        | ✔          | ✔              | ✔        |
+| 通过开源片段引用扫描*       | ✔                           | ✔              | ✔        | ✔          | ✔              | ✔        |
+| 通过敏感信息扫描*           | ✔                           | ✔              | ✔        | ✔          | ✔              | ✔        |
 | 通过开源软件License合规检查 | ✔                           | ✔              | ✔        | ✔          | ✔              | ✔        |
 
--   通过安全片段引用扫描*: 仅针对openEuler社区孵化软件 ;
+-   *: 开源片段引用扫描、敏感信息扫描仅针对openEuler社区自主孵化并在版本发布的软件包 ;
 -   对于发布件要求具备签名和完整性校验机制，如RPM需要具备GPG校验与签名（签名算法也将随时间审视对算法的要求）；
 -   SBOM信息具备自动生成的能力，随软件发布件一起生成与发布，当前已上线至 <https://repo.openeuler.org/security/data/sbom/>，可参考：[openEuler SBOM 简介](docs/zh/vulnerability-management-process/openeuler-sbom-introduction.md)。
 
@@ -192,15 +193,15 @@
 
 &ensp;&ensp;openEuler社区通过多种渠道来感知和获取与社区相关的漏洞：
 
-&ensp;&ensp;针对已公开漏洞，感知工具或社区贡献者获取漏洞信息后在Gitee上创建CVE issue跟踪漏洞处置。
+&ensp;&ensp;针对已公开漏洞，感知工具或社区贡献者获取漏洞信息后在AtomGit上创建CVE issue跟踪漏洞处置。
 
 &ensp;&ensp;针对未公开漏洞，openEuler社区安全委员会漏洞管理专员在接收到漏洞后，将48小时内答复漏洞提交者。
 
 | **感知渠道** | **上报方式**   | **详细介绍**                                                         |
 |--------------|----------------|----------------------------------------------------------------------|
 | CVE-manager  | CVE issue      | 同步上游开源软件漏洞，通过openeuler-ci-bot账号自动提交CVE issue      |
-| 社区贡献者   | CVE issue      | 识别上游开源软件漏洞并提交一个CVE issue，详见：[如何提交一个CVE issue](https://gitcode.com/openeuler/security-committee/wikis/%E5%A6%82%E4%BD%95%E6%8F%90%E4%BA%A4%E4%B8%80%E4%B8%AA%E5%B7%B2%E7%9F%A5%E7%9A%84CVE?sort_id=3498915) |
-| 安全研究者   | 安全委员会邮箱 | 通过加密邮件上报，详见：[如何上报漏洞](https://gitcode.com/link?target=https://openeuler.org/zh/security/vulnerability-reporting/)                                 |
+| 社区贡献者   | CVE issue      | 识别上游开源软件漏洞并提交一个CVE issue，详见：[如何提交一个CVE issue](https://atomgit.com/openeuler/security-committee/wikis/%E5%A6%82%E4%BD%95%E6%8F%90%E4%BA%A4%E4%B8%80%E4%B8%AA%E5%B7%B2%E7%9F%A5%E7%9A%84CVE?sort_id=3498915) |
+| 安全研究者   | 安全委员会邮箱 | 通过加密邮件上报，详见：[如何上报漏洞](https://openeuler.org/zh/security/vulnerability-reporting/)                                 |
 
 ### 10.3 漏洞评估
 
